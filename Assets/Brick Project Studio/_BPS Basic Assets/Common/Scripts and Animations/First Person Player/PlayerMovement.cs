@@ -11,6 +11,7 @@ namespace SojaExiles
         public CharacterController controller;
 
         public GameObject camera;
+        public GameObject flashlight;
 
         public float walkingSpeed;
         public float crouchSpeed;
@@ -24,8 +25,8 @@ namespace SojaExiles
 
         private void Start()
         {
-            walkingSpeed = 5f;
-            crouchSpeed = 2f;
+            walkingSpeed = 3f;
+            crouchSpeed = 1.5f;
             currentSpeed = walkingSpeed;
         }
 
@@ -46,6 +47,20 @@ namespace SojaExiles
 
                 currentSpeed = walkingSpeed;
             }
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if(flashlight.active)
+                {
+                    flashlight.SetActive(false);
+                }
+                else
+                {
+                    flashlight.SetActive(true);
+                }
+            }
+
+
 
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
