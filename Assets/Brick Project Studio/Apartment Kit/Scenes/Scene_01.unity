@@ -2064,6 +2064,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 642a2cb4532c08a4db221317e2019f62, type: 3}
+--- !u!4 &138774956 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 7d3e1e087a6fd684da2b08ef5c3fe259, type: 3}
+  m_PrefabInstance: {fileID: 1692613288}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &139413348
 GameObject:
   m_ObjectHideFlags: 0
@@ -8006,6 +8011,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1697057537660996819, guid: 70c062c3a7500e7479c9797b6190948e, type: 3}
   m_PrefabInstance: {fileID: 806485694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &541795720 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5900794022193949326, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
+  m_PrefabInstance: {fileID: 1292031858}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &545841762
 PrefabInstance:
@@ -24084,6 +24094,7 @@ Transform:
   - {fileID: 853595877}
   - {fileID: 439631470}
   - {fileID: 354593664137616936}
+  - {fileID: 138774956}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1198332755
@@ -25940,6 +25951,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1927095934725912879, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1551554824}
+    - target: {fileID: 1927095934725912879, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
       propertyPath: speed
       value: 8
       objectReference: {fileID: 0}
@@ -25951,6 +25966,10 @@ PrefabInstance:
       propertyPath: gravity
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 1927095934725912879, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
+      propertyPath: camHolder
+      value: 
+      objectReference: {fileID: 541795720}
     - target: {fileID: 1927095934725912879, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
       propertyPath: flashlight
       value: 
@@ -25995,7 +26014,12 @@ PrefabInstance:
       propertyPath: mouseXSensitivity
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5456581056188440197, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
+      propertyPath: enable
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5456581056188440197, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1927095934754023318, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
@@ -33045,7 +33069,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1193731129}
     m_Modifications:
     - target: {fileID: 100000, guid: 7d3e1e087a6fd684da2b08ef5c3fe259, type: 3}
       propertyPath: m_Name
@@ -37129,8 +37153,8 @@ Transform:
   m_Children:
   - {fileID: 1803688809}
   - {fileID: 1575954552}
-  - {fileID: 552239441}
   - {fileID: 1546467320}
+  - {fileID: 552239441}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2028067308
@@ -39950,6 +39974,5 @@ SceneRoots:
   - {fileID: 2028063701}
   - {fileID: 5895004480789329805}
   - {fileID: 1193731129}
-  - {fileID: 1692613288}
   - {fileID: 1390277833}
   - {fileID: 1998592582}

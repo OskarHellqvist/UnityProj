@@ -8,9 +8,11 @@ namespace SojaExiles
     public class PlayerMovement : MonoBehaviour
     {
 
+
+        public Transform cam;
+
         public CharacterController controller;
 
-        public GameObject camera;
         public GameObject flashlight;
 
         public float walkingSpeed;
@@ -20,8 +22,6 @@ namespace SojaExiles
         public float gravity = -15f;
 
         Vector3 velocity;
-
-        bool isGrounded;
 
         private void Start()
         {
@@ -36,14 +36,14 @@ namespace SojaExiles
 
             if (Input.GetKeyDown(KeyCode.LeftControl)) 
             {
-                camera.transform.position -= new Vector3(0,1f,0);
+                cam.transform.position -= new Vector3(0,1f,0);
 
                 currentSpeed = crouchSpeed;
             }
 
             else if (Input.GetKeyUp(KeyCode.LeftControl))
             {
-                camera.transform.position += new Vector3(0,1f,0);
+                cam.transform.position += new Vector3(0,1f,0);
 
                 currentSpeed = walkingSpeed;
             }
@@ -59,8 +59,6 @@ namespace SojaExiles
                     flashlight.SetActive(true);
                 }
             }
-
-
 
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
