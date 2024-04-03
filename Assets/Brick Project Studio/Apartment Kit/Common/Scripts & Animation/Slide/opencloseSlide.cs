@@ -14,7 +14,8 @@ namespace SojaExiles
 
 		void Start()
 		{
-			open = false;
+            this.gameObject.tag = "Interactable";
+            open = false;
 		}
 
 		void OnMouseOver()
