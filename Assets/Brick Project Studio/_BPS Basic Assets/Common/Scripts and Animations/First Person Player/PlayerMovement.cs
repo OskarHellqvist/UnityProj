@@ -10,15 +10,19 @@ namespace SojaExiles
         public GameObject flashlight;
 
         private float originalCamY; // Store the original camera Y position
-        public float walkingSpeed;
-        public float crouchSpeed;
-        public float currentSpeed;
-        public float gravity = -15f;
-        public float crouchDepth = 1f;
+
+
+        private float walkingSpeed;
+        private float crouchSpeed;
+        private float sprintSpeed;
+
+        private float currentSpeed;
+        private float gravity = -15f;
+        private float crouchDepth = 1f;
 
         // Headbob variables
-        public float headbobSpeed = 14f;
-        public float headbobAmount = 0.05f;
+        private float headbobSpeed = 14f;
+        private float headbobAmount = 0.05f;
         private float headbobTimer = 0.0f;
 
         Vector3 velocity;
@@ -29,13 +33,24 @@ namespace SojaExiles
         {
             originalCamY = cam.localPosition.y; // Store the original Y position of the camera
             currentCamY = originalCamY; // Initialize currentCamY with originalCamY
-            walkingSpeed = 3f;
+            walkingSpeed = 3.0f;
             crouchSpeed = 1.5f;
+            sprintSpeed = 4.5f;
             currentSpeed = walkingSpeed;
         }
 
         void Update()
         {
+            if (Input.GetKeyDown(KeyCode.LeftShift) && !isCrouching)
+            {
+                currentSpeed = sprintSpeed;
+            }
+
+            if (Input.GetKeyUp(KeyCode.LeftShift) && !isCrouching)
+            {
+                currentSpeed = walkingSpeed;
+            }
+
             if (Input.GetKeyDown(KeyCode.LeftControl) && !isCrouching)
             {
                 isCrouching = true;
@@ -49,9 +64,15 @@ namespace SojaExiles
                 StartCoroutine(SmoothCrouch(originalCamY));
             }
 
+
             if (Input.GetKeyDown(KeyCode.F))
             {
                 flashlight.SetActive(!flashlight.activeSelf);
+            }
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                StartCoroutine(FlickerFlashlight());
             }
 
             float x = Input.GetAxis("Horizontal");
@@ -114,5 +135,29 @@ namespace SojaExiles
                 cam.localPosition = new Vector3(cam.localPosition.x, currentCamY + translateChange, cam.localPosition.z);
             }
         }
+
+        IEnumerator FlickerFlashlight()
+        {
+            Light flashlightLight = flashlight.GetComponent<Light>();
+            if (flashlightLight == null) yield break; // Exit if no Light component found
+
+            float flickerDuration = 4.0f; // Total duration of the flicker effect
+            float startTime = Time.time;
+
+            while (Time.time - startTime < flickerDuration)
+            {
+                // Turn the flashlight off for a brief moment
+                flashlightLight.enabled = false;
+                yield return new WaitForSeconds(Random.Range(0.05f, 0.2f)); // Off duration
+
+                // Turn the flashlight back on
+                flashlightLight.enabled = true;
+                yield return new WaitForSeconds(Random.Range(0.1f, 0.3f)); // On duration
+            }
+
+            // Ensure the flashlight is on after flickering
+            flashlightLight.enabled = true;
+        }
+
     }
 }

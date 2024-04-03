@@ -55,16 +55,16 @@ namespace SojaExiles
 		{
 			print("you are opening the door");
 			Closetopenandclose.Play("ClosetOpening");
-			open = true;
 			yield return new WaitForSeconds(.5f);
+			open = true;
 		}
 
 		IEnumerator closing()
 		{
 			print("you are closing the door");
 			Closetopenandclose.Play("ClosetClosing");
-			open = false;
 			yield return new WaitForSeconds(.5f);
+			open = false;
 		}
 
 
