@@ -7,8 +7,6 @@ namespace SojaExiles
 {
     public class PlayerMovement : MonoBehaviour
     {
-
-
         public Transform cam;
 
         public CharacterController controller;
