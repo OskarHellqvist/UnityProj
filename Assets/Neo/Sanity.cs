@@ -4,37 +4,45 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NewBehaviourScript : MonoBehaviour
+namespace UnityProj
 {
-    public GameObject flashlight;
-
-    public Slider slider;
-
-    public float sanity = 100;
-    private float decreaseValue = 2;
-    private float increaseValue = 0.5f;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Insanity : MonoBehaviour
     {
-    }
+        public GameObject flashlight;
 
-    // Update is called once per frame
-    void Update()
-    {
+        public Slider slider;
+        public Image insanity;
 
-        if (!flashlight.active)
+        public float sanity = 100;
+        private float decreaseValue = 2;
+        private float increaseValue = 0.5f;
+
+        // Start is called before the first frame update
+        void Start()
         {
-            sanity -= Time.deltaTime * decreaseValue;
-        } 
-        else if (sanity < 100)
-        {
-            sanity += Time.deltaTime * increaseValue;
+
         }
 
-        if (sanity > 100) sanity = 100;
+        // Update is called once per frame
+        void Update()
+        {
 
-        slider.value = sanity;
+            if (!flashlight.active)
+            {
+                sanity -= Time.deltaTime * decreaseValue;
+            } 
+            else if (sanity < 100)
+            {
+                sanity += Time.deltaTime * increaseValue;
+            }
 
+            if (sanity > 100) sanity = 100;
+            else if (sanity < 0) sanity = 0;
+
+            float insTransparency = 1 - sanity / 100;
+            insanity.color = new Color(insanity.color.r, insanity.color.g, insanity.color.b, insTransparency);
+
+            slider.value = sanity;
+        }
     }
 }
