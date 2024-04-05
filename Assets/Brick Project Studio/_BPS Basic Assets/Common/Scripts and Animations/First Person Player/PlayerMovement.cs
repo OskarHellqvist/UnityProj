@@ -10,6 +10,13 @@ namespace SojaExiles
         public GameObject flashlight;
 
         private float originalCamY; // Store the original camera Y position
+        private float currentCamY; // Track the current camera Y position, considering crouch
+
+        private float battery = 100;
+        private float batteryDepletionRate = 1f;
+        private bool isFlickering = false;
+        private float maxIntensity = 1f; // Max intensity of the flashlight
+        private float minIntensity = 0.1f; // Min intensity of the flashlight when battery is low
 
 
         private float walkingSpeed;
@@ -26,8 +33,8 @@ namespace SojaExiles
         private float headbobTimer = 0.0f;
 
         Vector3 velocity;
+
         private bool isCrouching = false;
-        private float currentCamY; // Track the current camera Y position, considering crouch
 
         private void Start()
         {
@@ -64,16 +71,34 @@ namespace SojaExiles
                 StartCoroutine(SmoothCrouch(originalCamY));
             }
 
-
+            //--------------------------------------------------------------------------------I
+            
             if (Input.GetKeyDown(KeyCode.F))
             {
                 flashlight.SetActive(!flashlight.activeSelf);
             }
 
-            if (Input.GetKeyDown(KeyCode.L))
+            if (flashlight.activeSelf)
             {
-                StartCoroutine(FlickerFlashlight());
+                // Decrease battery only when flashlight is on
+                battery -= batteryDepletionRate * Time.deltaTime;
+                battery = Mathf.Max(battery, 0); // Ensure battery doesn't go below 0
+
+                // Adjust flashlight intensity based on battery level
+                Light flashlightLight = flashlight.GetComponent<Light>();
+                if (flashlightLight != null)
+                {
+                    float batteryPct = battery / 100f; // Convert battery to a 0-1 scale
+                    flashlightLight.intensity = Mathf.Lerp(minIntensity, maxIntensity, batteryPct);
+                }
+
+                if (battery <= 0 && !isFlickering)
+                {
+                    StartCoroutine(FlickerFlashlight());
+                }
             }
+
+            //--------------------------------------------------------------------------------I
 
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
@@ -138,8 +163,15 @@ namespace SojaExiles
 
         IEnumerator FlickerFlashlight()
         {
+            if (isFlickering) yield break;
+            isFlickering = true;
+
             Light flashlightLight = flashlight.GetComponent<Light>();
-            if (flashlightLight == null) yield break; // Exit if no Light component found
+            if (flashlightLight == null)
+            {
+                isFlickering = false;
+                yield break; // Exit if no Light component found
+            }
 
             float flickerDuration = 4.0f; // Total duration of the flicker effect
             float startTime = Time.time;
@@ -148,7 +180,7 @@ namespace SojaExiles
             {
                 // Turn the flashlight off for a brief moment
                 flashlightLight.enabled = false;
-                yield return new WaitForSeconds(Random.Range(0.05f, 0.2f)); // Off duration
+                yield return new WaitForSeconds(Random.Range(0.05f, 0.5f)); // Off duration
 
                 // Turn the flashlight back on
                 flashlightLight.enabled = true;
@@ -157,6 +189,7 @@ namespace SojaExiles
 
             // Ensure the flashlight is on after flickering
             flashlightLight.enabled = true;
+            isFlickering = false;
         }
 
     }
