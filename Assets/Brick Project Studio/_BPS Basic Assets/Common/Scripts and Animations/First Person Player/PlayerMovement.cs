@@ -53,10 +53,12 @@ namespace SojaExiles
                 if(flashlight.active)
                 {
                     flashlight.SetActive(false);
+                    FindObjectOfType<AudioManager>().Play("Flashlight");
                 }
                 else
                 {
                     flashlight.SetActive(true);
+                    FindObjectOfType<AudioManager>().Play("Flashlight");
                 }
             }
 
