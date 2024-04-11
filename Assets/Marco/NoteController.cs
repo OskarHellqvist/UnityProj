@@ -1,65 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMpro;
+using TMPro;
 using UnityEngine.Events;
-using UnityStandardAssets.Characters.FirstPerson;
 
-public class NoteController : MonoBehaviour
+namespace SojaExiles
+
 {
-    [Header("Input")]
-    [SerializeField] private KeyCode closeKey;
-
-    [Space(10)]
-    [SerializeField] private FirstPersonController player;
-
-    [Header("UI Text")]
-    [SerializeField] private GameObject noteCanvas;
-    [SerializeField] private TMP_Text noteTextAreaUI;
-
-    [Space(10)]
-    [SerializeField] [TextArea] private string noteText;
-
-    [Space(10)]
-    [SerializeField] private UnityEvent openEvent;
-    private bool isOpen = false;
-
-
-    public void ShowNote()
+    public class NoteController : MonoBehaviour
+    
     {
-        noteTextAreaUI.text = noteText;
-        noteCanvas.SetActive(true);
-        openEvent.Invoke();
-        DisablePlayer(true);
-        isOpen = true;
-    }
+        [Header("Input")]
+        [SerializeField] private KeyCode closeKey;
 
-    void DisableNote()
-    {
-        noteCanvas.SetActive(false);
-        DisablePlayer(false);
-        isOpen = false;
-    }
+        [Space(10)]
+        [SerializeField] private PlayerMovement player;
 
-    void DisablePlayer(bool disable)
-    {
-        player.enabled = !disabled;
-    }
+        [Header("UI Text")]
+        [SerializeField] private GameObject noteCanvas;
+        [SerializeField] private TMP_Text noteTextAreaUI;
+
+        [Space(10)]
+        [SerializeField] [TextArea] private string noteText;
+
+        [Space(10)]
+        [SerializeField] private UnityEvent openEvent;
+        private bool isOpen = false;
 
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (isOpen)
+        public void ShowNote()
         {
-            if (Input.GetKeyDown(closeKey))
+            noteTextAreaUI.text = noteText;
+            noteCanvas.SetActive(true);
+            openEvent.Invoke();
+            DisablePlayer(true);
+            isOpen = true;
+        }
+
+        void DisableNote()
+        {
+            noteCanvas.SetActive(false);
+            DisablePlayer(false);
+            isOpen = false;
+        }
+
+        void DisablePlayer(bool disable)
+        {
+            player.enabled = !disable;
+        }
+
+
+        void Start()
+        {
+            
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (isOpen)
             {
-                DisableNote();
+                if (Input.GetKeyDown(closeKey))
+                {
+                    DisableNote();
+                }
             }
         }
     }
