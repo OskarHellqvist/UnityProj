@@ -14,8 +14,6 @@ namespace SojaExiles
 
 		public bool locked = false;
 
-		public Raycast raycast;
-
 		void Start()
 		{
 			open = false;
@@ -28,7 +26,6 @@ namespace SojaExiles
 				float dist = Vector3.Distance(Player.position, transform.position);
 				if (dist < 3)
 				{
-					raycast.HighlightCrosshair(true);
 
 					if (open == false && !locked)
 					{
