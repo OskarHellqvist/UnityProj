@@ -17,6 +17,8 @@ namespace SojaExiles
 			open = false;
 		}
 
+		
+
 		void OnMouseOver()
 		{
 			{

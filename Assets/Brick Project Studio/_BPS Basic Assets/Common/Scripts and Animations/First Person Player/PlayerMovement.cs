@@ -13,19 +13,26 @@ namespace SojaExiles
         private float currentCamY; // Track the current camera Y position, considering crouch
 
         private float battery = 100;
-        private float batteryDepletionRate = 1f;
+        private float batteryDepletionRate = 0.5f;
         private bool isFlickering = false;
         private float maxIntensity = 1f; // Max intensity of the flashlight
-        private float minIntensity = 0.1f; // Min intensity of the flashlight when battery is low
+        private float minIntensity = 0.05f; // Min intensity of the flashlight when battery is low
 
 
         private float walkingSpeed;
         private float crouchSpeed;
         private float sprintSpeed;
+        private bool isSprinting = false;
+
+        private float stamina = 100;
+        private float staminaDepletionRate = 20;
+        private float staminaIncreseRate = 10;
 
         private float currentSpeed;
         private float gravity = -15f;
         private float crouchDepth = 1f;
+        private bool crouchBot = false;
+        private bool crouchTop = false;
 
         // Headbob variables
         private float headbobSpeed = 14f;
@@ -50,11 +57,13 @@ namespace SojaExiles
         {
             if (Input.GetKeyDown(KeyCode.LeftShift) && !isCrouching)
             {
+                isSprinting = true;
                 currentSpeed = sprintSpeed;
             }
 
             if (Input.GetKeyUp(KeyCode.LeftShift) && !isCrouching)
             {
+                isSprinting = false;
                 currentSpeed = walkingSpeed;
             }
 
@@ -64,11 +73,27 @@ namespace SojaExiles
                 currentSpeed = crouchSpeed;
                 StartCoroutine(SmoothCrouch(originalCamY - crouchDepth));
             }
-            else if (Input.GetKeyUp(KeyCode.LeftControl) && isCrouching)
+            else if (Input.GetKeyUp(KeyCode.LeftControl) && isCrouching )
             {
                 isCrouching = false;
                 currentSpeed = walkingSpeed;
                 StartCoroutine(SmoothCrouch(originalCamY));
+            }
+
+            if (isSprinting)
+            {
+                stamina -= staminaDepletionRate * Time.deltaTime;
+
+                if (stamina < 0)
+                {
+                    isSprinting = false;
+                    currentSpeed = walkingSpeed;
+                }
+            }
+
+            if(!isSprinting) 
+            {
+                stamina += staminaIncreseRate * Time.deltaTime;
             }
 
             //--------------------------------------------------------------------------------I
@@ -76,6 +101,11 @@ namespace SojaExiles
             if (Input.GetKeyDown(KeyCode.F))
             {
                 flashlight.SetActive(!flashlight.activeSelf);
+            }
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                StartCoroutine(FlickerFlashlight(3));
             }
 
             if (flashlight.activeSelf)
@@ -94,7 +124,12 @@ namespace SojaExiles
 
                 if (battery <= 0 && !isFlickering)
                 {
-                    StartCoroutine(FlickerFlashlight());
+                    StartCoroutine(FlickerFlashlight(4));
+                }
+                
+                if (battery <= 50  && battery >= 49 && !isFlickering)
+                {
+                    StartCoroutine(FlickerFlashlight(2));
                 }
             }
 
@@ -131,7 +166,7 @@ namespace SojaExiles
 
             while (time < duration)
             {
-                cam.localPosition = Vector3.Lerp(startCamPos, targetCamPos, time / duration);
+                cam.localPosition = Vector3.Lerp(startCamPos, targetCamPos, time/duration);
                 time += Time.deltaTime;
                 yield return null;
             }
@@ -161,7 +196,7 @@ namespace SojaExiles
             }
         }
 
-        IEnumerator FlickerFlashlight()
+        IEnumerator FlickerFlashlight(int duration)
         {
             if (isFlickering) yield break;
             isFlickering = true;
@@ -173,10 +208,9 @@ namespace SojaExiles
                 yield break; // Exit if no Light component found
             }
 
-            float flickerDuration = 4.0f; // Total duration of the flicker effect
             float startTime = Time.time;
 
-            while (Time.time - startTime < flickerDuration)
+            while (Time.time - startTime < duration)
             {
                 // Turn the flashlight off for a brief moment
                 flashlightLight.enabled = false;
@@ -184,7 +218,7 @@ namespace SojaExiles
 
                 // Turn the flashlight back on
                 flashlightLight.enabled = true;
-                yield return new WaitForSeconds(Random.Range(0.1f, 0.3f)); // On duration
+                yield return new WaitForSeconds(Random.Range(0.05f, 0.15f)); // On duration
             }
 
             // Ensure the flashlight is on after flickering
