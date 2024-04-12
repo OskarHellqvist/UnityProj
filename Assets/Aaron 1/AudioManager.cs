@@ -6,9 +6,9 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
 
-    //FindObjectOfType<AudioManager>().Play("AudioName"); for playing a sound when something happens
+    //FindObjectOfType<AudioManager>().Play("AudioName"); //for playing a sound when something happens
 
-    //
+    
     public static AudioManager instance;
 
     void Awake()
@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
 
         // Do not destroy between scenes
