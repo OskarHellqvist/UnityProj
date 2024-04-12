@@ -12,45 +12,45 @@ namespace SojaExiles
 		public bool open;
 		public Transform Player;
 
+		public bool locked = false;
+
+		public Raycast raycast;
+
 		void Start()
 		{
 			open = false;
 		}
 
-		
-
 		void OnMouseOver()
 		{
+			if (Player)
 			{
-				if (Player)
+				float dist = Vector3.Distance(Player.position, transform.position);
+				if (dist < 3)
 				{
-					float dist = Vector3.Distance(Player.position, transform.position);
-					if (dist < 3)
+					raycast.HighlightCrosshair(true);
+
+					if (open == false && !locked)
 					{
-						if (open == false)
+						if (Input.GetMouseButtonDown(0))
+						{
+							StartCoroutine(opening());
+						}
+					}
+					else
+					{
+						if (open == true)
 						{
 							if (Input.GetMouseButtonDown(0))
 							{
-								StartCoroutine(opening());
+								StartCoroutine(closing());
 							}
-						}
-						else
-						{
-							if (open == true)
-							{
-								if (Input.GetMouseButtonDown(0))
-								{
-									StartCoroutine(closing());
-								}
-							}
-
 						}
 
 					}
+
 				}
-
 			}
-
 		}
 
 		IEnumerator opening()

@@ -64,7 +64,7 @@ public class Raycast : MonoBehaviour
             }
         }
 
-        void HighlightCrosshair(bool on)
+        public void HighlightCrosshair(bool on)
         {
             if (on)
             {
