@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SojaExiles
 
 {
-	public class opencloseDoor : MonoBehaviour
+	public class opencloseDoor : MonoBehaviour, Interactable
 	{
 
 		public Animator openandclose;
@@ -18,6 +18,10 @@ namespace SojaExiles
 		{
 			open = false;
 		}
+		public void Interact()
+        {
+            opening();
+        }
 
 		void OnMouseOver()
 		{
