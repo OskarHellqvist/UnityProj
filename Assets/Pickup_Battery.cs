@@ -5,8 +5,12 @@ namespace SojaExiles
     public class Pickup_Battery : MonoBehaviour, Interactable
     {
         [SerializeField] private GameObject Player;
-        [SerializeField] private PlayerMovement pMovement; // Assign this in the Inspector or find it on the player GameObject
+        private PlayerMovement pMovement; // Assign this in the Inspector or find it on the player GameObject
 
+        public void Interact()
+        {
+            BatteryPickup();
+        }
 
         private void Start()
         {
@@ -21,10 +25,11 @@ namespace SojaExiles
             }
         }
 
-        public void Interact()
+        public void BatteryPickup()
         {
             pMovement.battery = 100; // Recharge the battery
             gameObject.SetActive(false); // Optionally deactivate the battery object after picking up
         }
+
     }
 }

@@ -12,7 +12,7 @@ namespace SojaExiles
         private float originalCamY; // Store the original camera Y position
         private float currentCamY; // Track the current camera Y position, considering crouch
 
-        private float battery = 100;
+        public float battery = 100;
         private float batteryDepletionRate = 0.5f;
         private bool isFlickering = false;
         private float maxIntensity = 1f; // Max intensity of the flashlight
