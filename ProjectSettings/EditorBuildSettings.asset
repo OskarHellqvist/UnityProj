@@ -8,9 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Selma/Menu scene.unity
     guid: e03d803a2dc5ae04bb526bfe010f01e9
-  - enabled: 0
-    path: Assets/Selma/Menu in game test.unity
-    guid: 1ab1551965fd31b41a7b934b377407db
+  - enabled: 1
+    path: Assets/Selma/IntroTextScene.unity
+    guid: 8218a3f0f5188f544a94719237f47a95
   - enabled: 1
     path: Assets/Scenes/Base Scene (Good).unity
     guid: ce8af990741050b45bf2da8ac67d9ad9

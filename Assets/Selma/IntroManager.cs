@@ -32,7 +32,7 @@ public class IntroManager : MonoBehaviour
     IEnumerator LoadScene()
     {
         loadingStarted = true; // Set loadingStarted to true to prevent multiple loading attempts
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(/*"Base Scene (Good)"*/"PauseMenuNotes");
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("Base Scene (Good)");
         asyncOperation.allowSceneActivation = false;
 
         while (!asyncOperation.isDone)
