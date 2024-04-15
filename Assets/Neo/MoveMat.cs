@@ -24,7 +24,6 @@ namespace SojaExiles
             {
                 //Set (Active = true) to move mat and show key
                 Active = true;
-                audioSource.Play();
             }
         void Update()
         {
@@ -33,6 +32,7 @@ namespace SojaExiles
             if (!Done && Active && !m_IsRotatingAndMoving)
             {
                 StartCoroutine(RotateAndMoveMat(rotationAmount, moveDistance));
+                audioSource.Play();
                 Done = true;
             }
 

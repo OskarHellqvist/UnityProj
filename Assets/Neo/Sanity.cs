@@ -37,7 +37,6 @@ namespace SojaExiles
             }
             else
             {
-                Debug.Log("Draining...");
                 isDraining = true;
             }
 
