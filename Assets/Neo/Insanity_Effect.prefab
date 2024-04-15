@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 723718920155884952}
   - component: {fileID: 956142212088722568}
   m_Layer: 5
-  m_Name: player_ui
+  m_Name: Insanity_Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
