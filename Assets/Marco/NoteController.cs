@@ -33,6 +33,7 @@ namespace SojaExiles
         }
         public void ShowNote()
         {
+            Time.timeScale = 0f;
             noteTextAreaUI.text = noteText;
             noteCanvas.SetActive(true);
             openEvent.Invoke();
@@ -42,6 +43,7 @@ namespace SojaExiles
 
         void DisableNote()
         {
+            Time.timeScale = 1f;
             noteCanvas.SetActive(false);
             DisablePlayer(false);
             isOpen = false;

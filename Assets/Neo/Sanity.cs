@@ -10,7 +10,7 @@ namespace UnityProj
     public class Insanity : MonoBehaviour
     {
         public GameObject flashlight;
-        public Slider slider;
+        //public Slider slider;
         public Image insanity;
 
         public float sanity = 100;
@@ -29,7 +29,7 @@ namespace UnityProj
         // Update is called once per frame
         void Update()
         {
-            if(flashlight.active || inSpawnArea)
+            if(flashlight.activeInHierarchy || inSpawnArea)
             {
                 isDraining = false;
             }
@@ -53,7 +53,10 @@ namespace UnityProj
             float insTransparency = 1 - sanity / 100;
             insanity.color = new Color(insanity.color.r, insanity.color.g, insanity.color.b, insTransparency);
 
-            slider.value = sanity;
+            //if (slider != null)
+            //{
+            //    slider.value = sanity;
+            //}
         }
 
         private void OnTriggerStay(Collider other)
