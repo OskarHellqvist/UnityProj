@@ -1,3 +1,4 @@
+using SojaExiles;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -5,11 +6,12 @@ using UnityEngine;
 using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.UI;
 
-namespace UnityProj
+namespace SojaExiles
 {
     public class Insanity : MonoBehaviour
     {
         public GameObject flashlight;
+        private PlayerMovement pMovement;
         //public Slider slider;
         public Image insanity;
 
@@ -23,18 +25,19 @@ namespace UnityProj
         // Start is called before the first frame update
         void Start()
         {
-
+            pMovement = GetComponent<PlayerMovement>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if(flashlight.activeInHierarchy || inSpawnArea)
+            if((flashlight.activeInHierarchy && pMovement.GetFlashlightBattery > 40) || inSpawnArea)
             {
                 isDraining = false;
             }
             else
             {
+                Debug.Log("Draining...");
                 isDraining = true;
             }
 

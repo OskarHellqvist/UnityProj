@@ -18,6 +18,7 @@ namespace SojaExiles
         private float maxIntensity = 1f; // Max intensity of the flashlight
         private float minIntensity = 0.05f; // Min intensity of the flashlight when battery is low
 
+        public float GetFlashlightBattery { get { return battery; } }
 
         private float walkingSpeed;
         private float crouchSpeed;
