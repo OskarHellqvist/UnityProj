@@ -6,13 +6,12 @@ using UnityEngine.UI;
 
 namespace SojaExiles
 {
-public class Raycast : MonoBehaviour
-
+    public class Raycast : MonoBehaviour
     {
         [Header("Raycast Features")]
-        [SerializeField] private float rayLength = 5;
+        [SerializeField] private float rayLength =0;
         private Camera _camera;
-        NoteController _noteController;
+        private Interactable _interactableObject;
 
         [Header("Crosshair")]
         [SerializeField] private Image crosshair;
@@ -30,49 +29,45 @@ public class Raycast : MonoBehaviour
         {
             if (Physics.Raycast(_camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f)), transform.forward, out RaycastHit hit, rayLength))
             {
-                var readableItem = hit.collider.GetComponent<NoteController>();
-                if (readableItem != null)
+                _interactableObject = hit.collider.GetComponent<Interactable>();
+                if (_interactableObject != null)
                 {
-                    _noteController = readableItem;
                     HighlightCrosshair(true);
                 }
-                else 
+                else
                 {
-                    ClearNote();
+                    ClearInteraction();
                 }
             }
-            else 
+            else
             {
-                ClearNote();
+                ClearInteraction();
             }
 
-            if (_noteController != null)
+            if (_interactableObject != null)
             {
                 if (Input.GetKeyDown(interactKey))
                 {
-                    _noteController.ShowNote();
+                    _interactableObject.Interact();
                 }
             }
         }
 
-        void ClearNote() 
+        void ClearInteraction()
         {
-            if (_noteController !=null)
-            {
-                HighlightCrosshair(false);
-                _noteController = null;
-            }
+            HighlightCrosshair(false);
+            _interactableObject = null;
         }
 
         public void HighlightCrosshair(bool on)
         {
             if (on)
             {
-                crosshair.color = Color.red;
+                crosshair.transform.localScale = Vector2.one * 2;
             }
-            else 
+            else
             {
-                crosshair.color = Color.white;
+                crosshair.transform.localScale = Vector2.one;
             }
         }
     }

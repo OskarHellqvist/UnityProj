@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SojaExiles
 
 {
-	public class opencloseDoor : MonoBehaviour
+	public class opencloseDoor : MonoBehaviour, Interactable
 	{
 
 		public Animator openandclose;
@@ -18,37 +18,17 @@ namespace SojaExiles
 		{
 			open = false;
 		}
-
-		void OnMouseOver()
-		{
-			if (Player)
-			{
-				float dist = Vector3.Distance(Player.position, transform.position);
-				if (dist < 3)
-				{
-
-					if (open == false && !locked)
-					{
-						if (Input.GetMouseButtonDown(0))
-						{
-							StartCoroutine(opening());
-						}
-					}
-					else
-					{
-						if (open == true)
-						{
-							if (Input.GetMouseButtonDown(0))
-							{
-								StartCoroutine(closing());
-							}
-						}
-
-					}
-
-				}
-			}
-		}
+		public void Interact()
+        {
+            if (open == false && !locked)
+            {
+                    StartCoroutine(opening());
+            }
+            else if (open == true)
+            {
+                StartCoroutine(closing());
+            }
+        }
 
 		public void OpenDoor() { StartCoroutine(opening()); }
 		public void CloseDoor() { StartCoroutine(closing()); }

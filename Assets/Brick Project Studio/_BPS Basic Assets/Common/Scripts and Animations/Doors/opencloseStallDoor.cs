@@ -1,57 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 
 namespace SojaExiles
 
 {
-	public class opencloseStallDoor : MonoBehaviour
+	public class opencloseStallDoor : MonoBehaviour, Interactable
 	{
 
 		public Animator openandclose;
 		public bool open;
 		public Transform Player;
 
-		void Start()
+        public bool locked = false;
+
+        void Start()
 		{
 			open = false;
 		}
 
-		void OnMouseOver()
-		{
-			{
-				if (Player)
-				{
-					float dist = Vector3.Distance(Player.position, transform.position);
-					if (dist < 3)
-					{
-						if (open == false)
-						{
-							if (Input.GetMouseButtonDown(0))
-							{
-								StartCoroutine(opening());
-							}
-						}
-						else
-						{
-							if (open == true)
-							{
-								if (Input.GetMouseButtonDown(0))
-								{
-									StartCoroutine(closing());
-								}
-							}
+        public void Interact()
+        {
+            if (open == false && !locked)
+            {
+                StartCoroutine(opening());
+            }
+            else if (open == true)
+            {
+                StartCoroutine(closing());
+            }
+        }
 
-						}
+        public void OpenDoor() { StartCoroutine(opening()); }
+        public void CloseDoor() { StartCoroutine(closing()); }
+        public void LockDoor() { locked = true; }
+        public void UnlockDoor() { locked = false; }
+        public void LockUnlockDoor() { locked = !locked; }
 
-					}
-				}
-
-			}
-
-		}
-
-		IEnumerator opening()
+        IEnumerator opening()
 		{
 			print("you are opening the door");
 			openandclose.Play("OpeningStall");
