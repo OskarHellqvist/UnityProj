@@ -6,7 +6,7 @@ using UnityEngine;
 namespace SojaExiles
 
 {
-	public class ClosetopencloseDoor : MonoBehaviour
+	public class ClosetopencloseDoor : MonoBehaviour, Interactable
 	{
 
 		public Animator Closetopenandclose;

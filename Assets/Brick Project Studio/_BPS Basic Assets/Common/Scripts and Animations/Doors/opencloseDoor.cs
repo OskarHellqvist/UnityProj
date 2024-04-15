@@ -39,20 +39,31 @@ namespace SojaExiles
 		{
 			if (locked)
 			{
-                DoorAudio.clip = openLockedDoor;
-                DoorAudio.Play();
+				if(openLockedDoor != null)
+				{
+					DoorAudio.clip = openLockedDoor;
+                	DoorAudio.Play();
+				}
             }
 			else
 			{
-                DoorAudio.clip = doorOpen;
-                DoorAudio.Play();
+				if(doorOpen != null)
+				{
+					DoorAudio.clip = doorOpen;
+                	DoorAudio.Play();
+				}
+                
                 StartCoroutine(opening());
             }
 		}
 		public void CloseDoor() 
 		{
-            DoorAudio.clip = doorClose;
-            DoorAudio.Play();
+			if(doorClose != null)
+			{
+				DoorAudio.clip = doorClose;
+            	DoorAudio.Play();
+			}
+            
             StartCoroutine(closing()); 
 		}
 		public void LockDoor() 
