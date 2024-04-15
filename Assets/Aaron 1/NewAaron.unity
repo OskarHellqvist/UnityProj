@@ -24918,6 +24918,18 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
+  - name: Window
+    clip: {fileID: 8300000, guid: 69f11e9263c468a43a1fa1a260a3b860, type: 3}
+    loop: 0
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - name: Flashlight
+    clip: {fileID: 8300000, guid: 6ae7a4da143ac2a4b8beb90dc6c1cd0e, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
 --- !u!4 &1147042413 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3108454442468392478, guid: 3f867dd7956e96f4a90edce652fc7512, type: 3}
