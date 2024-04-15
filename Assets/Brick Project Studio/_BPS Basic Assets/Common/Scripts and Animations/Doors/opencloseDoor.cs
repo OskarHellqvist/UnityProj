@@ -52,6 +52,9 @@ namespace SojaExiles
 
 		public void OpenDoor() { StartCoroutine(opening()); }
 		public void CloseDoor() { StartCoroutine(closing()); }
+		public void LockDoor() { locked = true; }
+		public void UnlockDoor() { locked = false; }
+		public void LockUnlockDoor() { locked = !locked; }
 
 		IEnumerator opening()
 		{
