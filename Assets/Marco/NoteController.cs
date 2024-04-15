@@ -7,7 +7,7 @@ using UnityEngine.Events;
 namespace SojaExiles
 
 {
-    public class NoteController : MonoBehaviour
+    public class NoteController : MonoBehaviour, Interactable
     
     {
         [Header("Input")]
@@ -27,7 +27,10 @@ namespace SojaExiles
         [SerializeField] private UnityEvent openEvent;
         private bool isOpen = false;
 
-
+        public void Interact()
+        {
+            ShowNote();
+        }
         public void ShowNote()
         {
             noteTextAreaUI.text = noteText;
