@@ -15,7 +15,7 @@ namespace SojaExiles
         //public Slider slider;
         public Image insanity;
 
-        public float sanity = 100;
+        public static float sanity = 100;
         private float decreaseValue = 2;
         private float increaseValue = 0.5f;
 
@@ -31,7 +31,7 @@ namespace SojaExiles
         // Update is called once per frame
         void Update()
         {
-            if((flashlight.activeInHierarchy && pMovement.GetFlashlightBattery > 40) || inSpawnArea)
+            if((flashlight.activeInHierarchy && pMovement.battery > 30) || inSpawnArea)
             {
                 isDraining = false;
             }

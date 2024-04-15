@@ -7,6 +7,11 @@ namespace SojaExiles
 {
 	public class opencloseDoor : MonoBehaviour, Interactable
 	{
+		[SerializeField] private AudioClip doorOpen;
+		[SerializeField] private AudioClip doorClose;
+		[SerializeField] private AudioClip openLockedDoor;
+		[SerializeField] private AudioClip doorUnlock;
+		[SerializeField] private AudioSource DoorAudio;
 
 		public Animator openandclose;
 		public bool open;
@@ -20,25 +25,51 @@ namespace SojaExiles
 		}
 		public void Interact()
         {
-            if (open == false && !locked)
+            if (open == false)
             {
-                    StartCoroutine(opening());
+                OpenDoor();
             }
             else if (open == true)
             {
-                StartCoroutine(closing());
+                CloseDoor();
             }
         }
 
-		public void OpenDoor() { StartCoroutine(opening()); }
-		public void CloseDoor() { StartCoroutine(closing()); }
-		public void LockDoor() { locked = true; }
-		public void UnlockDoor() { locked = false; }
+		public void OpenDoor() 
+		{
+			if (locked)
+			{
+                DoorAudio.clip = openLockedDoor;
+                DoorAudio.Play();
+            }
+			else
+			{
+                DoorAudio.clip = doorOpen;
+                DoorAudio.Play();
+                StartCoroutine(opening());
+            }
+		}
+		public void CloseDoor() 
+		{
+            DoorAudio.clip = doorClose;
+            DoorAudio.Play();
+            StartCoroutine(closing()); 
+		}
+		public void LockDoor() 
+		{ 
+			locked = true; 
+		}
+		public void UnlockDoor() 
+		{
+            DoorAudio.clip = doorUnlock;
+            DoorAudio.Play();
+            locked = false; 
+		}
 		public void LockUnlockDoor() { locked = !locked; }
 
 		IEnumerator opening()
 		{
-			print("you are opening the door");
+			//print("you are opening the door");
 			openandclose.Play("Opening");
 			yield return new WaitForSeconds(.5f);
 			open = true;
@@ -46,9 +77,9 @@ namespace SojaExiles
 
 		IEnumerator closing()
 		{
-			print("you are closing the door");
+			//print("you are closing the door");
 			openandclose.Play("Closing");
-			yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(.5f);
 			open = false;
 		}
 
