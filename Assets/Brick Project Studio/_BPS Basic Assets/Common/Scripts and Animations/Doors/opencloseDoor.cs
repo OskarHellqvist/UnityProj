@@ -50,6 +50,9 @@ namespace SojaExiles
 			}
 		}
 
+		public void OpenDoor() { StartCoroutine(opening()); }
+		public void CloseDoor() { StartCoroutine(closing()); }
+
 		IEnumerator opening()
 		{
 			print("you are opening the door");
