@@ -25,11 +25,14 @@ namespace SojaExiles
 
         [Space(10)]
         [SerializeField] private UnityEvent openEvent;
+
+        [SerializeField] private AudioSource audioSource;
         private bool isOpen = false;
 
         public void Interact()
         {
             ShowNote();
+            audioSource.Play();
         }
         public void ShowNote()
         {
@@ -45,6 +48,7 @@ namespace SojaExiles
             noteCanvas.SetActive(false);
             DisablePlayer(false);
             isOpen = false;
+            gameObject.SetActive(false);
         }
 
         void DisablePlayer(bool disable)

@@ -17,11 +17,14 @@ namespace SojaExiles
         public bool Active = false;
         private bool Done = false;
 
+        [SerializeField] private AudioSource audioSource;
+
         // Update is called once per frame
         public void Interact()
             {
                 //Set (Active = true) to move mat and show key
                 Active = true;
+                audioSource.Play();
             }
         void Update()
         {
@@ -33,7 +36,7 @@ namespace SojaExiles
                 Done = true;
             }
 
-            if(Done && (Key.active == false))
+            if(Done && (Key != null))
             {
                 Key.active = true;
             }
