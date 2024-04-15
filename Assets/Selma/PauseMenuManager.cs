@@ -7,17 +7,18 @@ public class PauseMenuManager : MonoBehaviour
     public static bool isPaused = false;
     public GameObject pauseMenuUI;
     public GameObject backgroundPanel;
+    public GameObject notePanel;
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I)) //TODO: pause camera movement
         {
-            if(isPaused)
+            if (isPaused)
             {
                 Resume();
             }
-            else
+            else if (!isPaused && notePanel.activeInHierarchy == false)
             {
                 Pause();
             }

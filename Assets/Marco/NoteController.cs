@@ -19,6 +19,7 @@ namespace SojaExiles
         [Header("UI Text")]
         [SerializeField] private GameObject noteCanvas;
         [SerializeField] private TMP_Text noteTextAreaUI;
+        [SerializeField] private TMP_Text noteTextAreaObj;
 
         [Space(10)]
         [SerializeField] [TextArea] private string noteText;
@@ -27,6 +28,7 @@ namespace SojaExiles
         [SerializeField] private UnityEvent openEvent;
         private bool isOpen = false;
 
+        bool isPaused = false;
 
         public void ShowNote()
         {
@@ -35,6 +37,8 @@ namespace SojaExiles
             openEvent.Invoke();
             DisablePlayer(true);
             isOpen = true;
+            Time.timeScale = 0f;
+            isPaused = true;
         }
 
         void DisableNote()
@@ -42,6 +46,8 @@ namespace SojaExiles
             noteCanvas.SetActive(false);
             DisablePlayer(false);
             isOpen = false;
+            Time.timeScale = 1f;
+            isPaused = true;
         }
 
         void DisablePlayer(bool disable)
@@ -52,7 +58,7 @@ namespace SojaExiles
 
         void Start()
         {
-            
+            noteTextAreaObj.text = noteText;
         }
 
         // Update is called once per frame
