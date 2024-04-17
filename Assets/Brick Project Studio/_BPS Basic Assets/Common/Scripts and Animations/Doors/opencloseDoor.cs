@@ -5,8 +5,13 @@ using UnityEngine;
 namespace SojaExiles
 
 {
-	public class opencloseDoor : MonoBehaviour
+	public class opencloseDoor : MonoBehaviour, Interactable
 	{
+		[SerializeField] private AudioClip doorOpen;
+		[SerializeField] private AudioClip doorClose;
+		[SerializeField] private AudioClip openLockedDoor;
+		[SerializeField] private AudioClip doorUnlock;
+		[SerializeField] private AudioSource DoorAudio;
 
 		public Animator openandclose;
 		public bool open;
@@ -18,41 +23,64 @@ namespace SojaExiles
 		{
 			open = false;
 		}
+		public void Interact()
+        {
+            if (open == false)
+            {
+                OpenDoor();
+            }
+            else if (open == true)
+            {
+                CloseDoor();
+            }
+        }
 
-		void OnMouseOver()
+		public void OpenDoor() 
 		{
-			if (Player)
+			if (locked)
 			{
-				float dist = Vector3.Distance(Player.position, transform.position);
-				if (dist < 3)
+				if(openLockedDoor != null)
 				{
-
-					if (open == false && !locked)
-					{
-						if (Input.GetMouseButtonDown(0))
-						{
-							StartCoroutine(opening());
-						}
-					}
-					else
-					{
-						if (open == true)
-						{
-							if (Input.GetMouseButtonDown(0))
-							{
-								StartCoroutine(closing());
-							}
-						}
-
-					}
-
+					DoorAudio.clip = openLockedDoor;
+                	DoorAudio.Play();
 				}
-			}
+            }
+			else
+			{
+				if(doorOpen != null)
+				{
+					DoorAudio.clip = doorOpen;
+                	DoorAudio.Play();
+				}
+                
+                StartCoroutine(opening());
+            }
 		}
+		public void CloseDoor() 
+		{
+			if(doorClose != null)
+			{
+				DoorAudio.clip = doorClose;
+            	DoorAudio.Play();
+			}
+            
+            StartCoroutine(closing()); 
+		}
+		public void LockDoor() 
+		{ 
+			locked = true; 
+		}
+		public void UnlockDoor() 
+		{
+            DoorAudio.clip = doorUnlock;
+            DoorAudio.Play();
+            locked = false; 
+		}
+		public void LockUnlockDoor() { locked = !locked; }
 
 		IEnumerator opening()
 		{
-			print("you are opening the door");
+			//print("you are opening the door");
 			openandclose.Play("Opening");
 			yield return new WaitForSeconds(.5f);
 			open = true;
@@ -60,9 +88,9 @@ namespace SojaExiles
 
 		IEnumerator closing()
 		{
-			print("you are closing the door");
+			//print("you are closing the door");
 			openandclose.Play("Closing");
-			yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(.5f);
 			open = false;
 		}
 

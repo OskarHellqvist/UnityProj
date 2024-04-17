@@ -7,7 +7,7 @@ using UnityEngine.Events;
 namespace SojaExiles
 
 {
-    public class NoteController : MonoBehaviour
+    public class NoteController : MonoBehaviour, Interactable
     
     {
         [Header("Input")]
@@ -19,35 +19,38 @@ namespace SojaExiles
         [Header("UI Text")]
         [SerializeField] private GameObject noteCanvas;
         [SerializeField] private TMP_Text noteTextAreaUI;
-        [SerializeField] private TMP_Text noteTextAreaObj;
 
         [Space(10)]
         [SerializeField] [TextArea] private string noteText;
 
         [Space(10)]
         [SerializeField] private UnityEvent openEvent;
+
+        [SerializeField] private AudioSource audioSource;
         private bool isOpen = false;
 
-        bool isPaused = false;
-
+        public void Interact()
+        {
+            ShowNote();
+            audioSource.Play();
+        }
         public void ShowNote()
         {
+            Time.timeScale = 0f;
             noteTextAreaUI.text = noteText;
             noteCanvas.SetActive(true);
             openEvent.Invoke();
             DisablePlayer(true);
             isOpen = true;
-            Time.timeScale = 0f;
-            isPaused = true;
         }
 
         void DisableNote()
         {
+            Time.timeScale = 1f;
             noteCanvas.SetActive(false);
             DisablePlayer(false);
             isOpen = false;
-            Time.timeScale = 1f;
-            isPaused = true;
+            gameObject.SetActive(false);
         }
 
         void DisablePlayer(bool disable)
@@ -58,7 +61,7 @@ namespace SojaExiles
 
         void Start()
         {
-            noteTextAreaObj.text = noteText;
+            
         }
 
         // Update is called once per frame
