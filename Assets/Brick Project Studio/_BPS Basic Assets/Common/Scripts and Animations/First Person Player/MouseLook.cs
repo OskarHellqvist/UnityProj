@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SojaExiles
 
 {
     public class MouseLook : MonoBehaviour
     {
-
-        public float mouseXSensitivity = 100f;
+        public float mouseXSensitivity;
+        [SerializeField] private Slider sensSlider;
 
         public Transform playerBody;
 
@@ -18,6 +19,7 @@ namespace SojaExiles
         void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
+            mouseXSensitivity = sensSlider.value;
         }
 
         // Update is called once per frame
@@ -34,6 +36,11 @@ namespace SojaExiles
                 transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
                 playerBody.Rotate(Vector3.up * mouseX);
             }
+        }
+
+        public void ChangeSensitivity()
+        {
+            mouseXSensitivity = sensSlider.value;
         }
             
     }
