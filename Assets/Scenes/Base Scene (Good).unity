@@ -26470,7 +26470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashlight: {fileID: 1753910856}
-  insanity: {fileID: 516303639}
+  insanity: {fileID: 0}
 --- !u!1001 &1159894165
 PrefabInstance:
   m_ObjectHideFlags: 0
