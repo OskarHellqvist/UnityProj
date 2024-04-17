@@ -1,44 +1,57 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Net.Sockets;
 using UnityEngine;
 
 namespace SojaExiles
 
 {
-	public class opencloseWindowApt : MonoBehaviour, Interactable
-    {
+	public class opencloseWindowApt : MonoBehaviour
+	{
 
 		public Animator openandclosewindow;
 		public bool open;
 		public Transform Player;
 
-        public bool locked = false;
-
-        void Start()
+		void Start()
 		{
 			open = false;
 		}
 
-        public void Interact()
-        {
-            if (open == false && !locked)
-            {
-                StartCoroutine(opening());
-            }
-            else if (open == true)
-            {
-                StartCoroutine(closing());
-            }
-        }
+		void OnMouseOver()
+		{
+			{
+				if (Player)
+				{
+					float dist = Vector3.Distance(Player.position, transform.position);
+					if (dist < 3)
+					{
+						if (open == false)
+						{
+							if (Input.GetMouseButtonDown(0))
+							{
+								StartCoroutine(opening());
+							}
+						}
+						else
+						{
+							if (open == true)
+							{
+								if (Input.GetMouseButtonDown(0))
+								{
+									StartCoroutine(closing());
+								}
+							}
 
-        public void OpenDoor() { StartCoroutine(opening()); }
-        public void CloseDoor() { StartCoroutine(closing()); }
-        public void LockDoor() { locked = true; }
-        public void UnlockDoor() { locked = false; }
-        public void LockUnlockDoor() { locked = !locked; }
+						}
 
-        IEnumerator opening()
+					}
+				}
+
+			}
+
+		}
+
+		IEnumerator opening()
 		{
 			print("you are opening the Window");
 			openandclosewindow.Play("Openingwindow");

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.041120112, g: 0.07249693, b: 0.1256583, a: 1}
+  m_IndirectSpecularColor: {r: 0.041117445, g: 0.07249471, b: 0.12565556, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -26151,14 +26151,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Window_Frame_Apt_01
       objectReference: {fileID: 0}
-    - target: {fileID: 5444104965077616319, guid: ff74a2d207593764ea3699571e28d00a, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5812619582557242128, guid: ff74a2d207593764ea3699571e28d00a, type: 3}
-      propertyPath: minVolume
-      value: 0.1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29994,17 +29986,9 @@ PrefabInstance:
       propertyPath: m_ReflectionProbeUsage
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1927095933604403118, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1927095934725912876, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
       propertyPath: m_Name
       value: First Person Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1927095934725912876, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
-      propertyPath: m_Layer
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1927095934725912876, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
       propertyPath: m_IsActive
@@ -30057,10 +30041,6 @@ PrefabInstance:
     - target: {fileID: 1927095934725912877, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1927095934725912878, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
-      propertyPath: m_StepOffset
-      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1927095934725912879, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
       propertyPath: cam
@@ -30122,10 +30102,6 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 55
       objectReference: {fileID: 0}
-    - target: {fileID: 1927095934754023317, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1927095934754023318, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -30145,10 +30121,6 @@ PrefabInstance:
     - target: {fileID: 5456581056188440197, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
       propertyPath: enable
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5803825826484784313, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
-      propertyPath: m_Layer
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5456581056188440197, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
@@ -35238,7 +35210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayLength: 3
   crosshair: {fileID: 124743284}
-  interactKey: 323
+  interactKey: 101
 --- !u!1001 &1552071507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39427,7 +39399,7 @@ GameObject:
   - component: {fileID: 1753910858}
   - component: {fileID: 1753910860}
   - component: {fileID: 1753910859}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
