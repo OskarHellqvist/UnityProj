@@ -8,8 +8,8 @@ namespace SojaExiles
     public class KeyScript : MonoBehaviour, Interactable
     {
         // Start is called before the first frame update
-        //[SerializeField] private AudioClip klirrSound;
-        //[SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip klirrSound;
+        [SerializeField] private AudioSource audioSource;
         public GameObject homeKey;
 
         // Temp--------------------------------
@@ -32,9 +32,8 @@ namespace SojaExiles
         private IEnumerator PlayAudioAndDisable()
         {
             // Play the audio
-            //audioSource.clip = klirrSound;
-            //audioSource.Play();
-            FindObjectOfType<AudioManager>().Play("Key");
+            audioSource.clip = klirrSound;
+            audioSource.Play();
 
             // Temp--------------------------------
             doorScript.UnlockDoor();

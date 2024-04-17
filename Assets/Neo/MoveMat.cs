@@ -17,7 +17,7 @@ namespace SojaExiles
         public bool Active = false;
         private bool Done = false;
 
-        //[SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioSource audioSource;
 
         // Update is called once per frame
         public void Interact()
@@ -32,8 +32,7 @@ namespace SojaExiles
             if (!Done && Active && !m_IsRotatingAndMoving)
             {
                 StartCoroutine(RotateAndMoveMat(rotationAmount, moveDistance));
-                //audioSource.Play();
-                FindObjectOfType<AudioManager>().Play("Mat");
+                audioSource.Play();
                 Done = true;
             }
 
