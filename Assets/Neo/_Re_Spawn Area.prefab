@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 2297453160332055401}
   - component: {fileID: 8706080257891839921}
   - component: {fileID: 3118922646204450308}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane2
   m_TagString: Respawn
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 5856983564692344447}
   - component: {fileID: 8204245116051683410}
   - component: {fileID: 25413971952715165}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Plane1
   m_TagString: Respawn
   m_Icon: {fileID: 0}
