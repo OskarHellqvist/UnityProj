@@ -30,6 +30,7 @@ namespace SojaExiles
 						{
 							if (Input.GetMouseButtonDown(0))
 							{
+								FindObjectOfType<AudioManager>().Play("slidingDoor");
 								StartCoroutine(opening());
 							}
 						}
@@ -39,7 +40,8 @@ namespace SojaExiles
 							{
 								if (Input.GetMouseButtonDown(0))
 								{
-									StartCoroutine(closing());
+                                    FindObjectOfType<AudioManager>().Play("slidingDoor");
+                                    StartCoroutine(closing());
 								}
 							}
 
