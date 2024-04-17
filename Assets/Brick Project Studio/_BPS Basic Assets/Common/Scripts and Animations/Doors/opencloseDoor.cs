@@ -41,16 +41,19 @@ namespace SojaExiles
 			{
 				if(openLockedDoor != null)
 				{
-					DoorAudio.clip = openLockedDoor;
-                	DoorAudio.Play();
-				}
+                    //DoorAudio.clip = openLockedDoor;
+                    //DoorAudio.Play();
+                    FindObjectOfType<AudioManager>().Play("LockedDoor");
+
+                }
             }
 			else
 			{
 				if(doorOpen != null)
 				{
-					DoorAudio.clip = doorOpen;
-                	DoorAudio.Play();
+					//DoorAudio.clip = doorOpen;
+					//DoorAudio.Play();
+					FindObjectOfType<AudioManager>().Play("OpenDoor");
 				}
                 
                 StartCoroutine(opening());
@@ -60,10 +63,11 @@ namespace SojaExiles
 		{
 			if(doorClose != null)
 			{
-				DoorAudio.clip = doorClose;
-            	DoorAudio.Play();
-			}
-            
+                //DoorAudio.clip = doorClose;
+                //DoorAudio.Play();
+                FindObjectOfType<AudioManager>().Play("CloseDoor");
+            }
+
             StartCoroutine(closing()); 
 		}
 		public void LockDoor() 
@@ -82,7 +86,8 @@ namespace SojaExiles
 		{
 			//print("you are opening the door");
 			openandclose.Play("Opening");
-			yield return new WaitForSeconds(.5f);
+            FindObjectOfType<AudioManager>().Play("OpenDoor");
+            yield return new WaitForSeconds(.5f);
 			open = true;
 		}
 
@@ -90,6 +95,7 @@ namespace SojaExiles
 		{
 			//print("you are closing the door");
 			openandclose.Play("Closing");
+            FindObjectOfType<AudioManager>().Play("CloseDoor");
             yield return new WaitForSeconds(.5f);
 			open = false;
 		}

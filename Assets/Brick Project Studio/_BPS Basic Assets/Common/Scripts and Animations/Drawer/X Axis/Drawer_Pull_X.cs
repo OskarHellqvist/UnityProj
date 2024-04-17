@@ -43,7 +43,8 @@ namespace SojaExiles
 		{
 			print("you are opening the door");
 			pull_01.Play("openpull_01");
-			open = true;
+            FindObjectOfType<AudioManager>().Play("OpenDrawer");
+            open = true;
 			yield return new WaitForSeconds(.5f);
 		}
 
@@ -51,7 +52,8 @@ namespace SojaExiles
 		{
 			print("you are closing the door");
 			pull_01.Play("closepush_01");
-			open = false;
+            FindObjectOfType<AudioManager>().Play("CloseDrawer");
+            open = false;
 			yield return new WaitForSeconds(.5f);
 		}
 
