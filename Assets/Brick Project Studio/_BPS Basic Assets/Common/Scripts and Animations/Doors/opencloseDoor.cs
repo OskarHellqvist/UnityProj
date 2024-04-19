@@ -7,11 +7,11 @@ namespace SojaExiles
 {
 	public class opencloseDoor : MonoBehaviour, Interactable
 	{
-		[SerializeField] private AudioClip doorOpen;
-		[SerializeField] private AudioClip doorClose;
-		[SerializeField] private AudioClip openLockedDoor;
-		[SerializeField] private AudioClip doorUnlock;
-		[SerializeField] private AudioSource DoorAudio;
+		private bool doorOpen;
+		private bool doorClose;
+		private bool openLockedDoor;
+		private bool doorUnlock;
+
 
 		public Animator openandclose;
 		public bool open;
@@ -41,18 +41,13 @@ namespace SojaExiles
 			{
 				if(openLockedDoor != null)
 				{
-                    //DoorAudio.clip = openLockedDoor;
-                    //DoorAudio.Play();
                     FindObjectOfType<AudioManager>().Play("LockedDoor");
-
                 }
             }
 			else
 			{
 				if(doorOpen != null)
 				{
-					//DoorAudio.clip = doorOpen;
-					//DoorAudio.Play();
 					FindObjectOfType<AudioManager>().Play("OpenDoor");
 				}
                 
@@ -63,8 +58,6 @@ namespace SojaExiles
 		{
 			if(doorClose != null)
 			{
-                //DoorAudio.clip = doorClose;
-                //DoorAudio.Play();
                 FindObjectOfType<AudioManager>().Play("CloseDoor");
             }
 
@@ -76,8 +69,7 @@ namespace SojaExiles
 		}
 		public void UnlockDoor() 
 		{
-            DoorAudio.clip = doorUnlock;
-            DoorAudio.Play();
+
             locked = false; 
 		}
 		public void LockUnlockDoor() { locked = !locked; }
