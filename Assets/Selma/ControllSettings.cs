@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ControllSettings : MonoBehaviour
 {
     [SerializeField] private Slider sensSlider;
+    [SerializeField] private Slider brightnessSlider;
 
     // Start is called before the first frame update
     void Start()
