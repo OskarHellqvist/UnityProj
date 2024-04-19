@@ -18,6 +18,9 @@ namespace SojaExiles
         private float maxIntensity = 1f; // Max intensity of the flashlight
         private float minIntensity = 0.05f; // Min intensity of the flashlight when battery is low
 
+        [SerializeField] private AudioSource footsteps;
+        [SerializeField] private AudioSource running;
+
         private float walkingSpeed;
         private float crouchSpeed;
         private float sprintSpeed;
@@ -34,7 +37,7 @@ namespace SojaExiles
         private bool crouchTop = false;
 
         // Headbob variables
-        private float headbobSpeed = 14f;
+        private float headbobSpeed = 9f;
         private float headbobAmount = 0.05f;
         private float headbobTimer = 0.0f;
 
@@ -46,9 +49,9 @@ namespace SojaExiles
         {
             originalCamY = cam.localPosition.y; // Store the original Y position of the camera
             currentCamY = originalCamY; // Initialize currentCamY with originalCamY
-            walkingSpeed = 3.0f;
-            crouchSpeed = 1.5f;
-            sprintSpeed = 4.5f;
+            walkingSpeed = 2f;
+            crouchSpeed = 1f;
+            sprintSpeed = 3.5f;
             currentSpeed = walkingSpeed;
         }
 
@@ -66,17 +69,20 @@ namespace SojaExiles
                 currentSpeed = walkingSpeed;
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftControl) && !isCrouching)
+            // Change crouch to toggle behavior
+            if (Input.GetKeyDown(KeyCode.LeftControl))
             {
-                isCrouching = true;
-                currentSpeed = crouchSpeed;
-                StartCoroutine(SmoothCrouch(originalCamY - crouchDepth));
-            }
-            else if (Input.GetKeyUp(KeyCode.LeftControl) && isCrouching )
-            {
-                isCrouching = false;
-                currentSpeed = walkingSpeed;
-                StartCoroutine(SmoothCrouch(originalCamY));
+                isCrouching = !isCrouching; // Toggle crouching state
+                if (isCrouching)
+                {
+                    currentSpeed = crouchSpeed;
+                    StartCoroutine(SmoothCrouch(originalCamY - crouchDepth));
+                }
+                else
+                {
+                    currentSpeed = walkingSpeed;
+                    StartCoroutine(SmoothCrouch(originalCamY));
+                }
             }
 
             if (isSprinting)
@@ -142,10 +148,31 @@ namespace SojaExiles
             // Only apply headbob if there's movement
             if (move.magnitude > 0)
             {
+
+                if (!footsteps.isPlaying)
+                {
+                    footsteps.Play();
+                }
+
+                if (!running.isPlaying && isSprinting)
+                {
+                    running.Play();
+                }
+
                 Headbob();
             }
             else
             {
+                if (footsteps.isPlaying)
+                {
+                    footsteps.Stop();
+                }
+
+                if (running.isPlaying)
+                {
+                    running.Stop();
+                }
+
                 headbobTimer = 0.0f; // Reset headbob timer when not moving
             }
 
@@ -158,6 +185,7 @@ namespace SojaExiles
 
         IEnumerator SmoothCrouch(float targetYPosition)
         {
+            // No changes here, keep the existing logic for smooth crouch transition
             float time = 0f;
             float duration = 0.3f; // Transition duration in seconds
             Vector3 startCamPos = cam.localPosition;
@@ -165,7 +193,7 @@ namespace SojaExiles
 
             while (time < duration)
             {
-                cam.localPosition = Vector3.Lerp(startCamPos, targetCamPos, time/duration);
+                cam.localPosition = Vector3.Lerp(startCamPos, targetCamPos, time / duration);
                 time += Time.deltaTime;
                 yield return null;
             }

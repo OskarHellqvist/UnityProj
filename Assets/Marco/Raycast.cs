@@ -53,7 +53,7 @@ namespace SojaExiles
             }
         }
 
-        void ClearInteraction()
+        public void ClearInteraction()
         {
             HighlightCrosshair(false);
             _interactableObject = null;
