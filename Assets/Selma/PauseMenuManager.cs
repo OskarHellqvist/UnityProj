@@ -23,6 +23,12 @@ public class PauseMenuManager : MonoBehaviour
                 Pause();
             }
         }
+
+        if(notePanel.activeInHierarchy == true)
+        {
+            Time.timeScale = 0f;
+            isPaused = true;
+        }
     }
 
     void Resume()
