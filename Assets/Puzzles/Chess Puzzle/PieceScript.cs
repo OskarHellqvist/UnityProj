@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PieceScript : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class PieceScript : MonoBehaviour
         chessManager = gameObject.GetComponentInParent<ChessManager>();
         y = transform.localPosition.y;
 
-        if (position == 5) { EventManager.manager.AddTimer(3f, Select); EventManager.manager.AddTimer(6f, UnSelect); }
+        if (position == 36) { EventManager.manager.AddTimer(3f, Select); }
     }
 
     // Update is called once per frame
@@ -28,21 +29,21 @@ public class PieceScript : MonoBehaviour
     public void Select()
     {
         chessManager.SelectPiece(this);
-        StartCoroutine(HoverUp());
+        StartCoroutine(HoverUpDown(hoverHeight));
     }
 
     public void UnSelect()
     {
         chessManager.unSelect -= UnSelect;
-        StartCoroutine(HoverDown());
+        StartCoroutine(HoverUpDown(y));
     }
 
-    private IEnumerator HoverUp()
+    private IEnumerator HoverUpDown(float targetY)
     {
         float time = 0f;
         float duration = 0.3f;
         Vector3 startPos = transform.localPosition;
-        Vector3 targetPos = new Vector3(transform.localPosition.x, hoverHeight, transform.localPosition.z);
+        Vector3 targetPos = new Vector3(transform.localPosition.x, targetY, transform.localPosition.z);
 
         while (time < duration)
         {
@@ -54,12 +55,13 @@ public class PieceScript : MonoBehaviour
         transform.localPosition = targetPos;
     }
 
-    private IEnumerator HoverDown()
+    public void StartMoveTo(Vector2 pos) { StartCoroutine(MoveTo(pos)); }
+    public IEnumerator MoveTo(Vector2 pos)
     {
         float time = 0f;
         float duration = 0.3f;
         Vector3 startPos = transform.localPosition;
-        Vector3 targetPos = new Vector3(transform.localPosition.x, y, transform.localPosition.z);
+        Vector3 targetPos = new Vector3(pos.x, transform.localPosition.y, pos.y);
 
         while (time < duration)
         {
@@ -69,5 +71,6 @@ public class PieceScript : MonoBehaviour
         }
 
         transform.localPosition = targetPos;
+        StartCoroutine(HoverUpDown(y));
     }
 }
