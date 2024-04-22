@@ -33794,11 +33794,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1470508618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e626008057e4a741ad28bf3439cad65, type: 3}
+  m_Script: {fileID: 11500000, guid: 3dfa8ab53f8e2da438d1dc9ea96d35de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1470508618}
   playerCamera: {fileID: 1551554832}
+  ReadyToPoof: 0
 --- !u!1001 &1470764642
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38532,6 +38533,10 @@ PrefabInstance:
     - target: {fileID: 400008, guid: 7d3e1e087a6fd684da2b08ef5c3fe259, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -20.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 7d3e1e087a6fd684da2b08ef5c3fe259, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
