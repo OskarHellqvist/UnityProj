@@ -9,7 +9,7 @@ namespace SojaExiles
         public Camera playerCamera;
 
         // If the object is ready to dissapear
-        public bool ReadyToPoof;
+        [SerializeField] bool ReadyToPoof;
 
         private VisibilityCheck visibilityCheck;
 
@@ -34,6 +34,11 @@ namespace SojaExiles
                 //    Debug.Log($"{target.name} awaitin poof...");
                 //}
             }
+        }
+
+        public void SetReadyToPoof(bool isReady)
+        {
+            ReadyToPoof = isReady;
         }
     }
 }

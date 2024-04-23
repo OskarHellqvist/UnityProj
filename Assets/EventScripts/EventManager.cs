@@ -9,6 +9,7 @@ public class EventManager : MonoBehaviour
     public static EventManager manager;
 
     public UnityEvent entryEvent;
+    public UnityEvent mannequinEvent1;
 
     private List<Timer> timers = new();
 

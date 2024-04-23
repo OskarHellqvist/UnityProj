@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OneTimeTrigger : MonoBehaviour
+public class ClosetTrigger : MonoBehaviour
 {
     BoxCollider collider;
     void Start()
@@ -12,10 +12,10 @@ public class OneTimeTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Enter");
-        if (collider != null && other.gameObject.tag == "Player")
+        Debug.Log("Activated Closet");
+        if (collider != null)
         {
-            EventManager.manager.entryEvent.Invoke();
+            EventManager.manager.mannequinEvent1.Invoke();
             Destroy(gameObject);
         }
     }
