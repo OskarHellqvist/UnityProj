@@ -33,6 +33,7 @@ namespace SojaExiles
         public void Interact()
         {
             ShowNote();
+            FindObjectOfType<AudioManager>().Play("Page");
             audioSource.Play();
         }
         public void ShowNote()

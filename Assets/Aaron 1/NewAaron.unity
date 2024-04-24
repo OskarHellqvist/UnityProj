@@ -12125,7 +12125,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - name: HeartBeat
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 58b74ee8e5915e34a95130f57877fc7b, type: 3}
     loop: 0
     volume: 0
     pitch: 0
@@ -26574,6 +26574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2753c5190f2bb39499a680c27d81b90f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioManager: {fileID: 0}
   flashlight: {fileID: 1753910856}
   insanity: {fileID: 516303639}
 --- !u!1001 &1159894165
