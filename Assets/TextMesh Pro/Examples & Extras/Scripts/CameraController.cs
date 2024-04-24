@@ -95,7 +95,7 @@ namespace TMPro.Examples
                 }
                 else
                 {
-                    // Free Camera implementation
+                    // Free playerCamera implementation
                 }
 
                 if (MovementSmoothing == true)
@@ -223,7 +223,7 @@ namespace TMPro.Examples
                 {
                     if (dummyTarget == null)
                     {
-                        // We need a Dummy Target to anchor the Camera
+                        // We need a Dummy Target to anchor the playerCamera
                         dummyTarget = new GameObject("Camera Target").transform;
                         dummyTarget.position = CameraTarget.position;
                         dummyTarget.rotation = CameraTarget.rotation;
