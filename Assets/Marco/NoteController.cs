@@ -19,6 +19,7 @@ namespace SojaExiles
         [Header("UI Text")]
         [SerializeField] private GameObject noteCanvas;
         [SerializeField] private TMP_Text noteTextAreaUI;
+        [SerializeField] private TMP_Text TextOnNoteObj;
 
         [Space(10)]
         [SerializeField] [TextArea] private string noteText;
@@ -61,7 +62,7 @@ namespace SojaExiles
 
         void Start()
         {
-            
+            TextOnNoteObj.text = noteText;
         }
 
         // Update is called once per frame

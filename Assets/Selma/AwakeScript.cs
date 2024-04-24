@@ -19,7 +19,7 @@ public class AwakeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        backgroundAlpha -= 0.3f * Time.deltaTime;
+        backgroundAlpha -= 0.4f * Time.deltaTime;
         backgroundImage.color = new Color(backgroundImage.color.r, backgroundImage.color.g, backgroundImage.color.b, backgroundAlpha);
 
         if (backgroundAlpha <= 1f)

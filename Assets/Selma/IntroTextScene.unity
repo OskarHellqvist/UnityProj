@@ -310,12 +310,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
+  m_fontSize: 28.7
   m_fontSizeBase: 28
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 28
+  m_fontSizeMax: 38
   m_fontStyle: 21
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -850,11 +850,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
+  m_fontSize: 16.35
   m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 16.3
   m_fontSizeMax: 23
   m_fontStyle: 0
   m_HorizontalAlignment: 1
@@ -988,10 +988,10 @@ AudioSource:
   m_GameObject: {fileID: 1400652224}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5968039498870872422, guid: 1b5be0885314f75448cf45d0e74447b6, type: 2}
   m_audioClip: {fileID: 8300000, guid: d4020481123d1d94199945d835ca832f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.876
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1155,8 +1155,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280756010
-  m_fontColor: {r: 0.16299999, g: 0.15213332, b: 0.15213332, a: 1}
+    rgba: 4282203458
+  m_fontColor: {r: 0.257, g: 0.23864286, b: 0.23864286, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
