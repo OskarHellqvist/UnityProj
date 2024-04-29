@@ -12,6 +12,7 @@ public class EventManager : MonoBehaviour
     // Then add all subscribers in the editor
     // To trigger the event, access EventManager.manager.(eventName).Invoke() through any script
     public UnityEvent entryEvent;
+    public UnityEvent mannequinEvent1;
 
     private List<Timer> timers = new();
 

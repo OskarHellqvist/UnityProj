@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
+using Unity.VisualScripting;
 
 namespace SojaExiles
 
 {
     public class NoteController : MonoBehaviour, Interactable
-    
     {
-        [Header("Input")]
-        [SerializeField] private KeyCode closeKey;
+        private KeyCode closeKey = KeyCode.Mouse0;
 
         [Space(10)]
         [SerializeField] private PlayerMovement player;
+
+        [Header("Logbook")]
+        [SerializeField] private TMP_Text[] Logbook;
 
         [Header("UI Text")]
         [SerializeField] private GameObject noteCanvas;
@@ -33,9 +35,16 @@ namespace SojaExiles
         public void Interact()
         {
             ShowNote();
-            FindObjectOfType<AudioManager>().Play("Page");
+            AddNoteToLog();
             audioSource.Play();
         }
+
+        public void AddNoteToLog() 
+        {
+            TMP_Text note = noteTextAreaUI;
+            Logbook.AddRange((IEnumerable<TMP_Text>)note);
+        }
+
         public void ShowNote()
         {
             Time.timeScale = 0f;
