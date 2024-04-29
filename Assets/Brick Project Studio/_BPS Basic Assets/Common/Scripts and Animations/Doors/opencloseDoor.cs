@@ -60,11 +60,13 @@ namespace SojaExiles
 		{
 			if(doorClose != null)
 			{
+				DoorAudio.volume = 1;
 				DoorAudio.clip = doorClose;
             	DoorAudio.Play();
 			}
-            
+
             StartCoroutine(closing()); 
+			DoorAudio.volume = 0.25f;
 		}
 		public void LockDoor() 
 		{ 
