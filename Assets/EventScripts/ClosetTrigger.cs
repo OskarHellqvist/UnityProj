@@ -15,7 +15,7 @@ public class ClosetTrigger : MonoBehaviour
         Debug.Log("Activated Closet");
         if (collider != null)
         {
-            //EventManager.manager.mannequinEvent1.Invoke();
+            EventManager.manager.mannequinEvent1.Invoke();
             Destroy(gameObject);
         }
     }

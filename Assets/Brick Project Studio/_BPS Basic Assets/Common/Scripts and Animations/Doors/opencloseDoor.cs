@@ -7,11 +7,11 @@ namespace SojaExiles
 {
 	public class opencloseDoor : MonoBehaviour, Interactable
 	{
-		private bool doorOpen;
-		private bool doorClose;
-		private bool openLockedDoor;
-		private bool doorUnlock;
-
+		[SerializeField] private AudioClip doorOpen;
+		[SerializeField] private AudioClip doorClose;
+		[SerializeField] private AudioClip openLockedDoor;
+		[SerializeField] private AudioClip doorUnlock;
+		[SerializeField] private AudioSource DoorAudio;
 
 		public Animator openandclose;
 		public bool open;
@@ -41,14 +41,16 @@ namespace SojaExiles
 			{
 				if(openLockedDoor != null)
 				{
-                    FindObjectOfType<AudioManager>().Play("LockedDoor");
-                }
+					DoorAudio.clip = openLockedDoor;
+                	DoorAudio.Play();
+				}
             }
 			else
 			{
 				if(doorOpen != null)
 				{
-					FindObjectOfType<AudioManager>().Play("OpenDoor");
+					DoorAudio.clip = doorOpen;
+                	DoorAudio.Play();
 				}
                 
                 StartCoroutine(opening());
@@ -58,9 +60,10 @@ namespace SojaExiles
 		{
 			if(doorClose != null)
 			{
-                FindObjectOfType<AudioManager>().Play("CloseDoor");
-            }
-
+				DoorAudio.clip = doorClose;
+            	DoorAudio.Play();
+			}
+            
             StartCoroutine(closing()); 
 		}
 		public void LockDoor() 
@@ -69,7 +72,8 @@ namespace SojaExiles
 		}
 		public void UnlockDoor() 
 		{
-
+            DoorAudio.clip = doorUnlock;
+            DoorAudio.Play();
             locked = false; 
 		}
 		public void LockUnlockDoor() { locked = !locked; }
@@ -78,8 +82,7 @@ namespace SojaExiles
 		{
 			//print("you are opening the door");
 			openandclose.Play("Opening");
-            FindObjectOfType<AudioManager>().Play("OpenDoor");
-            yield return new WaitForSeconds(.5f);
+			yield return new WaitForSeconds(.5f);
 			open = true;
 		}
 
@@ -87,7 +90,6 @@ namespace SojaExiles
 		{
 			//print("you are closing the door");
 			openandclose.Play("Closing");
-            FindObjectOfType<AudioManager>().Play("CloseDoor");
             yield return new WaitForSeconds(.5f);
 			open = false;
 		}

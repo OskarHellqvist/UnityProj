@@ -42,8 +42,7 @@ namespace SojaExiles
 		{
 			print("you are opening the door");
 			openandclose1.Play("Opening 1");
-            FindObjectOfType<AudioManager>().Play("OpenDoor");
-            yield return new WaitForSeconds(.5f);
+			yield return new WaitForSeconds(.5f);
 			open = true;
 		}
 
@@ -51,8 +50,7 @@ namespace SojaExiles
 		{
 			print("you are closing the door");
 			openandclose1.Play("Closing 1");
-            FindObjectOfType<AudioManager>().Play("CloseDoor");
-            yield return new WaitForSeconds(.5f);
+			yield return new WaitForSeconds(.5f);
 			open = false;
 		}
 

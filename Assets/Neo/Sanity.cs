@@ -43,16 +43,10 @@ namespace SojaExiles
             if (isDraining)
             {
                 sanity -= Time.deltaTime * decreaseValue;
-            }
+            } 
             else if (sanity < 100)
             {
                 sanity += Time.deltaTime * increaseValue;
-
-                if (sanity <= 50)
-                {
-                    FindObjectOfType<AudioManager>().Play("HeartBeat");
-                    Debug.Log("Heart");
-                }
             }
 
             // Limits sanity between 0 - 100
