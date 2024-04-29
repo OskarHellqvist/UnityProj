@@ -12126,9 +12126,15 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: HeartBeat
     clip: {fileID: 8300000, guid: 58b74ee8e5915e34a95130f57877fc7b, type: 3}
+    loop: 1
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Page
+    clip: {fileID: 8300000, guid: 5c73a2eab8c32944d9b518ccad467c54, type: 3}
     loop: 0
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
   - name: 
     clip: {fileID: 0}
@@ -26574,7 +26580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2753c5190f2bb39499a680c27d81b90f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioManager: {fileID: 0}
   flashlight: {fileID: 1753910856}
   insanity: {fileID: 516303639}
 --- !u!1001 &1159894165
@@ -27431,7 +27436,7 @@ PrefabInstance:
     - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
       propertyPath: entryEvent.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
-      objectReference: {fileID: 1984912236}
+      objectReference: {fileID: 1731917973}
     - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
       propertyPath: entryEvent.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
@@ -27498,7 +27503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
       propertyPath: entryEvent.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
       propertyPath: entryEvent.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName

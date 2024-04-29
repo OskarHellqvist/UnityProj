@@ -48,11 +48,11 @@ namespace SojaExiles
             {
                 sanity += Time.deltaTime * increaseValue;
 
-                if (sanity <= 50)
-            {
-                FindObjectOfType<AudioManager>().Play("HeartBeat");
-                Debug.Log("Heart");
-            }
+                //if (sanity <= 50)
+                //{
+                //FindObjectOfType<AudioManager>().Play("HeartBeat");
+                //Debug.Log("Heart");
+                //}
             }
 
             // Limits sanity between 0 - 100
