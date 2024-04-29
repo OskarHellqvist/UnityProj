@@ -15,15 +15,10 @@ public class PieceScript : MonoBehaviour
     void Start()
     {
         chessManager = gameObject.GetComponentInParent<ChessManager>();
+        chessManager.destroyInteraction += DestroyInteraction;
         y = transform.localPosition.y;
 
-        if (position == 36) { EventManager.manager.AddTimer(3f, Select); }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //if (position == 36) { EventManager.manager.AddTimer(3f, Select); }
     }
 
     public void Select()
@@ -72,5 +67,10 @@ public class PieceScript : MonoBehaviour
 
         transform.localPosition = targetPos;
         StartCoroutine(HoverUpDown(y));
+    }
+
+    private void DestroyInteraction()
+    {
+        Destroy(GetComponent<PieceInteraction>());
     }
 }

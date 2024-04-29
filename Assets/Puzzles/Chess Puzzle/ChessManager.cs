@@ -23,6 +23,8 @@ public class ChessManager : MonoBehaviour
     private string numButton;
     private string letterButton;
 
+    public Action destroyInteraction;
+
     public Material white;
     public Material black;
 
@@ -77,11 +79,6 @@ public class ChessManager : MonoBehaviour
         EventManager.manager.AddTimer(6f, CheckSolution);
     }
 
-    void Update()
-    {
-        
-    }
-
     public void SelectPiece(PieceScript piece)
     {
         if (!unSelect.IsUnityNull())
@@ -123,16 +120,28 @@ public class ChessManager : MonoBehaviour
 
         pieceObj.GetComponent<MeshRenderer>().material = isWhite ? white : black;
         pieceObj.AddComponent<PieceScript>().position = pos;
+        pieceObj.AddComponent<PieceInteraction>();
 
         if (piece.ToLower() == "k")
         {
             if (isWhite) { whiteKing = pieceObj; } 
             else { blackKing = pieceObj;}
         }
+        else
+        {
+            pieceObj.AddComponent<BoxCollider>();
+        }
     }
 
     public void SelectButton(ChessButton button, bool isNumPanel)
     {
+        if (button.buttonName == "red")
+        {
+            numButtonUnSelect += button.Unpressed;
+            CheckSolution();
+            return;
+        }
+
         if (isNumPanel)
         {
             if (!numButtonUnSelect.IsUnityNull())
@@ -184,6 +193,10 @@ public class ChessManager : MonoBehaviour
             if (cs.kingColor == "black") { king = blackKing; }
             else { king = whiteKing; }
             StartCoroutine(KnockKing(king));
+            if (!destroyInteraction.IsUnityNull())
+            {
+                destroyInteraction.Invoke();
+            }
         }
         else
         {
