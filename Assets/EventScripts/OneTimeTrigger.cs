@@ -10,12 +10,6 @@ public class OneTimeTrigger : MonoBehaviour
         collider = GetComponent<BoxCollider>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Enter");
