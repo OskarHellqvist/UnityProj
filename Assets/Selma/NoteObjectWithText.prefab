@@ -292,9 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Logbook: []
-  notePanel: {fileID: 0}
-  noteTextAreaUI: {fileID: 0}
-  TextOnNoteObj: {fileID: 0}
+  notePanel: {fileID: 756003461531446901, guid: 8d967cd2a0a501c40a201f241e734404, type: 3}
   noteText: Shoohoo det fungerar
   openEvent:
     m_PersistentCalls:
