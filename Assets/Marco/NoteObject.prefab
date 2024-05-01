@@ -118,11 +118,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a4cfd55ff3b0144f96dec2f5cc5a16a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closeKey: 324
-  player: {fileID: 0}
-  noteCanvas: {fileID: 0}
+  Logbook: []
+  noteCanvas: {fileID: 8164892623848747331, guid: 0419fe6e2e5e0274aab1cf253d28e4e0, type: 3}
   noteTextAreaUI: {fileID: 0}
+  TextOnNoteObj: {fileID: 0}
   noteText: Shoohoo det fungerar
   openEvent:
     m_PersistentCalls:
       m_Calls: []
+  audioSource: {fileID: 0}
