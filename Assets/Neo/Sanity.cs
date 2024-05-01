@@ -15,7 +15,7 @@ namespace SojaExiles
         //public Slider slider;
         public Image insanity;
 
-        public static float sanity = 100;
+        public float sanity = 100;
         private float decreaseValue = 2;
         private float increaseValue = 0.5f;
 
