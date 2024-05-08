@@ -43,8 +43,6 @@ namespace SojaExiles
                 }
             }
 
-            Debug.Log(sanity.Sanity);
-
             if (sanity != null) // Check if the insanityImage component is attached
             {
                 UpdateTransparencyBasedOnSanity(); // Continuously update transparency based on sanity
@@ -83,7 +81,7 @@ namespace SojaExiles
             
             color.a = Mathf.Clamp(visibility, 0, 1);
             transMaterial.color = color;
-            Debug.Log("Updated Transparency: " + color.a); // Debugging output
+            //Debug.Log("Updated Transparency: " + color.a); // Debugging output
         }
 
         private void SetInitialTransparency()

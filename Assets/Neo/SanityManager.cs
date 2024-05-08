@@ -19,7 +19,13 @@ namespace SojaExiles
         private float decreaseValue = 2;
         private float increaseValue = 0.5f;
 
-        public float Sanity { get { return sanity; } }
+        public float Sanity { 
+            get { return sanity; }
+            set 
+            { 
+                sanity = Mathf.Clamp(value, 0, 100);
+            }
+        }
 
         private bool inSpawnArea;
         private bool isDraining;

@@ -111,13 +111,18 @@ namespace SojaExiles
 
                 // Adjust flashlight intensity based on battery level
                 Light flashlightLight = flashlight.GetComponent<Light>();
-                Light ambientLight = ambLight.GetComponent<Light>();
 
                 if (flashlightLight != null)
                 {
                     float batteryPct = battery / 100f; // Convert battery to a 0-1 scale
                     flashlightLight.intensity = Mathf.Lerp(minIntensity, maxIntensity, batteryPct);
-                    ambientLight.intensity = Mathf.Lerp(minIntensity, maxIntensity, batteryPct);
+
+                    if (ambLight)
+                    {
+                        Light ambientLight = ambLight.GetComponent<Light>();
+
+                        ambientLight.intensity = Mathf.Lerp(minIntensity, maxIntensity, batteryPct);
+                    }
                 }
 
                 if (battery <= 0 && !isFlickering)
@@ -197,7 +202,8 @@ namespace SojaExiles
         private void ToggleLights(bool state)
         {
             flashlight.SetActive(state);
-            ambLight.SetActive(state);
+            if (ambLight)
+                ambLight.SetActive(state);
         }
 
 

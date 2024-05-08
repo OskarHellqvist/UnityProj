@@ -1446,11 +1446,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a4cfd55ff3b0144f96dec2f5cc5a16a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1156532294}
   Logbook: []
-  noteCanvas: {fileID: 0}
-  noteTextAreaUI: {fileID: 0}
-  TextOnNoteObj: {fileID: 0}
+  notePanel: {fileID: 0}
   noteText: Hejsan
   openEvent:
     m_PersistentCalls:
@@ -22514,6 +22511,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 957612029}
     - target: {fileID: 3633670999517275193, guid: 862788ccddb57e14daa15cf6f2f7e2b1, type: 3}
+      propertyPath: sanity
+      value: 
+      objectReference: {fileID: 1156532296}
+    - target: {fileID: 3633670999517275193, guid: 862788ccddb57e14daa15cf6f2f7e2b1, type: 3}
       propertyPath: transMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 3307bf8ac80125a41be4dfa3da16f70c, type: 2}
@@ -23735,6 +23736,10 @@ PrefabInstance:
       propertyPath: Note
       value: 
       objectReference: {fileID: 957612029}
+    - target: {fileID: 1165103311266206832, guid: 693a657699e9edc4cb555559ecc1bf1f, type: 3}
+      propertyPath: sanity
+      value: 
+      objectReference: {fileID: 1156532296}
     - target: {fileID: 1165103311266206832, guid: 693a657699e9edc4cb555559ecc1bf1f, type: 3}
       propertyPath: transMaterial
       value: 
@@ -26940,8 +26945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashlight: {fileID: 1753910856}
-  insanity: {fileID: 934050112}
-  sanity: 100
+  insanityImage: {fileID: 934050112}
 --- !u!1001 &1159894165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30240,7 +30244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1927095934725912877, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.0000005
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 1927095934725912877, guid: a9b081014bad86f4a80b60284279d21b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -42251,6 +42255,10 @@ PrefabInstance:
       propertyPath: Note
       value: 
       objectReference: {fileID: 957612029}
+    - target: {fileID: 9041372569401092036, guid: f153a94f36061c24684a2783c430d365, type: 3}
+      propertyPath: sanity
+      value: 
+      objectReference: {fileID: 1156532296}
     - target: {fileID: 9041372569401092036, guid: f153a94f36061c24684a2783c430d365, type: 3}
       propertyPath: transMaterial
       value: 
