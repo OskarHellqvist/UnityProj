@@ -8,7 +8,7 @@ namespace SojaExiles
         public Transform cam;
         public CharacterController controller;
         public GameObject flashlight;
-        public GameObject ambLight;
+        //public GameObject ambLight;
 
         private float originalCamY; // Store the original camera Y position
         private float currentCamY; // Track the current camera Y position, considering crouch
@@ -111,13 +111,13 @@ namespace SojaExiles
 
                 // Adjust flashlight intensity based on battery level
                 Light flashlightLight = flashlight.GetComponent<Light>();
-                Light ambientLight = ambLight.GetComponent<Light>();
+                //Light ambientLight = ambLight.GetComponent<Light>();
 
                 if (flashlightLight != null)
                 {
                     float batteryPct = battery / 100f; // Convert battery to a 0-1 scale
                     flashlightLight.intensity = Mathf.Lerp(minIntensity, maxIntensity, batteryPct);
-                    ambientLight.intensity = Mathf.Lerp(minIntensity, maxIntensity, batteryPct);
+                    //ambientLight.intensity = Mathf.Lerp(minIntensity, maxIntensity, batteryPct);
                 }
 
                 if (battery <= 0 && !isFlickering)
@@ -197,7 +197,7 @@ namespace SojaExiles
         private void ToggleLights(bool state)
         {
             flashlight.SetActive(state);
-            ambLight.SetActive(state);
+            //ambLight.SetActive(state);
         }
 
 
@@ -207,7 +207,7 @@ namespace SojaExiles
             isFlickering = true;
 
             Light flashlightLight = flashlight.GetComponent<Light>();
-            Light ambientLight = ambLight.GetComponent<Light>();
+            //Light ambientLight = ambLight.GetComponent<Light>();
 
             if (flashlightLight == null)
             {
@@ -221,18 +221,18 @@ namespace SojaExiles
             {
                 // Turn the flashlight off for a brief moment
                 flashlightLight.enabled = false;
-                ambientLight.enabled = false;
+                //ambientLight.enabled = false;
                 yield return new WaitForSeconds(Random.Range(0.05f, 0.5f)); // Off duration
 
                 // Turn the flashlight back on
                 flashlightLight.enabled = true;
-                ambientLight.enabled = true;
+                //ambientLight.enabled = true;
                 yield return new WaitForSeconds(Random.Range(0.05f, 0.15f)); // On duration
             }
 
             // Ensure the flashlight is on after flickering
             flashlightLight.enabled = true;
-            ambientLight.enabled = true;
+            //ambientLight.enabled = true;
             isFlickering = false;
         }
 
