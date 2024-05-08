@@ -15,7 +15,7 @@ namespace SojaExiles
         public bool isMoving = false;
 
         [SerializeField] private AudioSource audioSource;
-        private Insanity insanity; // Reference to the Insanity script
+        [SerializeField] private SanityManager sanity; // Reference to the SanityManager script
 
         public void Interact()
         {
@@ -34,20 +34,27 @@ namespace SojaExiles
 
         void Update()
         {
-
-            insanity = GetComponent<Insanity>(); // Initialize Insanity script reference
-
-            if (!Note.activeSelf && isLifted && !isMoving)
+            if (Note)
             {
-                StartCoroutine(MovePaintingSmoothly(Vector3.down * moveAmount, moveDuration));
-                isLifted = false;
+                if (!Note.activeSelf && isLifted && !isMoving)
+                {
+                    StartCoroutine(MovePaintingSmoothly(Vector3.down * moveAmount, moveDuration));
+                    isLifted = false;
+                }
             }
 
-            if (insanity != null) // Check if the insanity component is attached
+            Debug.Log(sanity.Sanity);
+
+            if (sanity != null) // Check if the insanityImage component is attached
             {
                 UpdateTransparencyBasedOnSanity(); // Continuously update transparency based on sanity
             }
+            else
+            {
+                Debug.Log("Insanity component not found!");
+            }
         }
+
 
         private IEnumerator MovePaintingSmoothly(Vector3 target, float duration)
         {
@@ -70,19 +77,13 @@ namespace SojaExiles
 
         private void UpdateTransparencyBasedOnSanity()
         {
-            if (insanity != null)
-            {
-                float sanity = insanity.sanity;
-                float visibility =- (sanity / 100);
-                Color color = transMaterial.color;
-                color.a = Mathf.Clamp(visibility, 0, 1);
-                transMaterial.color = color;
-                Debug.Log("Updated Transparency: " + color.a); // Debugging output
-            }
-            else
-            {
-                Debug.Log("Insanity component not found!");
-            }
+            float sanity = this.sanity.Sanity;
+            float visibility = 1 - (sanity / 100);
+            Color color = transMaterial.color;
+            
+            color.a = Mathf.Clamp(visibility, 0, 1);
+            transMaterial.color = color;
+            Debug.Log("Updated Transparency: " + color.a); // Debugging output
         }
 
         private void SetInitialTransparency()
