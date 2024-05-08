@@ -99,7 +99,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sample text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 26128aa45c223e845af531e23b9fd3ba, type: 2}
   m_sharedMaterial: {fileID: 1355354179855429172, guid: 26128aa45c223e845af531e23b9fd3ba, type: 2}
@@ -126,8 +126,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 11
-  m_fontSizeBase: 11
+  m_fontSize: 13
+  m_fontSizeBase: 13
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -202,7 +202,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.70710677, z: -0.70710677, w: 0}
   m_LocalPosition: {x: 1.37916, y: 5.82673, z: 3.618}
-  m_LocalScale: {x: 0.29150555, y: 0.007401106, z: 0.37753052}
+  m_LocalScale: {x: 0.24296, y: 0.0061685727, z: 0.31465897}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 661489472734860928}
@@ -293,8 +293,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Logbook: []
   notePanel: {fileID: 0}
-  noteTextAreaUI: {fileID: 0}
-  TextOnNoteObj: {fileID: 0}
   noteText: Shoohoo det fungerar
   openEvent:
     m_PersistentCalls:
