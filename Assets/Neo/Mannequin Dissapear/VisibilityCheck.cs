@@ -22,6 +22,7 @@ namespace SojaExiles
                 return false;
             }
 
+            // Defines 10 points on the box collider that I want to be visible
             Bounds bounds = collider.bounds;
             Vector3[] pointsToCheck = {
             bounds.center,
@@ -32,10 +33,8 @@ namespace SojaExiles
             new Vector3(bounds.max.x, bounds.min.y, bounds.min.z),
             new Vector3(bounds.max.x, bounds.max.y, bounds.min.z),
             new Vector3(bounds.max.x, bounds.min.y, bounds.max.z),
-            new Vector3(bounds.min.x, bounds.max.y, bounds.max.z),
-            new Vector3(bounds.max.x, bounds.max.y, bounds.max.z)
-            // Additional points can be added here as needed
-        };
+            new Vector3(bounds.min.x, bounds.max.y, bounds.max.z)
+            };
 
             int visiblePoints = 0;
             foreach (var point in pointsToCheck)
@@ -52,51 +51,7 @@ namespace SojaExiles
                 }
             }
 
-            // You can change the number here based on how many points you expect to be visible
             return visiblePoints >= 1; 
-
-            //if (!playerCamera || !target)
-            //{
-            //    Debug.LogError($"VisibilityCheck Error: Camera or Target is null on '{target.name}'.");
-            //    return false;
-            //}
-
-            //BoxCollider renderer = target.GetComponent<BoxCollider>();
-            //if (renderer == null)
-            //{
-            //    Debug.LogError($"VisibilityCheck Error: Renderer missing on '{target.name}'.");
-            //    return false; // No renderer attached to the object
-            //}
-
-            //Bounds bounds = renderer.bounds;
-            //bool isVisible = false;
-
-            //for (int i = 0; i < 8; i++)
-            //{
-            //    Vector3 corner = bounds.center;
-            //    corner.x += (i & 1) == 0 ? bounds.extents.x : -bounds.extents.x;
-            //    corner.y += (i & 2) == 0 ? bounds.extents.y : -bounds.extents.y;
-            //    corner.z += (i & 4) == 0 ? bounds.extents.z : -bounds.extents.z;
-
-            //    Vector3 viewportPoint = playerCamera.WorldToViewportPoint(corner);
-
-            //    if (viewportPoint.z > 0 && viewportPoint.x >= 0 && viewportPoint.x <= 1 && viewportPoint.y >= 0 && viewportPoint.y <= 1)
-            //    {
-            //        RaycastHit hit;
-            //        Vector3 direction = corner - playerCamera.transform.position;
-            //        if (Physics.Raycast(playerCamera.transform.position, direction, out hit))
-            //        {
-            //            if (hit.transform == target.transform)
-            //            {
-            //                isVisible = true;
-            //                break; // Stop checking if one corner is visible
-            //            }
-            //        }
-            //    }
-            //}
-
-            ////Debug.Log($"Is Visible: {isVisible}");
-            //return isVisible;
         }
 
         // Comments
