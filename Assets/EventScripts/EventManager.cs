@@ -14,6 +14,8 @@ public class EventManager : MonoBehaviour
     public UnityEvent entryEvent;
     public UnityEvent mannequinEvent1;
 
+    public List<Event> commonEvents;
+
     private List<Timer> timers = new();
 
     void Awake()
@@ -31,6 +33,21 @@ public class EventManager : MonoBehaviour
     public void AddTimer(float time, Action callback) { timers.Add(new Timer(time, callback)); }
 
     public void TimerDone() { Debug.Log("done"); }
+}
+
+[Serializable]
+public struct Event
+{
+    public string name;
+    public float sanity;
+    public UnityEvent unityEvent;
+
+    public Event(string name,  float sanity, UnityEvent unityEvent)
+    {
+        this.name = name;
+        this.sanity = sanity;
+        this.unityEvent = unityEvent;
+    }
 }
 
 public class Timer
