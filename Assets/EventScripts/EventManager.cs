@@ -14,6 +14,7 @@ public class EventManager : MonoBehaviour
     // To trigger the event, access EventManager.manager.(eventName).Invoke() through any script
     public UnityEvent entryEvent;
     public UnityEvent mannequinEvent1;
+    public UnityEvent tvEvent;
 
     public List<Event> commonEvents;
 
