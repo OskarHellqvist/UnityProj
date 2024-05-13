@@ -12,7 +12,6 @@ public class OneTimeTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Enter");
         if (collider != null && other.gameObject.tag == "Player")
         {
             EventManager.manager.entryEvent.Invoke();

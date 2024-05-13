@@ -39,7 +39,7 @@ namespace SojaExiles
 
             if (notePanel == null)
             {
-                Debug.Log("Note panel is not assigned. Please assign the note panel GameObject in the Inspector.");
+                Debug.LogError("Note panel is not assigned. Please assign the note panel GameObject in the Inspector.");
                 return; // Exit the method if notePanel is not assigned
             }
 
@@ -51,7 +51,7 @@ namespace SojaExiles
             }
             else
             {
-                Debug.Log("NoteImage object not found under notePanel.");
+                Debug.LogError("NoteImage object not found under notePanel.");
             }
         }
 

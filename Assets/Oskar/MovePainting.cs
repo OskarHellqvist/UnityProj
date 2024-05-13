@@ -49,7 +49,7 @@ namespace SojaExiles
             }
             else
             {
-                Debug.Log("Insanity component not found!");
+                Debug.LogError("Insanity component not found!");
             }
         }
 

@@ -12,7 +12,6 @@ public class ClosetTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Activated Closet");
         if (collider != null)
         {
             EventManager.manager.mannequinEvent1.Invoke();

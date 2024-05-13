@@ -184,7 +184,7 @@ public class ChessManager : MonoBehaviour
 
         if (cs.startPos == selectedPiece.position && cs.endPos == total)
         {
-            Debug.Log("Correct!");
+            //Debug.Log("Correct!");
             selectedPiece.StartMoveTo(numToPos[total]);
             GameObject king;
             if (cs.kingColor == "black") { king = blackKing; }
@@ -197,7 +197,7 @@ public class ChessManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("WRONG!");
+            //Debug.Log("WRONG!");
             numButtonUnSelect.Invoke();
             letterButtonUnSelect.Invoke();
             numButton = string.Empty;
