@@ -42823,27 +42823,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5079999
+      value: 1.509
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.351
+      value: 1.352
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: -0.70710677
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.70710677
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: -0.00025198606
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.7071068
+      value: -0.00025198606
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -42851,11 +42851,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
+      value: 0.041
       objectReference: {fileID: 0}
     - target: {fileID: 8294475191832344382, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: noteText
@@ -42865,6 +42865,12 @@ PrefabInstance:
       propertyPath: notePanel
       value: 
       objectReference: {fileID: 66523427}
+    - target: {fileID: 9094282866608396997, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
+      propertyPath: m_text
+      value: 'top
+
+'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
