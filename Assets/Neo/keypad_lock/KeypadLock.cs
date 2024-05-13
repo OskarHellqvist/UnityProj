@@ -61,6 +61,7 @@ public class KeypadLock : MonoBehaviour
             if (inputCode == correctCode)
             {
                 screen.SetText("Unlocked");
+                unlocked = true;
                 drawer.locked = false;
                 drawer.Interact();
             }
