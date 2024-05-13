@@ -42,7 +42,7 @@ namespace SojaExiles
 
         Vector3 velocity;
 
-        private bool isCrouching = false;
+        private bool crouched = false, isCurrentlyCrouching = false;
 
         private void Start()
         {
@@ -63,29 +63,16 @@ namespace SojaExiles
                 ToggleCrouch();
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftShift) && !isCrouching)
+            if (Input.GetKeyDown(KeyCode.LeftShift) && !crouched)
             {
                 isSprinting = true;
                 currentSpeed = sprintSpeed;
             }
 
-            if (Input.GetKeyUp(KeyCode.LeftShift) && !isCrouching)
+            if (Input.GetKeyUp(KeyCode.LeftShift) && !crouched)
             {
                 isSprinting = false;
                 currentSpeed = walkingSpeed;
-            }
-
-            if (Input.GetKeyDown(KeyCode.LeftControl) && !isCrouching)
-            {
-                isCrouching = true;
-                currentSpeed = crouchSpeed;
-                StartCoroutine(SmoothCrouch(originalCamY - crouchDepth));
-            }
-            else if (Input.GetKeyUp(KeyCode.LeftControl) && isCrouching)
-            {
-                isCrouching = false;
-                currentSpeed = walkingSpeed;
-                StartCoroutine(SmoothCrouch(originalCamY));
             }
 
             if (isSprinting)
@@ -170,11 +157,13 @@ namespace SojaExiles
 
         private void ToggleCrouch()
         {
-            isCrouching = true;
-            currentSpeed = isCrouching ? crouchSpeed : walkingSpeed;
-            float targetYPosition = isCrouching ? crouchingHeight : standingHeight;
+            if (isCurrentlyCrouching) return;
+            isCurrentlyCrouching = true;
+
+            crouched = !crouched;
+            currentSpeed = crouched ? crouchSpeed : walkingSpeed;
+            float targetYPosition = crouched ? crouchingHeight : standingHeight;
             StartCoroutine(SmoothCrouch(targetYPosition));
-            isCrouching = false;
         }
 
         IEnumerator SmoothCrouch(float targetYPosition)
@@ -192,6 +181,8 @@ namespace SojaExiles
             }
             cam.localPosition = targetCamPos; // Ensure the camera reaches the target position
             currentCamY = targetYPosition; // Update currentCamY based on crouching or standing
+
+            isCurrentlyCrouching = false;
         }
 
 
