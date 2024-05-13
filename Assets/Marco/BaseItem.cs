@@ -10,8 +10,6 @@ public class BaseItem : MonoBehaviour
 
     public virtual void PickUp()
     {
-
-        Debug.Log("Picked up: " + itemName);
         gameObject.SetActive(false); // Deactivates the object in the scene, pogg
     }
     void Start()

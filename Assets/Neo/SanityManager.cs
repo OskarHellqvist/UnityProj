@@ -109,8 +109,6 @@ namespace SojaExiles
                     break;
                 }
 
-                Debug.Log(Fader.color.a);
-
                 yield return null; // Yield execution to the next frame.
             }
 
