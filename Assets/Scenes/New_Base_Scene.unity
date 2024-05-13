@@ -14981,7 +14981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 793398187}
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 2074798563}
   ReadyToPoof: 0
 --- !u!54 &793398190
 Rigidbody:
@@ -44508,6 +44508,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a162d9b3eabf5541aeafc613988e630, type: 3}
+--- !u!20 &2074798563 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1247178731376766636, guid: 0515c7a459870e943af893db7e41943e, type: 3}
+  m_PrefabInstance: {fileID: 1178080586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2081220519 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 0656a7e5759ccaf40a463b72bbf3a345, type: 3}
