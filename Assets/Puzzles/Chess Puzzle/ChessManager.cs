@@ -221,7 +221,7 @@ public class ChessManager : MonoBehaviour
 
         if (cs.startPos == selectedPiece.position && cs.endPos == total)
         {
-            Debug.Log("Correct!");
+            //Debug.Log("Correct!");
             EventManager.manager.AddTimer(0.7f, InvokeEvent);
             selectedPiece.StartMoveTo(numToPos[total]);
             GameObject king;
@@ -235,7 +235,7 @@ public class ChessManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("WRONG!");
+            //Debug.Log("WRONG!");
             unSelect.Invoke();
             numButtonUnSelect.Invoke();
             letterButtonUnSelect.Invoke();

@@ -24,7 +24,6 @@ public class EventManager : MonoBehaviour
     void Awake()
     {
         manager = this;
-        AddTimer(3f, TimerDone);
     }
 
     void Update()
@@ -63,8 +62,6 @@ public class EventManager : MonoBehaviour
     }
 
     public void AddTimer(float time, Action callback) { timers.Add(new Timer(time, callback)); }
-
-    public void TimerDone() { Debug.Log("done"); }
 }
 
 [Serializable]
