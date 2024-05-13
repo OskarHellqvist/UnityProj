@@ -6,7 +6,7 @@ using UnityEngine;
 namespace SojaExiles
 
 {
-	public class opencloseWindowApt : MonoBehaviour, Interactable
+	public class opencloseWindowApt : MonoBehaviour
     {
 
 		public Animator openandclosewindow;
