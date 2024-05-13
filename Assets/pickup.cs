@@ -1,14 +1,16 @@
 using SojaExiles;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Pickup : MonoBehaviour, Interactable
 {
-    public Transform holdPos;
+    public Transform holdPos;  // The position where the object is held when picked up
+    public Transform placePos; // The position where the object will be placed
 
     private bool isHeld = false; // To track if the object is currently being held
+
+    public bool correct;
 
     void Update()
     {
@@ -16,6 +18,7 @@ public class Pickup : MonoBehaviour, Interactable
         {
             ItemDrop();
         }
+
     }
 
     public void Interact()
@@ -28,22 +31,38 @@ public class Pickup : MonoBehaviour, Interactable
 
     public void ItemPickup()
     {
+        Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+        }
+
         isHeld = true;
-        gameObject.transform.position = holdPos.position; // Move object to hold position
-        gameObject.transform.parent = holdPos; // Optionally parent it to keep it relative to player/camera movement
+        gameObject.transform.position = holdPos.position;
+        gameObject.transform.rotation = holdPos.rotation;
+        gameObject.transform.parent = holdPos;
     }
 
     public void ItemDrop()
     {
         isHeld = false;
-        gameObject.transform.parent = null; // Detach the object from the hold position
+        gameObject.transform.parent = null;
 
-        // Optionally apply physics if needed
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.isKinematic = false; // Ensure physics takes over again if it was previously set to kinematic
-            // Optionally apply some force or simply let gravity take its course
+            rb.isKinematic = false;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // Check if the object has entered the trigger zone of the placePos collider
+        if (other.gameObject == placePos && !isHeld && correct)
+        {
+            Debug.Log("Object successfully placed inside the box collider!");
+            // Additional logic here if needed, e.g., locking the position, updating game state, etc.
+        }
+    }
+
 }
