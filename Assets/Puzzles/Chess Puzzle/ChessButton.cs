@@ -10,7 +10,7 @@ public class ChessButton : MonoBehaviour
     private float pressedY;
 
     private bool isNumPanel;
-    public string buttonName;
+    [HideInInspector]public string buttonName;
 
     void Start()
     {

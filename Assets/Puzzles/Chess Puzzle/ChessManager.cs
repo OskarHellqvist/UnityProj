@@ -161,7 +161,13 @@ public class ChessManager : MonoBehaviour
 
     public void CheckSolution()
     {
-        if (numButtonUnSelect.IsUnityNull() || letterButtonUnSelect.IsUnityNull()) { Debug.Log("Have not selected two buttons"); return; }
+        if (numButtonUnSelect.IsUnityNull() || letterButtonUnSelect.IsUnityNull()) 
+        { 
+            Debug.Log("Have not selected two buttons"); 
+            if (!letterButtonUnSelect.IsUnityNull() ) { letterButtonUnSelect.Invoke(); }
+            if (!numButtonUnSelect.IsUnityNull()) { numButtonUnSelect.Invoke(); }
+            return; 
+        }
 
         int rank = 8 - int.Parse(numButton);
 
@@ -185,6 +191,7 @@ public class ChessManager : MonoBehaviour
         if (cs.startPos == selectedPiece.position && cs.endPos == total)
         {
             //Debug.Log("Correct!");
+            EventManager.manager.AddTimer(0.7f, InvokeEvent);
             selectedPiece.StartMoveTo(numToPos[total]);
             GameObject king;
             if (cs.kingColor == "black") { king = blackKing; }
@@ -198,12 +205,15 @@ public class ChessManager : MonoBehaviour
         else
         {
             //Debug.Log("WRONG!");
+            unSelect.Invoke();
             numButtonUnSelect.Invoke();
             letterButtonUnSelect.Invoke();
             numButton = string.Empty;
             letterButton = string.Empty;
         }
     }
+
+    private void InvokeEvent() { EventManager.manager.chessCompleteEvent.Invoke(); }
 
     private IEnumerator KnockKing(GameObject king)
     {

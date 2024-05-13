@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.041120112, g: 0.07249693, b: 0.1256583, a: 1}
+  m_IndirectSpecularColor: {r: 0.04111985, g: 0.07249684, b: 0.12565836, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4678,7 +4678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2013045928900025508, guid: 0419fe6e2e5e0274aab1cf253d28e4e0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.49606323
+      value: 0.49609375
       objectReference: {fileID: 0}
     - target: {fileID: 2013045928900025508, guid: 0419fe6e2e5e0274aab1cf253d28e4e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7245,6 +7245,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3766554325246276684, guid: dc946e3937ebe00489dd6862fdbce167, type: 3}
   m_PrefabInstance: {fileID: 391668244}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &391736034 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8698839405852113477, guid: 355f0f3f8c2463f4d8bed401784f063f, type: 3}
+  m_PrefabInstance: {fileID: 140978599}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d5557a01f4e0740bd53d6ed2ab7327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &394139315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27986,6 +27997,14 @@ PrefabInstance:
       propertyPath: mannequinEvent1.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 793398189}
+    - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
+      propertyPath: chessCompleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 391736034}
+    - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
+      propertyPath: chessCompleteEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 391736034}
     - target: {fileID: 7067504700374067599, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
