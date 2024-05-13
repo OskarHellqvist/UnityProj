@@ -1,3 +1,4 @@
+using SojaExiles;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,8 +14,14 @@ public class EventManager : MonoBehaviour
     // To trigger the event, access EventManager.manager.(eventName).Invoke() through any script
     public UnityEvent entryEvent;
     public UnityEvent mannequinEvent1;
+<<<<<<< HEAD
     public UnityEvent girlEvent;
     public UnityEvent windowEvent;
+=======
+    public UnityEvent tvEvent;
+
+    public List<Event> commonEvents;
+>>>>>>> Main2
 
     private List<Timer> timers = new();
 
@@ -30,9 +37,55 @@ public class EventManager : MonoBehaviour
         timers.RemoveAll(t => t.remove);
     }
 
+    public void CommonEvent(float sanity)
+    {
+        List<Event> events = commonEvents.FindAll(t => t.sanity >= sanity);
+
+        Camera camera = Camera.main;
+        System.Random rng = new System.Random();
+        Event e;
+
+        while (true)
+        {
+            if (events.Count <= 0) { return; }
+
+            e = events[rng.Next(0, events.Count)];
+
+            Vector3 vpPos = camera.WorldToViewportPoint(e.transform.position);
+            if (vpPos.x >= 0f && vpPos.x <= 1f && vpPos.y >= 0f && vpPos.y <= 1f && vpPos.z > 0f)
+            {
+                events.Remove(e);
+                continue;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        e.unityEvent.Invoke();
+    }
+
     public void AddTimer(float time, Action callback) { timers.Add(new Timer(time, callback)); }
 
     public void TimerDone() { Debug.Log("done"); }
+}
+
+[Serializable]
+public struct Event
+{
+    public string name;
+    public float sanity;
+    public Transform transform;
+    public UnityEvent unityEvent;
+
+    public Event(string name,  float sanity, Transform transform, UnityEvent unityEvent)
+    {
+        this.name = name;
+        this.sanity = sanity;
+        this.transform = transform;
+        this.unityEvent = unityEvent;
+    }
 }
 
 public class Timer

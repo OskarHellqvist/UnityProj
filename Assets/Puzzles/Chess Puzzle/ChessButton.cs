@@ -15,6 +15,7 @@ public class ChessButton : MonoBehaviour
     void Start()
     {
         chessManager = transform.parent.parent.GetComponentInChildren<ChessManager>();
+        chessManager.destroyInteraction += DestroyInteraction;
         
         y = transform.localPosition.y;
         pressedY = 0.002f;
@@ -24,15 +25,12 @@ public class ChessButton : MonoBehaviour
         string name = gameObject.name;
         buttonName = name.Split(':')[1];
 
-        if (buttonName == "3" || buttonName == "f") { EventManager.manager.AddTimer(3f, Pressed); }
+        //if (buttonName == "3" || buttonName == "f") { EventManager.manager.AddTimer(3f, Pressed); }
 
         //EventManager.manager.AddTimer(3f, Pressed);
         //EventManager.manager.AddTimer(6f, Unpressed);
-    }
 
-    void Update()
-    {
-        
+        gameObject.AddComponent<ChessButtonInteraction>();
     }
 
     public void Pressed()
@@ -63,5 +61,10 @@ public class ChessButton : MonoBehaviour
         }
 
         transform.localPosition = targetPos;
+    }
+
+    private void DestroyInteraction()
+    {
+        Destroy(GetComponent<ChessButtonInteraction>());
     }
 }

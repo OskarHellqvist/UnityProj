@@ -13,6 +13,7 @@ public class ChessManager : MonoBehaviour
     Dictionary<int, float> rankToX = new Dictionary<int, float>();
     Dictionary<int, float> fileToZ = new Dictionary<int, float>();
 
+    List<ChessSolution> solutionList = new();
     ChessSolution cs;
 
     public Action unSelect;
@@ -22,6 +23,8 @@ public class ChessManager : MonoBehaviour
     public Action letterButtonUnSelect;
     private string numButton;
     private string letterButton;
+
+    public Action destroyInteraction;
 
     public Material white;
     public Material black;
@@ -50,10 +53,8 @@ public class ChessManager : MonoBehaviour
             }
         }
 
-        cs = new ChessSolution("1r2R3/8/2p2k1p/p5p1/Pp1n4/6Pq/QP3P2/4R1K1", 36, 46, "white");
-
-        //string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
-        string fen = "r1bk3r/p2pBpNp/n4n2/1p1NP2P/6P1/3P4/P1P1K3/q5b1";
+        System.Random rng = new();
+        cs = solutionList[rng.Next(0, solutionList.Count)];
 
         string[] split = cs.fen.Split('/');
 
@@ -73,13 +74,6 @@ public class ChessManager : MonoBehaviour
                 }
             }
         }
-        //GeneratePiece("k", 36);
-        EventManager.manager.AddTimer(6f, CheckSolution);
-    }
-
-    void Update()
-    {
-        
     }
 
     public void SelectPiece(PieceScript piece)
@@ -123,16 +117,28 @@ public class ChessManager : MonoBehaviour
 
         pieceObj.GetComponent<MeshRenderer>().material = isWhite ? white : black;
         pieceObj.AddComponent<PieceScript>().position = pos;
+        pieceObj.AddComponent<PieceInteraction>();
 
         if (piece.ToLower() == "k")
         {
             if (isWhite) { whiteKing = pieceObj; } 
             else { blackKing = pieceObj;}
         }
+        else
+        {
+            pieceObj.AddComponent<BoxCollider>();
+        }
     }
 
     public void SelectButton(ChessButton button, bool isNumPanel)
     {
+        if (button.buttonName == "red")
+        {
+            numButtonUnSelect += button.Unpressed;
+            CheckSolution();
+            return;
+        }
+
         if (isNumPanel)
         {
             if (!numButtonUnSelect.IsUnityNull())
@@ -184,6 +190,10 @@ public class ChessManager : MonoBehaviour
             if (cs.kingColor == "black") { king = blackKing; }
             else { king = whiteKing; }
             StartCoroutine(KnockKing(king));
+            if (!destroyInteraction.IsUnityNull())
+            {
+                destroyInteraction.Invoke();
+            }
         }
         else
         {
@@ -224,6 +234,11 @@ public class ChessManager : MonoBehaviour
         fileToZ.Add(6, 0.0908f);
         fileToZ.Add(7, 0.1514f);
         fileToZ.Add(8, 0.212f);
+
+        solutionList.Add(new ChessSolution("1r2R3/8/2p2k1p/p5p1/Pp1n4/6Pq/QP3P2/4R1K1", 36, 46, "white"));
+        solutionList.Add(new ChessSolution("1nb1rk2/pp1p1ppQ/2p5/2q5/3P1N2/5R2/P1P3PP/RB4K1", 38, 23, "black"));
+        solutionList.Add(new ChessSolution("3Q4/3R3R/6r1/3K4/1q3k2/8/8/4r3", 61, 60, "white"));
+        solutionList.Add(new ChessSolution("5r1k/ppq2ppp/2p2N2/2Q5/4Bn2/2N5/PPP2P1P/6RK", 27, 6, "black"));
     }
 
     private struct ChessSolution
