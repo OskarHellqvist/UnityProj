@@ -113,6 +113,7 @@ namespace SojaExiles
             }
 
             Global.LoadSceneGameOver();
+            Global.UnlockMouse();
         }
 
     }

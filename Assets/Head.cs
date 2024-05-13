@@ -20,7 +20,6 @@ public class Head : MonoBehaviour
             if (dist < 3)
             {
                 scaryEvent.SetBool("Play", true);
-                print("you got scared");
                 scaryEvent.Play("ScaryHeadAnim");
             }
         }

@@ -39,7 +39,6 @@ namespace SojaExiles
         public void LockUnlockDoor() { locked = !locked; }
         IEnumerator opening()
 		{
-			print("you are opening the door");
 			Closetopenandclose.Play("ClosetOpening");
 			yield return new WaitForSeconds(.5f);
 			open = true;
@@ -47,7 +46,6 @@ namespace SojaExiles
 
 		IEnumerator closing()
 		{
-			print("you are closing the door");
 			Closetopenandclose.Play("ClosetClosing");
 			yield return new WaitForSeconds(.5f);
 			open = false;
