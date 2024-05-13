@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 using Random = UnityEngine.Random;
 
 public class ChessManager : MonoBehaviour
@@ -74,6 +75,36 @@ public class ChessManager : MonoBehaviour
                 }
             }
         }
+
+        EventManager.manager.AddTimer(6f, StartPuzzle);
+    }
+
+    public void StartPuzzle()
+    {
+        Transform[] children = transform.parent.GetComponentsInChildren<Transform>();
+
+        Transform[] panels = Array.FindAll(children, t => t.gameObject.name.Split(":")[0].ToLower() == "panel");
+
+        StartCoroutine(MovePanel(panels[0], new Vector3(0, 0, 0.29f)));
+        StartCoroutine(MovePanel(panels[1], new Vector3(-0.29f, 0, 0)));
+        StartCoroutine(MovePanel(panels[2], new Vector3(-0.29f, 0, 0.29f)));
+    }
+
+    public IEnumerator MovePanel(Transform transform, Vector3 moveTo)
+    {
+        float time = 0f;
+        float duration = 0.3f;
+        Vector3 startPos = transform.localPosition;
+        Vector3 targetPos = moveTo;
+
+        while (time < duration)
+        {
+            transform.localPosition = Vector3.Lerp(startPos, targetPos, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localPosition = targetPos;
     }
 
     public void SelectPiece(PieceScript piece)
