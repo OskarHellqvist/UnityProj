@@ -1,4 +1,5 @@
 using SojaExiles;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -14,8 +15,9 @@ namespace SojaExiles
         private PlayerMovement pMovement;
         //public Slider slider;
         public Image insanityImage;
+        public Image Fader;
 
-        private float sanity = 100;
+        [SerializeField] private float sanity = 100;
         private float decreaseValue = 2;
         private float increaseValue = 0.5f;
 
@@ -56,6 +58,11 @@ namespace SojaExiles
             {
                 sanity += Time.deltaTime * increaseValue;
             }
+            
+            if (sanity <= 0)
+            {
+                StartCoroutine(FadeToBlack());
+            }
 
             // Limits sanity between 0 - 100
             sanity = Mathf.Clamp(sanity, 0, 100);
@@ -83,6 +90,31 @@ namespace SojaExiles
             {
                 inSpawnArea = false;
             }
+        }
+
+        IEnumerator FadeToBlack()
+        {
+            float fadeSpeed = 0.005f;  // Speed of the fade
+            while (Fader.color.a < 1.0f)
+            {
+                Color color = Fader.color;
+                color.a += fadeSpeed * Time.deltaTime;
+                Fader.color = color;
+
+                // Ensure it doesn't exceed 1
+                if (Fader.color.a >= 1.0f)  
+                {
+                    color.a = 1.0f;
+                    Fader.color = color;
+                    break;
+                }
+
+                Debug.Log(Fader.color.a);
+
+                yield return null; // Yield execution to the next frame.
+            }
+
+            Global.LoadSceneGameOver();
         }
 
     }
