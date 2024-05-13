@@ -75,8 +75,6 @@ public class ChessManager : MonoBehaviour
                 }
             }
         }
-
-        EventManager.manager.AddTimer(6f, StartPuzzle);
     }
 
     public void StartPuzzle()
