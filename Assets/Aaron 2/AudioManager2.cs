@@ -2,7 +2,7 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager2 : MonoBehaviour
 {
     //Tutorial for how to use my AudioManager
     //Create empty object in your scene and name it AudioManager
@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
 
     public Sound[] sounds;
     
-    public static AudioManager instance;
+    public static AudioManager2 instance;
 
     void Awake()
     {

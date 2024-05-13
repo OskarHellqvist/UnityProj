@@ -14,14 +14,11 @@ public class EventManager : MonoBehaviour
     // To trigger the event, access EventManager.manager.(eventName).Invoke() through any script
     public UnityEvent entryEvent;
     public UnityEvent mannequinEvent1;
-<<<<<<< HEAD
     public UnityEvent girlEvent;
     public UnityEvent windowEvent;
-=======
     public UnityEvent tvEvent;
 
     public List<Event> commonEvents;
->>>>>>> Main2
 
     private List<Timer> timers = new();
 
