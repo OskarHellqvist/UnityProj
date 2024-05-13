@@ -28,11 +28,12 @@ namespace SojaExiles
         private float staminaDepletionRate = 20;
         private float staminaIncreseRate = 10;
 
+        private float standingHeight; // Height when standing
+        private float crouchingHeight; // Height when crouching
+
         private float currentSpeed;
         private float gravity = -15f;
         private float crouchDepth = 1f;
-        private bool crouchBot = false;
-        private bool crouchTop = false;
 
         // Headbob variables
         private float headbobSpeed = 14f;
@@ -51,10 +52,17 @@ namespace SojaExiles
             crouchSpeed = 1.5f;
             sprintSpeed = 4.5f;
             currentSpeed = walkingSpeed;
+            standingHeight = originalCamY; // Set standing height to the original Y position of the camera
+            crouchingHeight = originalCamY - crouchDepth; // Set crouching height based on crouch depth
         }
 
         void Update()
         {
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                ToggleCrouch();
+            }
+
             if (Input.GetKeyDown(KeyCode.LeftShift) && !isCrouching)
             {
                 isSprinting = true;
@@ -73,7 +81,7 @@ namespace SojaExiles
                 currentSpeed = crouchSpeed;
                 StartCoroutine(SmoothCrouch(originalCamY - crouchDepth));
             }
-            else if (Input.GetKeyUp(KeyCode.LeftControl) && isCrouching )
+            else if (Input.GetKeyUp(KeyCode.LeftControl) && isCrouching)
             {
                 isCrouching = false;
                 currentSpeed = walkingSpeed;
@@ -91,7 +99,7 @@ namespace SojaExiles
                 }
             }
 
-            if(!isSprinting) 
+            if (!isSprinting)
             {
                 stamina += staminaIncreseRate * Time.deltaTime;
             }
@@ -129,8 +137,8 @@ namespace SojaExiles
                 {
                     StartCoroutine(FlickerFlashlight(4));
                 }
-                
-                if (battery <= 50  && battery >= 49 && !isFlickering)
+
+                if (battery <= 50 && battery >= 49 && !isFlickering)
                 {
                     StartCoroutine(FlickerFlashlight(2));
                 }
@@ -160,6 +168,15 @@ namespace SojaExiles
             controller.Move(velocity * Time.deltaTime);
         }
 
+        private void ToggleCrouch()
+        {
+            isCrouching = true;
+            currentSpeed = isCrouching ? crouchSpeed : walkingSpeed;
+            float targetYPosition = isCrouching ? crouchingHeight : standingHeight;
+            StartCoroutine(SmoothCrouch(targetYPosition));
+            isCrouching = false;
+        }
+
         IEnumerator SmoothCrouch(float targetYPosition)
         {
             float time = 0f;
@@ -169,14 +186,14 @@ namespace SojaExiles
 
             while (time < duration)
             {
-                cam.localPosition = Vector3.Lerp(startCamPos, targetCamPos, time/duration);
+                cam.localPosition = Vector3.Lerp(startCamPos, targetCamPos, time / duration);
                 time += Time.deltaTime;
                 yield return null;
             }
-
             cam.localPosition = targetCamPos; // Ensure the camera reaches the target position
             currentCamY = targetYPosition; // Update currentCamY based on crouching or standing
         }
+
 
         private void Headbob()
         {
