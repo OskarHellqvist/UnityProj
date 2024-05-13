@@ -40,7 +40,6 @@ namespace SojaExiles
 
         IEnumerator opening()
 		{
-			print("you are opening the Window");
 			openandclosewindow.Play("Openingwindow");
 			yield return new WaitForSeconds(.5f);
 			open = true;
@@ -48,7 +47,6 @@ namespace SojaExiles
 
 		IEnumerator closing()
 		{
-			print("you are closing the Window");
 			openandclosewindow.Play("Closingwindow");
 			yield return new WaitForSeconds(.5f);
 			open = false;
