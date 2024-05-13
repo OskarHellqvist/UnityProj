@@ -35,7 +35,7 @@ namespace SojaExiles
         void OnApplicationQuit()
         {
             Color aColor = transMaterial.color;
-            aColor.a = 0;
+            aColor.a = 1;
             transMaterial.color = aColor;
         }
 
