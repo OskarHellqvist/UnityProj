@@ -36610,6 +36610,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5537186004800145934, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
   m_PrefabInstance: {fileID: 2046002395}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1527571840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527571839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12eb3695d272dc94084d76ede804d103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1530849331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46575,10 +46587,41 @@ PrefabInstance:
       propertyPath: notePanel
       value: 
       objectReference: {fileID: 66523427}
+    - target: {fileID: 8294475191832344382, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
+      propertyPath: openEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294475191832344382, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
+      propertyPath: openEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294475191832344382, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
+      propertyPath: openEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1527571840}
+    - target: {fileID: 8294475191832344382, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
+      propertyPath: openEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294475191832344382, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
+      propertyPath: openEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Trigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294475191832344382, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
+      propertyPath: openEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChessTrigger, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294475191832344382, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
+      propertyPath: openEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5537186004800145934, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1527571840}
     - targetCorrespondingSourceObject: {fileID: 2736475145940583979, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
