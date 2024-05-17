@@ -10880,6 +10880,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7296751938604968509, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
   m_PrefabInstance: {fileID: 765140362}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &580787677 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7296751938604968511, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
+  m_PrefabInstance: {fileID: 765140362}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580787676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8192f35a44301488ec0f072d9a16fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &581443741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27635,6 +27646,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1017606091530846216, guid: c5be39b879c83f54d9bbfebe68c809be, type: 3}
   m_PrefabInstance: {fileID: 1112383165}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1114023714 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7296751938604968509, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
+  m_PrefabInstance: {fileID: 2028067308}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1114023716 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7296751938604968511, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
+  m_PrefabInstance: {fileID: 2028067308}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114023714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8192f35a44301488ec0f072d9a16fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1115027085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29453,25 +29480,25 @@ PrefabInstance:
       value: EventManager
       objectReference: {fileID: 0}
     - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
-      propertyPath: commonEvents.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
-      propertyPath: commonEvents.Array.data[0].name
-      value: Bathroom Door Hall
-      objectReference: {fileID: 0}
-    - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
-      propertyPath: commonEvents.Array.data[0].sanity
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
-      propertyPath: commonEvents.Array.data[0].transform
-      value: 
-      objectReference: {fileID: 814392284}
-    - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
       propertyPath: commonEvents.Array.data[0].gameObject
       value: 
       objectReference: {fileID: 638650013}
+    - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
+      propertyPath: commonEvents.Array.data[1].gameObject
+      value: 
+      objectReference: {fileID: 1627412473}
+    - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
+      propertyPath: commonEvents.Array.data[2].gameObject
+      value: 
+      objectReference: {fileID: 580787676}
+    - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
+      propertyPath: commonEvents.Array.data[3].gameObject
+      value: 
+      objectReference: {fileID: 1709064040}
+    - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
+      propertyPath: commonEvents.Array.data[4].gameObject
+      value: 
+      objectReference: {fileID: 1114023714}
     - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
       propertyPath: entryEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -29513,33 +29540,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 391736034}
     - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
-      propertyPath: commonEvents.Array.data[0].unityEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
-      propertyPath: commonEvents.Array.data[0].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
       propertyPath: commonEvents.Array.data[0].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 638650014}
     - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
-      propertyPath: commonEvents.Array.data[0].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: commonEvents.Array.data[1].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1627412474}
     - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
-      propertyPath: commonEvents.Array.data[0].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CloseDoor
-      objectReference: {fileID: 0}
+      propertyPath: commonEvents.Array.data[2].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 580787677}
     - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
-      propertyPath: commonEvents.Array.data[0].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SojaExiles.opencloseDoor, Assembly-CSharp
-      objectReference: {fileID: 0}
+      propertyPath: commonEvents.Array.data[3].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1709064041}
     - target: {fileID: 4737459990239132750, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
-      propertyPath: commonEvents.Array.data[0].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
+      propertyPath: commonEvents.Array.data[4].unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1114023716}
     - target: {fileID: 7067504700374067599, guid: a154b8d831516d64fabae1bdbc313e32, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -39102,6 +39121,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7296751938604968509, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
   m_PrefabInstance: {fileID: 1570923126}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1627412474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7296751938604968511, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
+  m_PrefabInstance: {fileID: 1570923126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627412473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8192f35a44301488ec0f072d9a16fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1628072314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41032,6 +41062,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7296751938604968509, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
   m_PrefabInstance: {fileID: 52789865}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1709064041 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7296751938604968511, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
+  m_PrefabInstance: {fileID: 52789865}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709064040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8192f35a44301488ec0f072d9a16fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1715564026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2250178883754422351, guid: 143623a82f19a9e49b450142a80c6d52, type: 3}
