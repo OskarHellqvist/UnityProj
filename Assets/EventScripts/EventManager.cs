@@ -25,6 +25,7 @@ public class EventManager : MonoBehaviour
     void Awake()
     {
         manager = this;
+        AddTimer(10f, CommonEventTest);
     }
 
     void Update()
@@ -33,9 +34,13 @@ public class EventManager : MonoBehaviour
         timers.RemoveAll(t => t.remove);
     }
 
+    public void CommonEventTest() { CommonEvent(90f); }
+
     public void CommonEvent(float sanity)
     {
         List<Event> events = commonEvents.FindAll(t => t.sanity >= sanity);
+
+        if (events.Count <= 0) { return; }
 
         Camera camera = Camera.main;
         System.Random rng = new System.Random();
@@ -47,8 +52,9 @@ public class EventManager : MonoBehaviour
 
             e = events[rng.Next(0, events.Count)];
 
-            Vector3 vpPos = camera.WorldToViewportPoint(e.transform.position);
-            if (vpPos.x >= 0f && vpPos.x <= 1f && vpPos.y >= 0f && vpPos.y <= 1f && vpPos.z > 0f)
+            Debug.Log(e.gameObject.transform.position);
+            //Vector3 vpPos = camera.WorldToViewportPoint(e.transform.position);
+            if (IsVisible(camera, e.gameObject))
             {
                 events.Remove(e);
                 continue;
@@ -57,6 +63,21 @@ public class EventManager : MonoBehaviour
             {
                 break;
             }
+        }
+
+        bool IsVisible(Camera c, GameObject target)
+        {
+            var planes = GeometryUtility.CalculateFrustumPlanes(c);
+            var point = target.transform.position;
+
+            foreach (var plane in planes)
+            {
+                if (plane.GetDistanceToPoint(point) < 0)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         e.unityEvent.Invoke();
@@ -70,14 +91,14 @@ public struct Event
 {
     public string name;
     public float sanity;
-    public Transform transform;
+    public GameObject gameObject;
     public UnityEvent unityEvent;
 
-    public Event(string name,  float sanity, Transform transform, UnityEvent unityEvent)
+    public Event(string name,  float sanity, GameObject gameObject, UnityEvent unityEvent)
     {
         this.name = name;
         this.sanity = sanity;
-        this.transform = transform;
+        this.gameObject = gameObject;
         this.unityEvent = unityEvent;
     }
 }
