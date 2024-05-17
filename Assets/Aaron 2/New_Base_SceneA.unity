@@ -1445,11 +1445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a4cfd55ff3b0144f96dec2f5cc5a16a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1156532294}
   Logbook: []
-  noteCanvas: {fileID: 0}
-  noteTextAreaUI: {fileID: 0}
-  TextOnNoteObj: {fileID: 0}
+  notePanel: {fileID: 0}
   noteText: Hejsan
   openEvent:
     m_PersistentCalls:
@@ -4108,6 +4105,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: f99df1970d4b71441a320ce6acc52709, type: 3}
       insertIndex: -1
       addedObject: {fileID: 81655647}
+    - targetCorrespondingSourceObject: {fileID: 1971628575582382900, guid: f99df1970d4b71441a320ce6acc52709, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: f99df1970d4b71441a320ce6acc52709, type: 3}
 --- !u!1001 &194242296
 PrefabInstance:
@@ -26866,8 +26866,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2753c5190f2bb39499a680c27d81b90f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashlight: {fileID: 1753910856}
-  insanity: {fileID: 934050112}
+  flashlight: {fileID: 0}
+  insanityImage: {fileID: 0}
+  Fader: {fileID: 0}
+  sanity: 100
 --- !u!1001 &1159894165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30674,7 +30676,7 @@ Transform:
   m_GameObject: {fileID: 1298438921}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.017212, y: 11.068102, z: 1.6821568}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
