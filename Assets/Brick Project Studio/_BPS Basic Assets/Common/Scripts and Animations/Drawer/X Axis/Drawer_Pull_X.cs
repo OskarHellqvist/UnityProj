@@ -43,14 +43,16 @@ namespace SojaExiles
 		{
 			pull_01.Play("openpull_01");
 			open = true;
-			yield return new WaitForSeconds(.5f);
+            FindObjectOfType<AudioManager>().Play("Drawer");
+            yield return new WaitForSeconds(.5f);
 		}
 
 		IEnumerator closing()
 		{
 			pull_01.Play("closepush_01");
 			open = false;
-			yield return new WaitForSeconds(.5f);
+            FindObjectOfType<AudioManager>().Play("Drawer");
+            yield return new WaitForSeconds(.5f);
 		}
 
 
