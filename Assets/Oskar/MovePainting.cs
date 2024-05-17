@@ -32,6 +32,13 @@ namespace SojaExiles
             SetInitialTransparency(); // Set initial transparency of the painting
         }
 
+        void OnApplicationQuit()
+        {
+            Color aColor = transMaterial.color;
+            aColor.a = 1;
+            transMaterial.color = aColor;
+        }
+
         void Update()
         {
             if (Note)
@@ -49,7 +56,7 @@ namespace SojaExiles
             }
             else
             {
-                Debug.Log("Insanity component not found!");
+                //Debug.Log("Insanity component not found!");
             }
         }
 
@@ -91,5 +98,6 @@ namespace SojaExiles
             initialColor.a = 0;
             transMaterial.color = initialColor;
         }
+
     }
 }

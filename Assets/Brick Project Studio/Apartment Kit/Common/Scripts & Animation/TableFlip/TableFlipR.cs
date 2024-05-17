@@ -38,14 +38,12 @@ public class TableFlipR: MonoBehaviour {
 	}
 
 	IEnumerator opening(){
-		print ("you are opening the door");
         FlipR.Play ("Rup");
 		open = true;
 		yield return new WaitForSeconds (.5f);
 	}
 
 	IEnumerator closing(){
-		print ("you are closing the door");
         FlipR.Play ("Rdown");
 		open = false;
 		yield return new WaitForSeconds (.5f);

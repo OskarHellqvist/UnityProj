@@ -11,6 +11,8 @@ namespace SojaExiles
 {
     public class SanityManager : MonoBehaviour
     {
+        public static SanityManager manager;
+
         public GameObject flashlight;
         private PlayerMovement pMovement;
         //public Slider slider;
@@ -35,6 +37,7 @@ namespace SojaExiles
         // Start is called before the first frame update
         void Start()
         {
+            manager = this;
             pMovement = GetComponent<PlayerMovement>();
         }
 
@@ -109,12 +112,11 @@ namespace SojaExiles
                     break;
                 }
 
-                Debug.Log(Fader.color.a);
-
                 yield return null; // Yield execution to the next frame.
             }
 
             Global.LoadSceneGameOver();
+            Global.UnlockMouse();
         }
 
     }

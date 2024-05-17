@@ -28,11 +28,12 @@ namespace SojaExiles
         private float staminaDepletionRate = 20;
         private float staminaIncreseRate = 10;
 
+        private float standingHeight; // Height when standing
+        private float crouchingHeight; // Height when crouching
+
         private float currentSpeed;
         private float gravity = -15f;
         private float crouchDepth = 1f;
-        private bool crouchBot = false;
-        private bool crouchTop = false;
 
         // Headbob variables
         private float headbobSpeed = 14f;
@@ -41,7 +42,7 @@ namespace SojaExiles
 
         Vector3 velocity;
 
-        private bool isCrouching = false;
+        private bool crouched = false, isCurrentlyCrouching = false;
 
         private void Start()
         {
@@ -51,33 +52,27 @@ namespace SojaExiles
             crouchSpeed = 1.5f;
             sprintSpeed = 4.5f;
             currentSpeed = walkingSpeed;
+            standingHeight = originalCamY; // Set standing height to the original Y position of the camera
+            crouchingHeight = originalCamY - crouchDepth; // Set crouching height based on crouch depth
         }
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift) && !isCrouching)
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                ToggleCrouch();
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift) && !crouched)
             {
                 isSprinting = true;
                 currentSpeed = sprintSpeed;
             }
 
-            if (Input.GetKeyUp(KeyCode.LeftShift) && !isCrouching)
+            if (Input.GetKeyUp(KeyCode.LeftShift) && !crouched)
             {
                 isSprinting = false;
                 currentSpeed = walkingSpeed;
-            }
-
-            if (Input.GetKeyDown(KeyCode.LeftControl) && !isCrouching)
-            {
-                isCrouching = true;
-                currentSpeed = crouchSpeed;
-                StartCoroutine(SmoothCrouch(originalCamY - crouchDepth));
-            }
-            else if (Input.GetKeyUp(KeyCode.LeftControl) && isCrouching )
-            {
-                isCrouching = false;
-                currentSpeed = walkingSpeed;
-                StartCoroutine(SmoothCrouch(originalCamY));
             }
 
             if (isSprinting)
@@ -91,7 +86,7 @@ namespace SojaExiles
                 }
             }
 
-            if(!isSprinting) 
+            if (!isSprinting)
             {
                 stamina += staminaIncreseRate * Time.deltaTime;
             }
@@ -129,8 +124,8 @@ namespace SojaExiles
                 {
                     StartCoroutine(FlickerFlashlight(4));
                 }
-                
-                if (battery <= 50  && battery >= 49 && !isFlickering)
+
+                if (battery <= 50 && battery >= 49 && !isFlickering)
                 {
                     StartCoroutine(FlickerFlashlight(2));
                 }
@@ -160,6 +155,17 @@ namespace SojaExiles
             controller.Move(velocity * Time.deltaTime);
         }
 
+        private void ToggleCrouch()
+        {
+            if (isCurrentlyCrouching) return;
+            isCurrentlyCrouching = true;
+
+            crouched = !crouched;
+            currentSpeed = crouched ? crouchSpeed : walkingSpeed;
+            float targetYPosition = crouched ? crouchingHeight : standingHeight;
+            StartCoroutine(SmoothCrouch(targetYPosition));
+        }
+
         IEnumerator SmoothCrouch(float targetYPosition)
         {
             float time = 0f;
@@ -169,14 +175,16 @@ namespace SojaExiles
 
             while (time < duration)
             {
-                cam.localPosition = Vector3.Lerp(startCamPos, targetCamPos, time/duration);
+                cam.localPosition = Vector3.Lerp(startCamPos, targetCamPos, time / duration);
                 time += Time.deltaTime;
                 yield return null;
             }
-
             cam.localPosition = targetCamPos; // Ensure the camera reaches the target position
             currentCamY = targetYPosition; // Update currentCamY based on crouching or standing
+
+            isCurrentlyCrouching = false;
         }
+
 
         private void Headbob()
         {

@@ -1,59 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 
 namespace SojaExiles
 
 {
-	public class BRGlassDoor : MonoBehaviour
+	public class BRGlassDoor : MonoBehaviour, Interactable
 	{
 
 		public Animator openandclose;
 		public bool open;
 		public Transform Player;
 
-		void Start()
+        public bool locked = false;
+
+        void Start()
 		{
 			open = false;
 		}
 
-		void OnMouseOver()
+        public void Interact()
+        {
+            if (open == false && !locked)
+            {
+                StartCoroutine(opening());
+            }
+            else if (open == true)
+            {
+                StartCoroutine(closing());
+            }
+        }
+
+        public void OpenDoor() { StartCoroutine(opening()); }
+        public void CloseDoor() { StartCoroutine(closing()); }
+        public void LockDoor() { locked = true; }
+        public void UnlockDoor() { locked = false; }
+        public void LockUnlockDoor() { locked = !locked; }
+
+        IEnumerator opening()
 		{
-			{
-				if (Player)
-				{
-					float dist = Vector3.Distance(Player.position, transform.position);
-					if (dist < 15)
-					{
-						if (open == false)
-						{
-							if (Input.GetMouseButtonDown(0))
-							{
-								StartCoroutine(opening());
-							}
-						}
-						else
-						{
-							if (open == true)
-							{
-								if (Input.GetMouseButtonDown(0))
-								{
-									StartCoroutine(closing());
-								}
-							}
-
-						}
-
-					}
-				}
-
-			}
-
-		}
-
-		IEnumerator opening()
-		{
-			print("you are opening");
 			openandclose.Play("BRGlassDoorOpen");
 			open = true;
 			yield return new WaitForSeconds(.5f);
@@ -61,7 +47,6 @@ namespace SojaExiles
 
 		IEnumerator closing()
 		{
-			print("you are closing");
 			openandclose.Play("BRGlassDoorClose");
 			open = false;
 			yield return new WaitForSeconds(.5f);

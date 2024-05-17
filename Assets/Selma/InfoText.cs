@@ -7,10 +7,11 @@ public class InfoText : MonoBehaviour
 {
     [SerializeField] GameObject text;
     [SerializeField] KeyCode key;
+    [SerializeField] GameObject FlashLight;
 
     private void Update()
     {
-        if (Input.GetKeyDown(key))
+        if (FlashLight.activeSelf || Input.GetKeyDown(key))
         {
             Destroy(text);
         }

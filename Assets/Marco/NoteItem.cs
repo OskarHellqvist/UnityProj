@@ -8,7 +8,7 @@ public class NoteItem : BaseItem
     public override void PickUp()
     {
         base.PickUp(); // Call the base class method first then add additional behaviour
-        Debug.Log("Note content: " + noteText);
+        //Debug.Log("Note content: " + noteText);
     }
     void Start()
     {

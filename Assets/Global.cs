@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace SojaExiles
 {
     public static class Global
     {
+        private static bool mouseLocked = false;
+
 
         public static void LoadSceneStartMenu()
         {
@@ -30,7 +33,18 @@ namespace SojaExiles
         public static void LoadSceneGameOver()
         {
             SceneManager.LoadScene(3);
+        }
 
+        public static void UnlockMouse()
+        {
+            if (Cursor.lockState == CursorLockMode.Locked)
+                Cursor.lockState = CursorLockMode.None;
+        }
+
+        public static void LockMouse()
+        {
+            if (Cursor.lockState == CursorLockMode.None)
+                Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }
