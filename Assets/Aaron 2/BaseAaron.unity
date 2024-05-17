@@ -32741,10 +32741,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: 
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 37602a199400d0549ab758e6c21b675f, type: 3}
     loop: 0
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
   - name: Drawer
     clip: {fileID: 8300000, guid: 7222c1ea5d077e7479dfa8e93e3edf39, type: 3}
