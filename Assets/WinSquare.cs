@@ -9,8 +9,8 @@ public class WinSquare : MonoBehaviour
     public GameObject amulet;
     BoxCollider collider;
     public GameObject wineffect;
-
-    public GameObject Door;
+    public AudioSource winSound;
+    public GameObject burnFx;
 
     // Start is called before the first frame update
     void Start()
@@ -24,9 +24,8 @@ public class WinSquare : MonoBehaviour
         {
             EventManager.manager.winEvent.Invoke();
             wineffect.SetActive(true);
-
-            //SFX
-            //SFX
+            burnFx.SetActive(true);
+            winSound.Play();
         }
     }
 }
