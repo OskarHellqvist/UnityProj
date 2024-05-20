@@ -28,6 +28,8 @@ public class EventManager : MonoBehaviour
 
     private List<Timer> timers = new();
 
+    private float commonEventTimer = 20f;
+
     void Awake()
     {
         manager = this;
@@ -38,6 +40,17 @@ public class EventManager : MonoBehaviour
     {
         foreach (Timer t in timers) { t.Update(Time.deltaTime); }
         timers.RemoveAll(t => t.remove);
+
+        if (commonEventTimer <= 0)
+        {
+            float sanity = SanityManager.manager.Sanity;
+            CommonEvent(sanity);
+            commonEventTimer = sanity / 5;
+        }
+        else if (commonEventTimer > 0)
+        {
+            commonEventTimer -= Time.deltaTime;
+        }
     }
 
     public void CommonEventTest() { CommonEvent(90f); }
