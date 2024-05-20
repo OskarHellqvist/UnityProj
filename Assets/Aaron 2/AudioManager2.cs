@@ -65,7 +65,7 @@ public class AudioManager2 : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Sound " + name + " not found!");
+            Debug.LogError("Sound " + name + " not found!");
         }
     }
 }

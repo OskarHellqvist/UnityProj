@@ -42,7 +42,7 @@ public class KeypadLock : MonoBehaviour
 
             inputCode += number;
             screen.SetText(inputCode);
-            FindObjectOfType<AudioManager2>().Play("ButtonPress");
+            FindObjectOfType<AudioManager2>().Play("KeypadButtonPress");
         }
     }
 
