@@ -37,7 +37,7 @@ namespace SojaExiles
         {
             if (!Note.activeSelf && hasMoved && !isMoving)
             {
-                StartCoroutine(MovePillowSmoothly(Vector3.down * moveAmount, moveDuration));
+                StartCoroutine(MovePillowSmoothly(Vector3.right * moveAmount, moveDuration));
                 hasMoved = false;
             }
         }

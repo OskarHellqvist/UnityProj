@@ -7,6 +7,7 @@ public class MasterBedroom : MonoBehaviour
     // Start is called before the first frame update
     BoxCollider collider;
 
+
     public GameObject pentagram;
 
     void Start()
