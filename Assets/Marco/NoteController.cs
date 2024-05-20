@@ -10,7 +10,7 @@ namespace SojaExiles
 {
     public class NoteController : MonoBehaviour, Interactable
     {
-        private KeyCode closeKey = KeyCode.Mouse0;
+        private KeyCode closeKey = KeyCode.Mouse1;
 
         [Space(10)]
         //[SerializeField] private PlayerMovement player;
@@ -20,11 +20,12 @@ namespace SojaExiles
 
         [Header("UI Text")]
         [SerializeField] private GameObject notePanel;
+        [SerializeField] private GameObject noteImageUI;
         private TMP_Text noteTextAreaUI;
         private TMP_Text TextOnNoteObj;
 
         [Space(10)]
-        [SerializeField] [TextArea] private string noteText;
+        [SerializeField][TextArea] private string noteText;
 
         [Space(10)]
         [SerializeField] private UnityEvent openEvent;
@@ -35,7 +36,12 @@ namespace SojaExiles
         void Start()
         {
             TextOnNoteObj = transform.Find("text").GetComponent<TMP_Text>();
-            TextOnNoteObj.text = noteText;
+
+            if (TextOnNoteObj != null)
+            {
+                TextOnNoteObj.text = noteText;
+            }
+            
 
             if (notePanel == null)
             {
@@ -43,11 +49,10 @@ namespace SojaExiles
                 return; // Exit the method if notePanel is not assigned
             }
 
-            Transform noteImage = notePanel.transform.Find("NoteImage");
 
-            if (noteImage != null)
+            if (noteImageUI.transform != null)
             {
-                noteTextAreaUI = noteImage.GetChild(0).GetComponent<TMP_Text>();
+                noteTextAreaUI = noteImageUI.transform.GetChild(0).GetComponent<TMP_Text>();
             }
             else
             {
@@ -63,7 +68,7 @@ namespace SojaExiles
             audioSource.Play();
         }
 
-        public void AddNoteToLog() 
+        public void AddNoteToLog()
         {
             TMP_Text note = noteTextAreaUI;
             Logbook.AddRange((IEnumerable<TMP_Text>)note);
@@ -72,8 +77,14 @@ namespace SojaExiles
         public void ShowNote()
         {
             Time.timeScale = 0f;
-            noteTextAreaUI.text = noteText;
+
+            if (noteTextAreaUI != null)
+            {
+                noteTextAreaUI.text = noteText;
+            }
+
             notePanel.SetActive(true);
+            noteImageUI.SetActive(true);
             openEvent.Invoke();
             isOpen = true;
         }
@@ -81,7 +92,9 @@ namespace SojaExiles
         void DisableNote()
         {
             Time.timeScale = 1f;
+
             notePanel.SetActive(false);
+            noteImageUI.SetActive(false);
             isOpen = false;
             gameObject.SetActive(false);
         }

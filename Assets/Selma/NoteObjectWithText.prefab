@@ -99,9 +99,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 26128aa45c223e845af531e23b9fd3ba, type: 2}
   m_sharedMaterial: {fileID: 1355354179855429172, guid: 26128aa45c223e845af531e23b9fd3ba, type: 2}
@@ -134,7 +132,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -295,6 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Logbook: []
   notePanel: {fileID: 756003461531446901, guid: 8d967cd2a0a501c40a201f241e734404, type: 3}
+  noteImageUI: {fileID: 0}
   noteText: Shoohoo det fungerar
   openEvent:
     m_PersistentCalls:
