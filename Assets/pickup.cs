@@ -10,8 +10,6 @@ public class Pickup : MonoBehaviour, Interactable
 
     private bool isHeld = false; // To track if the object is currently being held
 
-    public bool correct;
-
     void Update()
     {
         if (isHeld && Input.GetKeyDown(KeyCode.Q))
@@ -52,16 +50,6 @@ public class Pickup : MonoBehaviour, Interactable
         if (rb != null)
         {
             rb.isKinematic = false;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        // Check if the object has entered the trigger zone of the placePos collider
-        if (other.gameObject == placePos && !isHeld && correct)
-        {
-            Debug.Log("Object successfully placed inside the box collider!");
-            // Additional logic here if needed, e.g., locking the position, updating game state, etc.
         }
     }
 
