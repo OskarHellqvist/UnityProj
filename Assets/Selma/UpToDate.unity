@@ -8848,7 +8848,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 58
   m_fontSizeMax: 70
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -11300,7 +11300,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holdPos: {fileID: 0}
   placePos: {fileID: 0}
-  correct: 0
 --- !u!65 &588165587
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13073,7 +13072,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 26128aa45c223e845af531e23b9fd3ba, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5d401ee7920177842968954071240095, type: 2}
   m_sharedMaterial: {fileID: 1355354179855429172, guid: 26128aa45c223e845af531e23b9fd3ba, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -13104,7 +13103,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 28
   m_fontSizeMax: 30
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -13137,7 +13136,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &674302531
@@ -14667,7 +14666,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holdPos: {fileID: 0}
   placePos: {fileID: 0}
-  correct: 0
 --- !u!65 &718089836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28406,6 +28404,7 @@ GameObject:
   - component: {fileID: 1119723774}
   - component: {fileID: 1119723776}
   - component: {fileID: 1119723775}
+  - component: {fileID: 1119723777}
   m_Layer: 5
   m_Name: Fader
   m_TagString: Untagged
@@ -28445,7 +28444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -28470,6 +28469,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1119723773}
   m_CullTransparentMesh: 1
+--- !u!114 &1119723777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119723773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22425bed5fd30f54f89ad414d125209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundPanel: {fileID: 1119723773}
+  backgroundImage: {fileID: 1119723775}
 --- !u!1001 &1119875019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44453,7 +44466,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holdPos: {fileID: 0}
   placePos: {fileID: 0}
-  correct: 0
 --- !u!65 &1868224281
 BoxCollider:
   m_ObjectHideFlags: 0
