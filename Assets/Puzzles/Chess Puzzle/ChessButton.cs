@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//ChessButton written by Vilmer Juvin
+//This script handles the actions of the buttons on the chessboard
 public class ChessButton : MonoBehaviour
 {
-    //ChessButton written by Vilmer Juvin
-    //This script handles the actions of the buttons on the chessboard
-
     private ChessManager chessManager;
 
     private float y;
@@ -37,7 +36,7 @@ public class ChessButton : MonoBehaviour
         StartCoroutine(ButtonUpDown(pressedY));
     }
 
-    public void Unpressed() //This method moves the button up and removes itself from the unselect event in the ChessManager
+    public void Unpressed() //This method moves the button up and removes itself from one of the buttonUnSelect events in the ChessManager
     {
         if (isNumPanel) { chessManager.numButtonUnSelect -= Unpressed; }
         else { chessManager.letterButtonUnSelect -= Unpressed; }
