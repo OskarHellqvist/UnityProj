@@ -11923,7 +11923,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdPos: {fileID: 0}
-  placePos: {fileID: 0}
 --- !u!65 &588165587
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15345,7 +15344,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdPos: {fileID: 0}
-  placePos: {fileID: 0}
 --- !u!65 &718089836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18160,8 +18158,8 @@ Transform:
   m_GameObject: {fileID: 805343883}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 4.761, y: 0.106, z: -4.807}
-  m_LocalScale: {x: 0.31716457, y: 0.3041854, z: 1}
+  m_LocalPosition: {x: 5.1226, y: 0.106, z: -4.7479}
+  m_LocalScale: {x: 0.23638275, y: 0.21192595, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2111041426}
@@ -28841,6 +28839,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1081932702}
+  - component: {fileID: 1081932703}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -28863,6 +28862,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 34216763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1081932703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081932700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4380280c01c3feb42a1d430ec520e93b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: MarcoStain
+    clip: {fileID: 8300000, guid: c6849271a4cf9eb4e9aa2f1d49831d9c, type: 3}
+    loop: 0
+    volume: 0.382
+    pitch: 0.929
+    source: {fileID: 0}
 --- !u!1001 &1082931482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46541,7 +46559,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdPos: {fileID: 0}
-  placePos: {fileID: 0}
 --- !u!65 &1868224281
 BoxCollider:
   m_ObjectHideFlags: 0
