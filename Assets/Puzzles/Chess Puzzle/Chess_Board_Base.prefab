@@ -2438,7 +2438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a042b1dbb4f844aa80a0f832ed5eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  white: {fileID: 2100000, guid: 170709a5ee96ab84db02134a0dcf6b0f, type: 2}
+  white: {fileID: 2100000, guid: b65d6f1427086d84f91a3153f6f82ffc, type: 2}
   black: {fileID: 2100000, guid: 4cd790ac0d37bdc46970f6688c6b5070, type: 2}
   king: {fileID: 7202586836171842842, guid: 60f6c59ce3ff02748b91b3fd30833ecf, type: 3}
   queen: {fileID: 3404702436618992796, guid: ee4fd9223f6ee2e49aea83e8abb57e16, type: 3}
