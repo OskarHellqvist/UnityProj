@@ -52,12 +52,28 @@ public class AudioManager2 : MonoBehaviour
         }
     }
 
-    public void Play (string name)
+    public void Play(string name, Vector3 position)
     {
-        // finds sound in the sound array
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.Play();
-
+        if (s != null)
+        {
+            GameObject soundObject = new GameObject("Sound_" + name);
+            soundObject.transform.position = position;
+            AudioSource audioSource = soundObject.AddComponent<AudioSource>();
+            audioSource.clip = s.clip;
+            audioSource.volume = s.volume;
+            audioSource.pitch = s.pitch;
+            audioSource.loop = s.loop;
+            audioSource.spatialBlend = s.spatialBlend;
+            audioSource.minDistance = s.minDistance;
+            audioSource.maxDistance = s.maxDistance;
+            audioSource.Play();
+            Destroy(soundObject, s.clip.length);
+        }
+        else
+        {
+            Debug.LogError("Sound " + name + " not found!");
+        }
     }
 
     public void SetVolume(string name, float volume)
