@@ -54,8 +54,6 @@ public class EventManager : MonoBehaviour
 
             e = events[rng.Next(0, events.Count)];
 
-            Debug.Log(e.gameObject.transform.position);
-            //Vector3 vpPos = camera.WorldToViewportPoint(e.transform.position);
             if (IsVisible(camera, e.gameObject))
             {
                 events.Remove(e);

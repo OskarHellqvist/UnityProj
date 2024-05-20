@@ -8,24 +8,33 @@ using Random = UnityEngine.Random;
 
 public class ChessManager : MonoBehaviour
 {
+    //Chessmanager written by Vilmer Juvin
+    //This script creates and manages the chess puzzle
+
+    //Translates an integer, representing a square on the board, to a position in the local space of the board that holds this Chessmanager
     public Dictionary<int, Vector2> numToPos = new Dictionary<int, Vector2>();
     readonly float y = 0.016f;
-
     Dictionary<int, float> rankToX = new Dictionary<int, float>();
     Dictionary<int, float> fileToZ = new Dictionary<int, float>();
 
+    //Handles the data for the chess position and solution
     List<ChessSolution> solutionList = new();
     ChessSolution cs;
 
+    //Handles the piece selection
     public Action unSelect;
     private PieceScript selectedPiece;
 
+    //Handles the button selection
     public Action numButtonUnSelect;
     public Action letterButtonUnSelect;
     private string numButton;
     private string letterButton;
 
+    //Destroys Interaction script on all chess pieces, ending the puzzle
     public Action destroyInteraction;
+
+    #region Materials and Pieces (check inspector)
 
     public Material white;
     public Material black;
@@ -37,12 +46,15 @@ public class ChessManager : MonoBehaviour
     public GameObject knight;
     public GameObject pawn;
 
+    #endregion
+
+    //Saves which king is supposed to be checkmated
     private GameObject whiteKing;
     private GameObject blackKing;
 
     void Start()
     {
-        DictionaryStuff();
+        DictionaryStuff(); //Setting up the dictionaries
 
         int num = 1;
         for (int rank = 1; rank <= 8; rank++)
@@ -54,11 +66,12 @@ public class ChessManager : MonoBehaviour
             }
         }
 
+        //Selects a random position and solution
         System.Random rng = new();
         cs = solutionList[rng.Next(0, solutionList.Count)];
 
+        //Placing all the pieces on the board
         string[] split = cs.fen.Split('/');
-
         for (int i = 0; i < split.Length; i++)
         {
             int file = 1;
@@ -77,7 +90,7 @@ public class ChessManager : MonoBehaviour
         }
     }
 
-    public void StartPuzzle()
+    public void StartPuzzle() //This method starts the puzzle (duh)
     {
         Transform[] children = transform.parent.GetComponentsInChildren<Transform>();
 
@@ -88,7 +101,7 @@ public class ChessManager : MonoBehaviour
         StartCoroutine(MovePanel(panels[2], new Vector3(-0.29f, 0, 0.29f)));
     }
 
-    public IEnumerator MovePanel(Transform transform, Vector3 moveTo)
+    public IEnumerator MovePanel(Transform transform, Vector3 moveTo) //This method moves the panels in local space
     {
         float time = 0f;
         float duration = 0.3f;
@@ -105,7 +118,7 @@ public class ChessManager : MonoBehaviour
         transform.localPosition = targetPos;
     }
 
-    public void SelectPiece(PieceScript piece)
+    public void SelectPiece(PieceScript piece) //This method selects a chess piece and unselects any previously selected pieces
     {
         if (!unSelect.IsUnityNull())
         {
@@ -116,7 +129,7 @@ public class ChessManager : MonoBehaviour
         unSelect += selectedPiece.UnSelect;
     }
 
-    private void GeneratePiece(string piece, int pos)
+    private void GeneratePiece(string piece, int pos) //This method generates the correct piece and adds/changes all necessary components and values
     {
         GameObject piecePrefab = null;
         switch (piece.ToLower())
@@ -159,7 +172,7 @@ public class ChessManager : MonoBehaviour
         }
     }
 
-    public void SelectButton(ChessButton button, bool isNumPanel)
+    public void SelectButton(ChessButton button, bool isNumPanel) //This method selects a button and unselects any previously selected buttons
     {
         if (button.buttonName == "red")
         {
@@ -188,7 +201,7 @@ public class ChessManager : MonoBehaviour
         }
     }
 
-    public void CheckSolution()
+    public void CheckSolution() //This method checks the currently selected piece and buttons to see if they match the selected ChessSolution
     {
         if (numButtonUnSelect.IsUnityNull() || letterButtonUnSelect.IsUnityNull()) 
         { 
@@ -244,7 +257,7 @@ public class ChessManager : MonoBehaviour
 
     private void InvokeEvent() { EventManager.manager.chessCompleteEvent.Invoke(); }
 
-    private IEnumerator KnockKing(GameObject king)
+    private IEnumerator KnockKing(GameObject king) //Knocks over the king 0.5 seconds after it's been called
     {
         yield return new WaitForSeconds(0.5f);
 
@@ -280,6 +293,9 @@ public class ChessManager : MonoBehaviour
         solutionList.Add(new ChessSolution("5r1k/ppq2ppp/2p2N2/2Q5/4Bn2/2N5/PPP2P1P/6RK", 27, 6, "black"));
     }
 
+    //This struct contains a fen string that represents a chess position
+    //an int for the startposition of the correct piece and an endposition for where it's supposed to go
+    //and it contains the color of the king that is supposed to be mated
     private struct ChessSolution
     {
         public string fen;
