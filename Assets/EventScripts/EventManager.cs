@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+//EventManager written by Vilmer Juvin
+//This script handles the events
 public class EventManager : MonoBehaviour
 {
     public static EventManager manager;
@@ -21,7 +23,6 @@ public class EventManager : MonoBehaviour
     public UnityEvent chessCompleteEvent;
     public UnityEvent masterBedroom;
     public UnityEvent winEvent;
-
 
     public List<Event> commonEvents;
 
@@ -41,9 +42,9 @@ public class EventManager : MonoBehaviour
 
     public void CommonEventTest() { CommonEvent(90f); }
 
-    public void CommonEvent(float sanity)
+    public void CommonEvent(float sanity) //This method randomly picks a common event from the list that meets certain criteria
     {
-        List<Event> events = commonEvents.FindAll(t => t.sanity >= sanity);
+        List<Event> events = commonEvents.FindAll(t => t.sanity >= sanity); //Criteria 1: the player has low enough sanity
 
         if (events.Count <= 0) { return; }
 
@@ -57,7 +58,7 @@ public class EventManager : MonoBehaviour
 
             e = events[rng.Next(0, events.Count)];
 
-            if (IsVisible(camera, e.gameObject))
+            if (IsVisible(camera, e.gameObject)) //Criteria 2: checks if the camera sees the selected event, if not, picks new event
             {
                 events.Remove(e);
                 continue;

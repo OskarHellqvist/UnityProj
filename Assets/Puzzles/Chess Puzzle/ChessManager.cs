@@ -6,11 +6,10 @@ using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using Random = UnityEngine.Random;
 
+//Chessmanager written by Vilmer Juvin
+//This script creates and manages the chess puzzle
 public class ChessManager : MonoBehaviour
 {
-    //Chessmanager written by Vilmer Juvin
-    //This script creates and manages the chess puzzle
-
     //Translates an integer, representing a square on the board, to a position in the local space of the board that holds this Chessmanager
     public Dictionary<int, Vector2> numToPos = new Dictionary<int, Vector2>();
     readonly float y = 0.016f;
@@ -67,8 +66,11 @@ public class ChessManager : MonoBehaviour
         }
 
         //Selects a random position and solution
-        System.Random rng = new();
-        cs = solutionList[rng.Next(0, solutionList.Count)];
+        //System.Random rng = new();
+        //solutionList[rng.Next(0, solutionList.Count)];
+
+        //Selects the first solution in the list
+        cs = solutionList[0];
 
         //Placing all the pieces on the board
         string[] split = cs.fen.Split('/');
