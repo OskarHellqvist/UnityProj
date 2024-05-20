@@ -13,12 +13,13 @@ namespace SojaExiles
     {
         public static SanityManager manager;
 
+        [Header("External objects")]
         public GameObject flashlight;
         private PlayerMovement pMovement;
-        //public Slider slider;
         public Image insanityImage;
         public Image Fader;
 
+        [Header("Sanity")]
         [SerializeField] private float sanity = 100;
         private float decreaseValue = 2;
         private float increaseValue = 0.5f;
@@ -73,10 +74,6 @@ namespace SojaExiles
             float insTransparency = 1 - sanity / 100;
             insanityImage.color = new Color(insanityImage.color.r, insanityImage.color.g, insanityImage.color.b, insTransparency);
 
-            //if (slider != null)
-            //{
-            //    slider.value = sanity;
-            //}
         }
 
         private void OnTriggerStay(Collider other)

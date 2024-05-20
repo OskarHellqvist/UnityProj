@@ -76,7 +76,17 @@ namespace SojaExiles
             DoorAudio.Play();
             locked = false; 
 		}
-		public void LockUnlockDoor() { locked = !locked; }
+		public void LockUnlockDoor() 
+		{ 
+			if(locked)
+			{
+				UnlockDoor();
+			} 
+			else
+			{
+				LockDoor();
+			}
+		}
 
 		IEnumerator opening()
 		{
