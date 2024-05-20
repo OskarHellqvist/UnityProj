@@ -45,6 +45,10 @@ public class AudioManager2 : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+
+            s.source.spatialBlend = s.spatialBlend;
+            s.source.minDistance = s.minDistance;
+            s.source.maxDistance = s.maxDistance;
         }
     }
 

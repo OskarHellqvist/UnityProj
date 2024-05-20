@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.04111985, g: 0.07249684, b: 0.12565836, a: 1}
+  m_IndirectSpecularColor: {r: 0.041120112, g: 0.07249693, b: 0.1256583, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -29022,30 +29022,45 @@ MonoBehaviour:
     loop: 0
     volume: 1
     pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
     source: {fileID: 0}
   - name: KeypadButtonPress
     clip: {fileID: 8300000, guid: 38e146e5d709f6e478d5fe7d9d80ef76, type: 3}
     loop: 0
     volume: 1
     pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
     source: {fileID: 0}
   - name: CorrectPassword
     clip: {fileID: 8300000, guid: 05d6ff52ce30c0e44a460357e6ab00d9, type: 3}
     loop: 0
     volume: 1
     pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
     source: {fileID: 0}
   - name: OpenDrawer
     clip: {fileID: 8300000, guid: 7222c1ea5d077e7479dfa8e93e3edf39, type: 3}
     loop: 0
     volume: 1
     pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
     source: {fileID: 0}
   - name: CloseDrawer
     clip: {fileID: 8300000, guid: 85732d8cf6c38e94ea92d1b26b19d80f, type: 3}
     loop: 0
     volume: 1
     pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
     source: {fileID: 0}
 --- !u!4 &1081932702
 Transform:
