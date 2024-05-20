@@ -19,7 +19,7 @@ public class EventManager : MonoBehaviour
     public UnityEvent chessCompleteEvent;
     public UnityEvent masterBedroom;
     public UnityEvent winEvent;
-
+    public UnityEvent handEvent;
 
     public List<Event> commonEvents;
 
