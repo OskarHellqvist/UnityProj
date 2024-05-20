@@ -65,6 +65,7 @@ public class KeypadLock : MonoBehaviour
                 unlocked = true;
                 drawer.locked = false;
                 drawer.Interact();
+                FindObjectOfType<AudioManager2>().Play("CorrectPassword");
             }
             else
             {
