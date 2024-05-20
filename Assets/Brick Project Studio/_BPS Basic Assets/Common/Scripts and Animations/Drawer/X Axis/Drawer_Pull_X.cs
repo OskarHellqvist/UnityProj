@@ -43,7 +43,8 @@ namespace SojaExiles
 		{
 			pull_01.Play("openpull_01");
 			open = true;
-            FindObjectOfType<AudioManager>().Play("Drawer");
+            FindObjectOfType<AudioManager2>().Play("Open");
+            Debug.Log("Open");
             yield return new WaitForSeconds(.5f);
 		}
 
@@ -51,7 +52,7 @@ namespace SojaExiles
 		{
 			pull_01.Play("closepush_01");
 			open = false;
-            FindObjectOfType<AudioManager>().Play("Drawer");
+            FindObjectOfType<AudioManager2>().Play("Open");
             yield return new WaitForSeconds(.5f);
 		}
 

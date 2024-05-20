@@ -42,6 +42,7 @@ public class KeypadLock : MonoBehaviour
 
             inputCode += number;
             screen.SetText(inputCode);
+            FindObjectOfType<AudioManager2>().Play("ButtonPress");
         }
     }
 
@@ -70,6 +71,7 @@ public class KeypadLock : MonoBehaviour
                 ClearNumbers();
                 screen.color = Color.red;
                 screen.SetText("Incorrect");
+                FindObjectOfType<AudioManager2>().Play("WrongPassword");
             }
         }
     }
