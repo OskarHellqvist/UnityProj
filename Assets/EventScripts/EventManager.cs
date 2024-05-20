@@ -19,6 +19,9 @@ public class EventManager : MonoBehaviour
     public UnityEvent tvEvent;
     public UnityEvent chessActivateEvent;
     public UnityEvent chessCompleteEvent;
+    public UnityEvent masterBedroom;
+    public UnityEvent winEvent;
+
 
     public List<Event> commonEvents;
 
