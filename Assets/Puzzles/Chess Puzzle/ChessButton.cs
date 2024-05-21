@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//ChessButton written by Vilmer Juvin
+//This script handles the actions of the buttons on the chessboard
 public class ChessButton : MonoBehaviour
 {
     private ChessManager chessManager;
@@ -25,28 +27,23 @@ public class ChessButton : MonoBehaviour
         string name = gameObject.name;
         buttonName = name.Split(':')[1];
 
-        //if (buttonName == "3" || buttonName == "f") { EventManager.manager.AddTimer(3f, Pressed); }
-
-        //EventManager.manager.AddTimer(3f, Pressed);
-        //EventManager.manager.AddTimer(6f, Unpressed);
-
         gameObject.AddComponent<ChessButtonInteraction>();
     }
 
-    public void Pressed()
+    public void Pressed() //This method moves the button down and tells the ChessManager to select this button
     {
         chessManager.SelectButton(this, isNumPanel);
         StartCoroutine(ButtonUpDown(pressedY));
     }
 
-    public void Unpressed()
+    public void Unpressed() //This method moves the button up and removes itself from one of the buttonUnSelect events in the ChessManager
     {
         if (isNumPanel) { chessManager.numButtonUnSelect -= Unpressed; }
         else { chessManager.letterButtonUnSelect -= Unpressed; }
         StartCoroutine(ButtonUpDown(y));
     }
 
-    private IEnumerator ButtonUpDown(float targetY)
+    private IEnumerator ButtonUpDown(float targetY) //This method moves the button in local space
     {
         float time = 0f;
         float duration = 0.3f;
@@ -63,7 +60,7 @@ public class ChessButton : MonoBehaviour
         transform.localPosition = targetPos;
     }
 
-    private void DestroyInteraction()
+    private void DestroyInteraction() //Destroys the interaction script, activate this after the puzzle is finished
     {
         Destroy(GetComponent<ChessButtonInteraction>());
     }

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
+//PieceScript written by Vilmer Juvin
+//This script handles the actions of the chess pieces on the chessboard
 public class PieceScript : MonoBehaviour
 {
     private ChessManager chessManager;
-    private PieceScript script;
 
     public int position;
     public float y;
@@ -17,23 +18,21 @@ public class PieceScript : MonoBehaviour
         chessManager = gameObject.GetComponentInParent<ChessManager>();
         chessManager.destroyInteraction += DestroyInteraction;
         y = transform.localPosition.y;
-
-        //if (position == 36) { EventManager.manager.AddTimer(3f, Select); }
     }
 
-    public void Select()
+    public void Select() //This method makes the piece hover and tells the ChessManager to select this piece
     {
         chessManager.SelectPiece(this);
         StartCoroutine(HoverUpDown(hoverHeight));
     }
 
-    public void UnSelect()
+    public void UnSelect() //This method moves the piece back down and removes itself from the unselect event in the ChessManager
     {
         chessManager.unSelect -= UnSelect;
         StartCoroutine(HoverUpDown(y));
     }
 
-    private IEnumerator HoverUpDown(float targetY)
+    private IEnumerator HoverUpDown(float targetY) //This method hovers the piece up or down in local space
     {
         float time = 0f;
         float duration = 0.3f;
@@ -51,7 +50,7 @@ public class PieceScript : MonoBehaviour
     }
 
     public void StartMoveTo(Vector2 pos) { StartCoroutine(MoveTo(pos)); }
-    public IEnumerator MoveTo(Vector2 pos)
+    public IEnumerator MoveTo(Vector2 pos) //This method moves the piece to the desired location in local space
     {
         float time = 0f;
         float duration = 0.3f;
@@ -69,7 +68,7 @@ public class PieceScript : MonoBehaviour
         StartCoroutine(HoverUpDown(y));
     }
 
-    private void DestroyInteraction()
+    private void DestroyInteraction() //Destroys the interaction script, activate this after the puzzle is finished
     {
         Destroy(GetComponent<PieceInteraction>());
     }

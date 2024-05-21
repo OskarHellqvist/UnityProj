@@ -66,6 +66,11 @@ namespace SojaExiles
             
             StartCoroutine(closing()); 
 		}
+		public void OpenCloseDoor()
+		{
+			if (open) { CloseDoor(); }
+			else if (!open) { OpenDoor(); }
+		}
 		public void LockDoor() 
 		{ 
 			locked = true; 

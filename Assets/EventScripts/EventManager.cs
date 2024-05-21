@@ -17,10 +17,15 @@ public class EventManager : MonoBehaviour
     public UnityEvent tvEvent;
     public UnityEvent chessActivateEvent;
     public UnityEvent chessCompleteEvent;
+    public UnityEvent masterBedroom;
+    public UnityEvent winEvent;
+    public UnityEvent handEvent;
 
     public List<Event> commonEvents;
 
     private List<Timer> timers = new();
+
+    private float commonEventTimer = 20f;
 
     void Awake()
     {
@@ -32,6 +37,17 @@ public class EventManager : MonoBehaviour
     {
         foreach (Timer t in timers) { t.Update(Time.deltaTime); }
         timers.RemoveAll(t => t.remove);
+
+        if (commonEventTimer <= 0)
+        {
+            float sanity = SanityManager.manager.Sanity;
+            CommonEvent(sanity);
+            commonEventTimer = sanity / 5;
+        }
+        else if (commonEventTimer > 0)
+        {
+            commonEventTimer -= Time.deltaTime;
+        }
     }
 
     public void CommonEventTest() { CommonEvent(90f); }
@@ -52,8 +68,6 @@ public class EventManager : MonoBehaviour
 
             e = events[rng.Next(0, events.Count)];
 
-            Debug.Log(e.gameObject.transform.position);
-            //Vector3 vpPos = camera.WorldToViewportPoint(e.transform.position);
             if (IsVisible(camera, e.gameObject))
             {
                 events.Remove(e);
