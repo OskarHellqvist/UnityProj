@@ -29078,6 +29078,51 @@ MonoBehaviour:
     minDistance: 1
     maxDistance: 100
     source: {fileID: 0}
+  - name: CloseDoor
+    clip: {fileID: 8300000, guid: dcc8e2c98d2c08643a08bd8292c4e69e, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: OpenDoor
+    clip: {fileID: 8300000, guid: c4890a01dd533f54abb07f4b0324f3be, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: LockedDoor
+    clip: {fileID: 8300000, guid: c88470ab30760c94c8096356a4380071, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: SlidingSound
+    clip: {fileID: 8300000, guid: 0fb3c5e9338d1324ca1865e7637f895f, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: KeysPickup
+    clip: {fileID: 8300000, guid: 142ee502d0c6cfc4f86679bc64bb94ed, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
 --- !u!4 &1081932702
 Transform:
   m_ObjectHideFlags: 0

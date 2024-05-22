@@ -32,7 +32,8 @@ namespace SojaExiles
             if (!Done && Active && !m_IsRotatingAndMoving)
             {
                 StartCoroutine(RotateAndMoveMat(rotationAmount, moveDistance));
-                audioSource.Play();
+                FindObjectOfType<AudioManager2>().Play("SlidingSound", transform.position);
+                //audioSource.Play();
                 Done = true;
             }
 
