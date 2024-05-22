@@ -24,15 +24,12 @@ namespace SojaExiles
         {
             if (ReadyToPoof)
             {
-                if (!visibilityCheck.IsTargetObjectVisible())
+                if (Vector3.Distance(playerCamera.transform.position, target.transform.position) > 5
+                    && !visibilityCheck.IsTargetObjectVisible())
                 {
                     // When the target is out of player view and ready to dissapear
                     target.gameObject.SetActive(false);
                 }
-                //else
-                //{
-                //    Debug.Log($"{target.name} awaitin poof...");
-                //}
             }
         }
 
