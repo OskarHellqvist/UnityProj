@@ -90,7 +90,8 @@ namespace SojaExiles
 		{
 			//print("you are opening the door");
 			openandclose.Play("Opening");
-			yield return new WaitForSeconds(.5f);
+            FindObjectOfType<AudioManager2>().Play("OpenCabinet", transform.position);
+            yield return new WaitForSeconds(.5f);
 			open = true;
 		}
 
@@ -98,6 +99,7 @@ namespace SojaExiles
 		{
 			//print("you are closing the door");
 			openandclose.Play("Closing");
+            FindObjectOfType<AudioManager2>().Play("CloseCabinet", transform.position);
             yield return new WaitForSeconds(.5f);
 			open = false;
 		}
