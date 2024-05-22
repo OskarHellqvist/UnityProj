@@ -14,6 +14,7 @@ public class handScript : MonoBehaviour
     private Vector3 targetPosition;
     private bool shouldMove = false;
     public AudioSource girlLaugh;
+    public GameObject doll;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class handScript : MonoBehaviour
             shouldMove = true;
             key.transform.position = keyFinalPos.position;
             girlLaugh.Play();
+            doll.SetActive(true);
         }
     }
 
@@ -45,8 +47,15 @@ public class handScript : MonoBehaviour
                 shouldMove = false; // Optionally, set it to move back to the original position or perform other actions
                 Destroy(gameObject);
                 hand.SetActive(false);
+                Invoke("RemoveDoll", 3);
             }
         }
     }
+
+    private void RemoveDoll()
+    {
+        Destroy(doll);
+    }
+
 }
 
