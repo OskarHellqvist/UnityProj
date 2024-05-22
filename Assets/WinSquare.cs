@@ -43,25 +43,14 @@ public class WinSquare : MonoBehaviour
             }
         }
 
-        if (other.gameObject == falseAmulet1 || falseAmulet2)
+
+    }
+    void DestroyAmulet()
+    {
+        if (amulet != null)
         {
-            // TA BORT SANITY
-
-            // TA BORT SANITY
-
-            // TA BORT SANITY
-
-            // TA BORT SANITY
+            Destroy(amulet);
+            EventManager.manager.winEvent.Invoke();
         }
-
-        void DestroyAmulet()
-        {
-            if (amulet != null)
-            {
-                Destroy(amulet);
-                EventManager.manager.winEvent.Invoke();
-            }
-        }
-
     }
 }
