@@ -1,6 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class AudioManager2 : MonoBehaviour
 {
@@ -69,6 +70,29 @@ public class AudioManager2 : MonoBehaviour
             audioSource.maxDistance = s.maxDistance;
             audioSource.Play();
             Destroy(soundObject, s.clip.length);
+        }
+        else
+        {
+            Debug.LogError("Sound " + name + " not found!");
+        }
+    }
+
+    public void Play(string name, GameObject gameObject)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s != null)
+        {
+            
+            if (gameObject.GetComponent<AudioSource>() == null) { gameObject.AddComponent<AudioSource>(); }
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.clip = s.clip;
+            audioSource.volume = s.volume;
+            audioSource.pitch = s.pitch;
+            audioSource.loop = s.loop;
+            audioSource.spatialBlend = s.spatialBlend;
+            audioSource.minDistance = s.minDistance;
+            audioSource.maxDistance = s.maxDistance;
+            audioSource.Play();
         }
         else
         {
