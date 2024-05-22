@@ -6,7 +6,6 @@ using UnityEngine;
 public class Pickup : MonoBehaviour, Interactable
 {
     public Transform holdPos;  // The position where the object is held when picked up
-    public Transform placePos; // The position where the object will be placed
 
     private bool isHeld = false; // To track if the object is currently being held
 
