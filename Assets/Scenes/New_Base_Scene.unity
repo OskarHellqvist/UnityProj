@@ -11912,7 +11912,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdPos: {fileID: 0}
-  placePos: {fileID: 0}
 --- !u!65 &588165587
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15535,7 +15534,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdPos: {fileID: 0}
-  placePos: {fileID: 0}
 --- !u!65 &718089836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29055,6 +29053,24 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: CloseDrawer
     clip: {fileID: 8300000, guid: 85732d8cf6c38e94ea92d1b26b19d80f, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: Flashlight
+    clip: {fileID: 8300000, guid: 6ae7a4da143ac2a4b8beb90dc6c1cd0e, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: ClosetDoor
+    clip: {fileID: 8300000, guid: c54b89719983a3246be775a771974419, type: 3}
     loop: 0
     volume: 1
     pitch: 1
@@ -46791,7 +46807,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdPos: {fileID: 0}
-  placePos: {fileID: 0}
 --- !u!65 &1868224281
 BoxCollider:
   m_ObjectHideFlags: 0
