@@ -9,6 +9,7 @@ namespace SojaExiles
         public CharacterController controller;
         public GameObject flashlight;
         public GameObject ambLight;
+        private Quotes quotes;
 
         private float originalCamY; // Store the original camera Y position
         private float currentCamY; // Track the current camera Y position, considering crouch
@@ -46,6 +47,7 @@ namespace SojaExiles
 
         private void Start()
         {
+            quotes = FindObjectOfType<Quotes>();
             originalCamY = cam.localPosition.y; // Store the original Y position of the camera
             currentCamY = originalCamY; // Initialize currentCamY with originalCamY
             walkingSpeed = 3.0f;
@@ -58,6 +60,10 @@ namespace SojaExiles
 
         void Update()
         {
+            if (quotes != null && battery < 10) 
+            {
+                quotes.BatteryLow();
+            }
             if (Input.GetKeyDown(KeyCode.LeftControl))
             {
                 ToggleCrouch();
