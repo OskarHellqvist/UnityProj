@@ -1,3 +1,4 @@
+using SojaExiles;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,9 @@ public class WinSquare : MonoBehaviour
 {
 
     public GameObject amulet;
+    public GameObject falseAmulet1;
+    public GameObject falseAmulet2;
+
     public GameObject wineffect;
     public AudioSource winSound;
     public GameObject burnFx;
@@ -28,7 +32,6 @@ public class WinSquare : MonoBehaviour
 
             if (pickupScript != null && !pickupScript.IsHeld())
             {
-                EventManager.manager.winEvent.Invoke();
                 wineffect.SetActive(true);
                 burnFx.SetActive(true);
                 winSound.Play();
@@ -39,14 +42,26 @@ public class WinSquare : MonoBehaviour
                 Invoke("DestroyAmulet", 1);
             }
         }
-    }
 
-    void DestroyAmulet()
-    {
-        if( amulet != null )
+        if (other.gameObject == falseAmulet1 || falseAmulet2)
         {
-            Destroy(amulet);
-        }
-    }
+            // TA BORT SANITY
 
+            // TA BORT SANITY
+
+            // TA BORT SANITY
+
+            // TA BORT SANITY
+        }
+
+        void DestroyAmulet()
+        {
+            if (amulet != null)
+            {
+                Destroy(amulet);
+                EventManager.manager.winEvent.Invoke();
+            }
+        }
+
+    }
 }
