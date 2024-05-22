@@ -52740,6 +52740,10 @@ PrefabInstance:
       value: RainOnWindows
       objectReference: {fileID: 0}
     - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
       propertyPath: sounds.Array.data[14].pitch
       value: 1
       objectReference: {fileID: 0}
@@ -52750,6 +52754,14 @@ PrefabInstance:
     - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
       propertyPath: sounds.Array.data[16].pitch
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
       propertyPath: sounds.Array.data[14].volume
