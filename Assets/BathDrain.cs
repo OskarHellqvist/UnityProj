@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BathDrain : MonoBehaviour, Interactable
+public class BathDrain : MonoBehaviour
 {
     public float moveAmount = 2f;  // Distance the painting will move
     public float moveDuration = 15f; // Duration of the movement in seconds
