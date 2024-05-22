@@ -48,7 +48,7 @@ MonoBehaviour:
   - name: WrongPassword
     clip: {fileID: 8300000, guid: 8989889d544ebfa4bbea9455318bbb6e, type: 3}
     loop: 0
-    volume: 1
+    volume: 0.5
     pitch: 1
     spatialBlend: 1
     minDistance: 1
@@ -57,7 +57,7 @@ MonoBehaviour:
   - name: KeypadButtonPress
     clip: {fileID: 8300000, guid: 38e146e5d709f6e478d5fe7d9d80ef76, type: 3}
     loop: 0
-    volume: 1
+    volume: 0.4
     pitch: 1
     spatialBlend: 1
     minDistance: 1
@@ -66,7 +66,7 @@ MonoBehaviour:
   - name: CorrectPassword
     clip: {fileID: 8300000, guid: 05d6ff52ce30c0e44a460357e6ab00d9, type: 3}
     loop: 0
-    volume: 1
+    volume: 0.3
     pitch: 1
     spatialBlend: 1
     minDistance: 1
@@ -165,6 +165,42 @@ MonoBehaviour:
   - name: CloseCabinet
     clip: {fileID: 8300000, guid: 6a1f08659d6585743ab5d7579090f85a, type: 3}
     loop: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: RainOnWindows
+    clip: {fileID: 8300000, guid: d1d31577b78d8d74884ba49e66b2548a, type: 3}
+    loop: 1
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: WaterDrain
+    clip: {fileID: 8300000, guid: a2272f0316da26c49b3cc30b9f605a70, type: 3}
+    loop: 1
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: RainOnWindows
+    clip: {fileID: 8300000, guid: d1d31577b78d8d74884ba49e66b2548a, type: 3}
+    loop: 1
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: MaleBreathSlow
+    clip: {fileID: 8300000, guid: 37bc19acbd4dba1458ecb13bce360410, type: 3}
+    loop: 1
     volume: 1
     pitch: 1
     spatialBlend: 1
