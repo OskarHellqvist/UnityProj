@@ -3,48 +3,67 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace SojaExiles
 {
     public class Quotes : MonoBehaviour
     {
-        [SerializeField] GameObject text;
-        [SerializeField] KeyCode key;
-        private TextMesh textMesh;
-
+        public TextMeshProUGUI textMeshPro;
+        public Camera mainCamera;
+        private int textCounterSanity = 0;
+        private int textCounterBattery = 0;
         void Start()
         {
-            GameObject textObject = new GameObject("DynamicTextMesh");
-            textMesh = textObject.AddComponent<TextMesh>();
-            textMesh.text = "empty";
-            textMesh.color = Color.white;
-            textMesh.fontSize = 18;
-            // textObject.transform.position = new Vector3(0, 0, 0);
+            mainCamera = Camera.main; // Get the main camera
+
+            // Make sure the Canvas is set to World Space and position it correctly
+            textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
+            textMeshPro.text = "";
+        }
+        void Update()
+        {
+            // Ensure the canvas is always facing the camera
+            //if (textMeshPro != null)
+            //{
+            //    textMeshPro.transform.position = mainCamera.transform.position + mainCamera.transform.forward * 2;
+            //    textMeshPro.transform.rotation = mainCamera.transform.rotation;
+            //}
         }
         public void UpdateText(string newText, float duration)
         {
-            if (textMesh != null)
+            if (textMeshPro != null)
             {
-                textMesh.text = newText;
+                textMeshPro.text = newText;
                 StartCoroutine(HideTextAfterDelay(duration));
             }
         }
+
         private IEnumerator HideTextAfterDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
-            if (textMesh != null)
+            if (textMeshPro != null)
             {
-                textMesh.text = "";
+                textMeshPro.text = "";
             }
         }
+
         public void LowSanity()
         {
-            UpdateText("Detective Moore's sanity level will go down from darkness. Make sure to use your Flashlight [F] to keep his sanity at a healthy level!", 5);
-
+            if(textCounterSanity < 1)
+            {
+                UpdateText("Detective Moore's sanity level will go down from darkness. Make sure to use your Flashlight [F] to keep his sanity at a healthy level!", 5);
+                textCounterSanity++;
+            }
         }
+
         public void BatteryLow()
         {
-            UpdateText("Flashlights battery is soon depleted! Remember to use it resourcefully", 5);
+            if (textCounterBattery < 1)
+            {
+                UpdateText("Flashlights battery is soon depleted! Remember to use it resourcefully", 5);
+                textCounterBattery++;
+            }
         }
     }
 }
