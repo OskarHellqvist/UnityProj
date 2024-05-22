@@ -17,6 +17,6 @@ public class WhatIsThatStain : MonoBehaviour, Interactable
 
     public void Interact()
     {
-        AudioManager2.instance.Play("MarcoStain");
+        //FindObjectOfType<AudioManager2>().Play("MarcoStain");
     }
 }

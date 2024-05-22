@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1917418523417856782
+--- !u!1 &6368561469276898612
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5808562886069967982}
-  - component: {fileID: 981477464888412427}
+  - component: {fileID: 8003772435460742663}
+  - component: {fileID: 7052822995897412008}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5808562886069967982
+--- !u!4 &8003772435460742663
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1917418523417856782}
+  m_GameObject: {fileID: 6368561469276898612}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,76 +32,142 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &981477464888412427
+--- !u!114 &7052822995897412008
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1917418523417856782}
+  m_GameObject: {fileID: 6368561469276898612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 698b9aedcf3830f468e3307523d11c90, type: 3}
+  m_Script: {fileID: 11500000, guid: 4380280c01c3feb42a1d430ec520e93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Mat
-    clip: {fileID: 8300000, guid: 0fb3c5e9338d1324ca1865e7637f895f, type: 3}
+  - name: WrongPassword
+    clip: {fileID: 8300000, guid: 8989889d544ebfa4bbea9455318bbb6e, type: 3}
     loop: 0
     volume: 1
     pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
     source: {fileID: 0}
-  - name: Key
-    clip: {fileID: 8300000, guid: 142ee502d0c6cfc4f86679bc64bb94ed, type: 3}
+  - name: KeypadButtonPress
+    clip: {fileID: 8300000, guid: 38e146e5d709f6e478d5fe7d9d80ef76, type: 3}
     loop: 0
     volume: 1
     pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
     source: {fileID: 0}
-  - name: OpenDoor
-    clip: {fileID: 8300000, guid: c4890a01dd533f54abb07f4b0324f3be, type: 3}
+  - name: CorrectPassword
+    clip: {fileID: 8300000, guid: 05d6ff52ce30c0e44a460357e6ab00d9, type: 3}
     loop: 0
     volume: 1
     pitch: 1
-    source: {fileID: 0}
-  - name: CloseDoor
-    clip: {fileID: 8300000, guid: dcc8e2c98d2c08643a08bd8292c4e69e, type: 3}
-    loop: 0
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: LockedDoor
-    clip: {fileID: 8300000, guid: c88470ab30760c94c8096356a4380071, type: 3}
-    loop: 0
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-  - name: SlidingDoor
-    clip: {fileID: 8300000, guid: c54b89719983a3246be775a771974419, type: 3}
-    loop: 0
-    volume: 1
-    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
     source: {fileID: 0}
   - name: OpenDrawer
     clip: {fileID: 8300000, guid: 7222c1ea5d077e7479dfa8e93e3edf39, type: 3}
     loop: 0
     volume: 1
     pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
     source: {fileID: 0}
   - name: CloseDrawer
     clip: {fileID: 8300000, guid: 85732d8cf6c38e94ea92d1b26b19d80f, type: 3}
     loop: 0
     volume: 1
     pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
     source: {fileID: 0}
-  - name: HeartBeat
-    clip: {fileID: 8300000, guid: 58b74ee8e5915e34a95130f57877fc7b, type: 3}
+  - name: Flashlight
+    clip: {fileID: 8300000, guid: 6ae7a4da143ac2a4b8beb90dc6c1cd0e, type: 3}
     loop: 0
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
+  - name: ClosetDoor
+    clip: {fileID: 8300000, guid: c54b89719983a3246be775a771974419, type: 3}
     loop: 0
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: CloseDoor
+    clip: {fileID: 8300000, guid: dcc8e2c98d2c08643a08bd8292c4e69e, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: OpenDoor
+    clip: {fileID: 8300000, guid: c4890a01dd533f54abb07f4b0324f3be, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: LockedDoor
+    clip: {fileID: 8300000, guid: c88470ab30760c94c8096356a4380071, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: SlidingSound
+    clip: {fileID: 8300000, guid: 0fb3c5e9338d1324ca1865e7637f895f, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: KeysPickup
+    clip: {fileID: 8300000, guid: 142ee502d0c6cfc4f86679bc64bb94ed, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: OpenCabinet
+    clip: {fileID: 8300000, guid: 6a1f08659d6585743ab5d7579090f85a, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}
+  - name: CloseCabinet
+    clip: {fileID: 8300000, guid: 6a1f08659d6585743ab5d7579090f85a, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
     source: {fileID: 0}

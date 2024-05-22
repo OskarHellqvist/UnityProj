@@ -42,7 +42,7 @@ public class KeypadLock : MonoBehaviour
 
             inputCode += number;
             screen.SetText(inputCode);
-            FindObjectOfType<AudioManager2>().Play("KeypadButtonPress");
+            FindObjectOfType<AudioManager2>().Play("KeypadButtonPress", transform.position);
         }
     }
 
@@ -65,14 +65,14 @@ public class KeypadLock : MonoBehaviour
                 unlocked = true;
                 drawer.locked = false;
                 drawer.Interact();
-                FindObjectOfType<AudioManager2>().Play("CorrectPassword");
+                FindObjectOfType<AudioManager2>().Play("CorrectPassword", transform.position);
             }
             else
             {
                 ClearNumbers();
                 screen.color = Color.red;
                 screen.SetText("Incorrect");
-                FindObjectOfType<AudioManager2>().Play("WrongPassword");
+                FindObjectOfType<AudioManager2>().Play("WrongPassword", transform.position);
             }
         }
     }
