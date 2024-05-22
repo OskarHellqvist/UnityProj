@@ -26,7 +26,7 @@ namespace SojaExiles
 
         private float stamina = 100;
         private float staminaDepletionRate = 20;
-        private float staminaIncreseRate = 10;
+        private float staminaIncreseRate = 20;
 
         private float standingHeight; // Height when standing
         private float crouchingHeight; // Height when crouching
@@ -58,6 +58,8 @@ namespace SojaExiles
 
         void Update()
         {
+            Debug.Log($"Sanity: {SanityManager.playerInstance.Sanity}");
+
             if (Input.GetKeyDown(KeyCode.LeftControl))
             {
                 ToggleCrouch();

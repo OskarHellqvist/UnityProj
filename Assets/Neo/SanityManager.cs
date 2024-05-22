@@ -4,18 +4,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.UI;
 
 namespace SojaExiles
 {
     public class SanityManager : MonoBehaviour
     {
-        public static SanityManager manager;
+        public static SanityManager playerInstance;
 
         public GameObject flashlight;
         private PlayerMovement pMovement;
-        //public Slider slider;
         public Image insanityImage;
         public Image Fader;
 
@@ -37,13 +35,15 @@ namespace SojaExiles
         // Start is called before the first frame update
         void Start()
         {
-            manager = this;
+            playerInstance = this;
             pMovement = GetComponent<PlayerMovement>();
         }
 
         // Update is called once per frame
         void Update()
         {
+
+
             if((flashlight.activeInHierarchy && pMovement.battery > 30) || inSpawnArea)
             {
                 isDraining = false;
@@ -73,10 +73,6 @@ namespace SojaExiles
             float insTransparency = 1 - sanity / 100;
             insanityImage.color = new Color(insanityImage.color.r, insanityImage.color.g, insanityImage.color.b, insTransparency);
 
-            //if (slider != null)
-            //{
-            //    slider.value = sanity;
-            //}
         }
 
         private void OnTriggerStay(Collider other)

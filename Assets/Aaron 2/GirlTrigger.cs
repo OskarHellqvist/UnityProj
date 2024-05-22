@@ -15,7 +15,7 @@ public class GirlTrigger : MonoBehaviour
         Debug.Log("Enter");
         if (collider != null && other.gameObject.tag == "Player")
         {
-            //EventManager.manager.girlEvent.Invoke();
+            //EventManager.playerInstance.girlEvent.Invoke();
             Destroy(gameObject);
         }
     }
