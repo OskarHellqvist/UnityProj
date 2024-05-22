@@ -6,21 +6,30 @@ using UnityEngine.Events;
 using Unity.VisualScripting;
 
 namespace SojaExiles
-
 {
     public class NoteController : MonoBehaviour, Interactable
     {
         private KeyCode closeKey = KeyCode.Mouse1;
 
-        [Space(10)]
-        //[SerializeField] private PlayerMovement player;
-
         [Header("Logbook")]
         [SerializeField] private TMP_Text[] Logbook;
 
+        enum NoteType
+        {
+            Note,
+            Paper,
+            PostIt,
+            UtilityBill,
+            SpectralConvergance
+        };
+
+        [SerializeField] private NoteType noteType;
+
         [Header("UI Text")]
-        [SerializeField] private GameObject notePanel;
-        [SerializeField] private GameObject noteImageUI;
+        private GameObject canvas;
+        private NoteAssigner noteAssigner;
+        private GameObject notePanel;
+        private GameObject noteImage;
         private TMP_Text noteTextAreaUI;
         private TMP_Text TextOnNoteObj;
 
@@ -35,28 +44,49 @@ namespace SojaExiles
 
         void Start()
         {
-            TextOnNoteObj = transform.Find("text").GetComponent<TMP_Text>();
+            canvas = GameObject.Find("Canvas");
+            noteAssigner = canvas.gameObject.GetComponent<NoteAssigner>();
+
+            if (transform.childCount > 0)
+            {
+                TextOnNoteObj = transform.Find("text").GetComponent<TMP_Text>();
+            }
 
             if (TextOnNoteObj != null)
             {
                 TextOnNoteObj.text = noteText;
             }
-            
+
+            notePanel = NoteAssigner.notePanel;
 
             if (notePanel == null)
             {
-                Debug.LogError("Note panel is not assigned. Please assign the note panel GameObject in the Inspector.");
+                Debug.LogError("Note panel is not assigned");
                 return; // Exit the method if notePanel is not assigned
             }
 
-
-            if (noteImageUI.transform != null)
+            switch (noteType)
             {
-                noteTextAreaUI = noteImageUI.transform.GetChild(0).GetComponent<TMP_Text>();
-            }
-            else
+                case NoteType.Note:
+                    noteImage = NoteAssigner.noteImage;
+                    break;
+                case NoteType.Paper:
+                    noteImage = NoteAssigner.PaperImage;
+                    break;
+                case NoteType.PostIt:
+                    noteImage = NoteAssigner.PostITImage;
+                    break;
+                case NoteType.UtilityBill:
+                    noteImage = NoteAssigner.UtilityBillImage;
+                    break; 
+                case NoteType.SpectralConvergance:
+                    noteImage = NoteAssigner.SpectralConverganceImage;
+                    break;
+            } 
+            
+            if (noteImage.transform != null && transform.childCount > 0)
             {
-                Debug.LogError("NoteImage object not found under notePanel.");
+                noteTextAreaUI = noteImage.transform.GetChild(0).GetComponent<TMP_Text>();
             }
         }
 
@@ -84,7 +114,7 @@ namespace SojaExiles
             }
 
             notePanel.SetActive(true);
-            noteImageUI.SetActive(true);
+            noteImage.SetActive(true);
             openEvent.Invoke();
             isOpen = true;
         }
@@ -94,7 +124,7 @@ namespace SojaExiles
             Time.timeScale = 1f;
 
             notePanel.SetActive(false);
-            noteImageUI.SetActive(false);
+            noteImage.SetActive(false);
             isOpen = false;
             gameObject.SetActive(false);
         }
