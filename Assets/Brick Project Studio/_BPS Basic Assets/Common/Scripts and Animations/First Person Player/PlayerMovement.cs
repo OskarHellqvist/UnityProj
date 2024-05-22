@@ -34,7 +34,7 @@ namespace SojaExiles
 
         private float currentSpeed;
         private float gravity = -15f;
-        private float crouchDepth = 1f;
+        private float crouchDepth = 0.8f;
 
         // Headbob variables
         private float headbobSpeed = 14f;
@@ -102,6 +102,7 @@ namespace SojaExiles
             if (Input.GetKeyDown(KeyCode.F))
             {
                 ToggleLights(!flashlight.activeSelf);  // Pass the opposite of the current state
+                FindObjectOfType<AudioManager2>().Play("Flashlight", transform.position);
             }
 
             if (flashlight.activeSelf)

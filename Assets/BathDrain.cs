@@ -20,6 +20,7 @@ public class BathDrain : MonoBehaviour, Interactable
             Vector3 moveDirection = hasMoved ? Vector3.up * moveAmount : Vector3.down  * moveAmount;
             StartCoroutine(MovePillowSmoothly(moveDirection, moveDuration));
             hasMoved = !hasMoved; // Toggle state
+            FindObjectOfType<AudioManager2>().Play("WaterDrain", transform.position);
         }
     }
 

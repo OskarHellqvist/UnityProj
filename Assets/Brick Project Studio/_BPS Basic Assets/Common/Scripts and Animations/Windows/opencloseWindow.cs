@@ -15,7 +15,8 @@ namespace SojaExiles
 		void Start()
 		{
 			open = false;
-		}
+            FindObjectOfType<AudioManager2>().Play("RainOnWindows", transform.position);
+        }
 
 		void OnMouseOver()
 		{
