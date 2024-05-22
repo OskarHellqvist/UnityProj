@@ -13,6 +13,22 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        Global.LoadSceneGame();
+    }
+    public void LoadSceneStartMenu()
+    {
+        Global.LoadSceneStartMenu();
+    }
+    public void LoadSceneIntro()
+    {
+        Global.LoadSceneIntro();
+    }
+    public static void LoadSceneWin()
+    {
+        Global.LoadSceneWin();
+    }
+    public static void LoadSceneGameOver()
+    {
+        Global.LoadSceneGameOver();
     }
 }
