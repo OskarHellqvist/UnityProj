@@ -14,7 +14,8 @@ public class AudioManager2 : MonoBehaviour
     //You can choose to loop the sound or not
     //Go into the sript you need for the sound, example: openclosedoors
     //Input the code below where you want the sound to trigger
-    //FindObjectOfType<AudioManager2>().Play("AudioName"); //for playing a sound when something happens
+
+    //FindObjectOfType<AudioManager2>().Play("AudioName", transform.position); //for playing a sound when something happens
 
     //OBS! if you cannot hear anything it is likely that you forgot to put the volume and pitch up 
     //If you still cannot hear anything check the name in your code and scene that the are spelled exactly the same, you should get a nullreference message in the console if the names are different 
