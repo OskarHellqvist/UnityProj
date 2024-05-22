@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace SojaExiles
 {
-    public class VisibilityCheck
+    public class VisibilityCheck : MonoBehaviour
     {
         public GameObject target; // The target object we want to check visibility for
         public Camera playerCamera; // The camera used by the player

@@ -52,9 +52,4 @@ public class Pickup : MonoBehaviour, Interactable
         }
     }
 
-    public bool IsHeld()
-    {
-        return isHeld;
-    }
-
 }

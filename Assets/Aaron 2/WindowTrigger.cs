@@ -15,7 +15,7 @@ public class WindowTrigger : MonoBehaviour
         Debug.Log("Enter");
         if (collider != null && other.gameObject.tag == "Player")
         {
-            //EventManager.playerInstance.windowEvent.Invoke();
+            //EventManager.manager.windowEvent.Invoke();
             Destroy(gameObject);
         }
     }

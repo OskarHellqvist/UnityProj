@@ -11,7 +11,7 @@ public class EventManager : MonoBehaviour
 
     // To add a new event, create a new UnityEvent
     // Then add all subscribers in the editor
-    // To trigger the event, access EventManager.playerInstance.(eventName).Invoke() through any script
+    // To trigger the event, access EventManager.manager.(eventName).Invoke() through any script
     public UnityEvent entryEvent;
     public UnityEvent mannequinEvent1;
     public UnityEvent tvEvent;
@@ -40,7 +40,7 @@ public class EventManager : MonoBehaviour
 
         if (commonEventTimer <= 0)
         {
-            float sanity = SanityManager.playerInstance.Sanity;
+            float sanity = SanityManager.manager.Sanity;
             CommonEvent(sanity);
             commonEventTimer = sanity / 5;
         }
