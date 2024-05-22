@@ -30,17 +30,17 @@ public class WinSquare : MonoBehaviour
         {
             Pickup pickupScript = amulet.GetComponent<Pickup>();
 
-            if (pickupScript != null && !pickupScript.IsHeld())
-            {
-                wineffect.SetActive(true);
-                burnFx.SetActive(true);
-                winSound.Play();
-                amulet.transform.position = burnPos.position;
+            //if (pickupScript != null && !pickupScript.IsHeld())
+            //{
+            //    wineffect.SetActive(true);
+            //    burnFx.SetActive(true);
+            //    winSound.Play();
+            //    amulet.transform.position = burnPos.position;
 
-                collider.enabled = false;
+            //    collider.enabled = false;
 
-                Invoke("DestroyAmulet", 1);
-            }
+            //    Invoke("DestroyAmulet", 1);
+            //}
         }
 
         if (other.gameObject == falseAmulet1 || falseAmulet2)
