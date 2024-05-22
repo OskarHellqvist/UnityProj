@@ -29123,7 +29123,7 @@ MonoBehaviour:
     minDistance: 1
     maxDistance: 100
     source: {fileID: 0}
-  - name: CabinetOpen
+  - name: OpenCabinet
     clip: {fileID: 8300000, guid: 6a1f08659d6585743ab5d7579090f85a, type: 3}
     loop: 0
     volume: 1
@@ -29132,7 +29132,7 @@ MonoBehaviour:
     minDistance: 1
     maxDistance: 100
     source: {fileID: 0}
-  - name: CabinetClose
+  - name: CloseCabinet
     clip: {fileID: 8300000, guid: 6a1f08659d6585743ab5d7579090f85a, type: 3}
     loop: 0
     volume: 1
