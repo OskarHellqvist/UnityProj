@@ -16,14 +16,14 @@ namespace SojaExiles
         void Start()
         {
             mainCamera = Camera.main; // Get the main camera
-
             // Make sure the Canvas is set to World Space and position it correctly
             textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
-            textMeshPro.text = "";
+            textMeshPro.text = " ";
+            Debug.Log(textMeshPro);
         }
         void Update()
         {
-            // Ensure the canvas is always facing the camera
+            // Ensure the canvas is always facing the cameraw
             //if (textMeshPro != null)
             //{
             //    textMeshPro.transform.position = mainCamera.transform.position + mainCamera.transform.forward * 2;
@@ -34,6 +34,7 @@ namespace SojaExiles
         {
             if (textMeshPro != null)
             {
+                Debug.Log("cumon");
                 textMeshPro.text = newText;
                 StartCoroutine(HideTextAfterDelay(duration));
             }
