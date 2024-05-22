@@ -11,6 +11,7 @@ namespace SojaExiles
 {
     public class SanityManager : MonoBehaviour
     {
+        private Quotes quotes;
         public static SanityManager manager;
 
         public GameObject flashlight;
@@ -39,11 +40,13 @@ namespace SojaExiles
         {
             manager = this;
             pMovement = GetComponent<PlayerMovement>();
+            quotes = FindObjectOfType<Quotes>();
         }
 
         // Update is called once per frame
         void Update()
         {
+            if ( quotes != null && sanity < 40) { quotes.LowSanity(); }
             if((flashlight.activeInHierarchy && pMovement.battery > 30) || inSpawnArea)
             {
                 isDraining = false;
