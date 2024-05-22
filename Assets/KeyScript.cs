@@ -32,8 +32,10 @@ namespace SojaExiles
         private IEnumerator PlayAudioAndDisable()
         {
             // Play the audio
-            audioSource.clip = klirrSound;
-            audioSource.Play();
+            //audioSource.clip = klirrSound;
+            //audioSource.Play();
+
+            FindObjectOfType<AudioManager2>().Play("KeysPickup", transform.position);
 
             // Temp--------------------------------
             doorScript.UnlockDoor();

@@ -6,6 +6,7 @@ public class TvScript : MonoBehaviour
 {
     BoxCollider collider;
     public GameObject videoScreen;
+    public GameObject blackScreen;
 
     void Start()
     {
@@ -16,14 +17,23 @@ public class TvScript : MonoBehaviour
     {
         if (collider != null)
         {
-            StartCoroutine(ActivateTvEventTemporarily());
+            ActivateTvEventTemporarily();
         }
     }
 
-    IEnumerator ActivateTvEventTemporarily()
+    public void ActivateTvEventTemporarily()
     {
-        EventManager.manager.tvEvent.Invoke(); 
-        Destroy(gameObject); 
-        yield return new WaitForSeconds(5);    
+        EventManager.manager.tvEvent.Invoke();
+        Invoke("ReplaceTv", 5);
+
+
+        Destroy(collider);
     }
+
+    private void ReplaceTv()
+    {
+        Destroy(videoScreen);
+        blackScreen.SetActive(true);
+    }
+
 }

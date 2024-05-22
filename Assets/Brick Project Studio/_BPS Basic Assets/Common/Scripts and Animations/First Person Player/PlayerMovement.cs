@@ -98,6 +98,7 @@ namespace SojaExiles
             if (Input.GetKeyDown(KeyCode.F))
             {
                 ToggleLights(!flashlight.activeSelf);  // Pass the opposite of the current state
+                FindObjectOfType<AudioManager2>().Play("Flashlight", transform.position);
             }
 
             if (flashlight.activeSelf)
