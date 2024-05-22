@@ -52701,7 +52701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
       propertyPath: sounds.Array.size
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
       propertyPath: sounds.Array.data[14].clip
@@ -52721,7 +52721,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: a2272f0316da26c49b3cc30b9f605a70, type: 3}
     - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
       propertyPath: sounds.Array.data[15].loop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
       propertyPath: sounds.Array.data[15].name
@@ -52730,13 +52730,25 @@ PrefabInstance:
     - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
       propertyPath: sounds.Array.data[16].clip
       value: 
-      objectReference: {fileID: 8300000, guid: d1d31577b78d8d74884ba49e66b2548a, type: 3}
+      objectReference: {fileID: 8300000, guid: 58b74ee8e5915e34a95130f57877fc7b, type: 3}
     - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
       propertyPath: sounds.Array.data[16].loop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
       propertyPath: sounds.Array.data[16].name
+      value: HeartBeat
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
+      propertyPath: sounds.Array.data[17].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d1d31577b78d8d74884ba49e66b2548a, type: 3}
+    - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
+      propertyPath: sounds.Array.data[17].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
+      propertyPath: sounds.Array.data[17].name
       value: RainOnWindows
       objectReference: {fileID: 0}
     - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
@@ -52752,6 +52764,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
+      propertyPath: sounds.Array.data[17].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
       propertyPath: sounds.Array.data[14].volume
       value: 1
       objectReference: {fileID: 0}
@@ -52761,6 +52777,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
       propertyPath: sounds.Array.data[16].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
+      propertyPath: sounds.Array.data[17].volume
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
@@ -52788,6 +52808,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
+      propertyPath: sounds.Array.data[17].maxDistance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
+      propertyPath: sounds.Array.data[17].minDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
       propertyPath: sounds.Array.data[7].spatialBlend
       value: 0.8
       objectReference: {fileID: 0}
@@ -52809,6 +52837,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
       propertyPath: sounds.Array.data[16].spatialBlend
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
+      propertyPath: sounds.Array.data[17].spatialBlend
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
