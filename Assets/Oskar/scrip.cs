@@ -4,32 +4,14 @@ using UnityEngine;
 
 public class Win : MonoBehaviour
 {
-    BoxCollider collider;
-
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject player;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (collider != null)
+        if (other.gameObject == player)
         {
-            FadeToEndScreen();
+            Global.LoadSceneWin();
+            Destroy(gameObject);
         }
     }
-
-    public void FadeToEndScreen()
-    {
-        Global.LoadSceneWin();
-        Destroy(gameObject);
-    }
-
 }
