@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.041120112, g: 0.07249693, b: 0.1256583, a: 1}
+  m_IndirectSpecularColor: {r: 0.04111985, g: 0.07249684, b: 0.12565836, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1130,7 +1130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7296751938604968511, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
       propertyPath: locked
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8128322320853617336, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
       propertyPath: m_RootOrder
@@ -1850,7 +1850,7 @@ MonoBehaviour:
   klirrSound: {fileID: 8300000, guid: 142ee502d0c6cfc4f86679bc64bb94ed, type: 3}
   audioSource: {fileID: 408027095}
   homeKey: {fileID: 83439238}
-  doorToOpen: {fileID: 580787676}
+  doorToOpen: {fileID: 1627412473}
 --- !u!23 &83439242
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13338,35 +13338,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.843
+      value: -9.2476
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.992
+      value: 4.6228
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.002
+      value: -2.841
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70710546
+      value: 0.6284063
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0011148433
+      value: -0.324199
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071063
+      value: -0.62840706
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0011148443
+      value: -0.32419935
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 180.181
+      value: 234.579
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -16779,7 +16779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7296751938604968511, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
       propertyPath: locked
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8128322320853617336, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
       propertyPath: m_RootOrder
@@ -18418,7 +18418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7296751938604968511, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
       propertyPath: locked
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8128322320853617336, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
       propertyPath: m_RootOrder
@@ -43431,7 +43431,7 @@ MonoBehaviour:
   klirrSound: {fileID: 8300000, guid: 142ee502d0c6cfc4f86679bc64bb94ed, type: 3}
   audioSource: {fileID: 408027095}
   homeKey: {fileID: 1525772058}
-  doorToOpen: {fileID: 1627412473}
+  doorToOpen: {fileID: 580787676}
 --- !u!23 &1525772062
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -44880,7 +44880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7296751938604968511, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
       propertyPath: locked
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8128322320853617336, guid: e9a47cdb5968d66499f6b4ee53467cd4, type: 3}
       propertyPath: m_RootOrder
@@ -54016,39 +54016,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.259
+      value: -6.9422
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.644
+      value: 4.9853
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.821
+      value: 7.1175
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6264235
+      value: 0.99998754
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.32801396
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.6264241
+      value: 0.0049996674
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.32801437
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 235.276
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 180.573
       objectReference: {fileID: 0}
     - target: {fileID: 6470495524527229118, guid: 4840785656b16f349b760c8c9444cd47, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
