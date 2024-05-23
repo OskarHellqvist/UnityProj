@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class TvScript : MonoBehaviour
 {
+
+
     BoxCollider collider;
     public GameObject videoScreen;
+    public GameObject blackScreen;
+
 
     void Start()
     {
@@ -16,14 +20,21 @@ public class TvScript : MonoBehaviour
     {
         if (collider != null)
         {
-            StartCoroutine(ActivateTvEventTemporarily());
+            ActivateTvEventTemporarily();
         }
     }
 
-    IEnumerator ActivateTvEventTemporarily()
+    public void ActivateTvEventTemporarily()
     {
         EventManager.manager.tvEvent.Invoke(); 
-        Destroy(gameObject); 
-        yield return new WaitForSeconds(5);    
+        Invoke("ReplaceTv", 5);
     }
+
+    public void ReplaceTv()
+    {
+        Destroy(videoScreen);
+        blackScreen.SetActive(true);
+        Destroy(gameObject);
+    }
+
 }
