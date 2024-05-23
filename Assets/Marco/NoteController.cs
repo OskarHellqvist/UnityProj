@@ -33,6 +33,11 @@ namespace SojaExiles
         private TMP_Text noteTextAreaUI;
         private TMP_Text TextOnNoteObj;
 
+        [Header("OPTIONAL")]
+        [SerializeField] private TMP_FontAsset alternativeFont;
+        [SerializeField] private Color textColor;
+        [SerializeField] private bool disappearOnPickup;
+
         [Space(10)]
         [SerializeField][TextArea] private string noteText;
 
@@ -46,6 +51,7 @@ namespace SojaExiles
         {
             canvas = GameObject.Find("Canvas");
             noteAssigner = canvas.gameObject.GetComponent<NoteAssigner>();
+
 
             if (transform.childCount > 0)
             {
@@ -78,21 +84,43 @@ namespace SojaExiles
                     break;
                 case NoteType.UtilityBill:
                     noteImage = NoteAssigner.UtilityBillImage;
-                    break; 
+                    break;
                 case NoteType.SpectralConvergance:
                     noteImage = NoteAssigner.SpectralConverganceImage;
                     break;
-            } 
-            
+            }
+
             if (noteImage.transform != null && transform.childCount > 0)
             {
                 noteTextAreaUI = noteImage.transform.GetChild(0).GetComponent<TMP_Text>();
+            }
+
+            if (alternativeFont != null && noteText != "")
+            {
+                TextOnNoteObj.color = textColor;
+                TextOnNoteObj.font = alternativeFont;
+            }
+            else if (noteTextAreaUI != null && TextOnNoteObj != null)
+            {
+                noteTextAreaUI.color = TextOnNoteObj.color;
+                noteTextAreaUI.font = TextOnNoteObj.font;
             }
         }
 
 
         public void Interact()
         {
+            if (alternativeFont != null && noteText != "")
+            {
+                noteTextAreaUI.color = textColor;
+                noteTextAreaUI.font = alternativeFont;
+            }
+            else if (noteTextAreaUI != null && TextOnNoteObj != null)
+            {
+                noteTextAreaUI.color = TextOnNoteObj.color;
+                noteTextAreaUI.font = TextOnNoteObj.font;
+            }
+
             ShowNote();
             //AddNoteToLog();
             audioSource.Play();
@@ -126,7 +154,10 @@ namespace SojaExiles
             notePanel.SetActive(false);
             noteImage.SetActive(false);
             isOpen = false;
-            gameObject.SetActive(false);
+            if (disappearOnPickup)
+            {
+                gameObject.SetActive(false);
+            }
         }
 
         // Update is called once per frame

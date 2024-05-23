@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class NoteAssigner : MonoBehaviour
 {
-    [SerializeField] public static GameObject notePanel;
-    [SerializeField] public static GameObject noteImage;
-    [SerializeField] public static GameObject PaperImage;
-    [SerializeField] public static GameObject PostITImage;
-    [SerializeField] public static GameObject UtilityBillImage;
-    [SerializeField] public static GameObject SpectralConverganceImage;
+    public static GameObject notePanel;
+    public static GameObject noteImage;
+    public static GameObject PaperImage;
+    public static GameObject PostITImage;
+    public static GameObject UtilityBillImage;
+    public static GameObject SpectralConverganceImage;
 
     void Start()
     {
