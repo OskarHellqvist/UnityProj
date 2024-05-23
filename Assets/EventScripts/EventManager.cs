@@ -2,6 +2,7 @@ using SojaExiles;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -28,12 +29,21 @@ public class EventManager : MonoBehaviour
 
     private List<Timer> timers = new();
 
-    private float commonEventTimer = 120f;
+    private float commonEventTimer = 60f;
+
+    private GameObject left;
+    private GameObject right;
 
     void Awake()
     {
         manager = this;
         commonEventOn = false;
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        List<Transform> list = player.GetComponentsInChildren<Transform>().ToList();
+
+        left = list.Find(x => x.name == "Left").gameObject;
+        right = list.Find(x => x.name == "Right").gameObject;
     }
 
     void Update()
@@ -63,7 +73,7 @@ public class EventManager : MonoBehaviour
 
     public void CommonEvent(float sanity)
     {
-        //List<Event> events = commonEvents.FindAll(t => t.name == "SoundTest");
+        //List<Event> events = commonEvents.FindAll(t => t.name == "MaleBreathSlow");
         List<Event> events = commonEvents.FindAll(t => t.sanity >= sanity);
 
         if (events.Count <= 0) { return; }
@@ -117,7 +127,10 @@ public class EventManager : MonoBehaviour
         float temp = rng.Next(0, 2); 
         if (temp == 0) { temp = -1; }
         Debug.Log(temp);
-        AudioManager2.instance.Play(soundName, player.TransformPoint(new Vector3(2, 0, 0) * temp));
+
+        GameObject ob;
+        if (temp == 1) { ob = right; } else { ob = left; }
+        AudioManager2.instance.Play(soundName, ob);
     }
 
     public void AddTimer(float time, Action callback) { timers.Add(new Timer(time, callback)); }

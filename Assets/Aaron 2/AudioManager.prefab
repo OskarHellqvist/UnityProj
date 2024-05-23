@@ -200,7 +200,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: MaleBreathSlow
     clip: {fileID: 8300000, guid: 37bc19acbd4dba1458ecb13bce360410, type: 3}
-    loop: 1
+    loop: 0
     volume: 1
     pitch: 1
     spatialBlend: 1
