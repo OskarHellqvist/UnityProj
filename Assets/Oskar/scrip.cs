@@ -17,18 +17,19 @@ public class Win : MonoBehaviour
     {
         
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (collider != null)
         {
             FadeToEndScreen();
-            Destroy(gameObject);
         }
     }
 
     public void FadeToEndScreen()
     {
         Global.LoadSceneWin();
+        Destroy(gameObject);
     }
 
 }
