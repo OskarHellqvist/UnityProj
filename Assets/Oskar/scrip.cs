@@ -10,7 +10,7 @@ public class Win : MonoBehaviour
     {
         if (other.gameObject == player)
         {
-            Global.LoadSceneWin();
+            Global.LoadScene_Win();
             Destroy(gameObject);
         }
     }

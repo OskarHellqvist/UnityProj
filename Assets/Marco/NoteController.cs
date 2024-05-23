@@ -123,7 +123,6 @@ namespace SojaExiles
 
             ShowNote();
             //AddNoteToLog();
-            audioSource.Play();
         }
 
         public void AddNoteToLog()
@@ -134,17 +133,22 @@ namespace SojaExiles
 
         public void ShowNote()
         {
-            Time.timeScale = 0f;
-
-            if (noteTextAreaUI != null)
+            if (isOpen == false)
             {
-                noteTextAreaUI.text = noteText;
-            }
+                audioSource.Play();
 
-            notePanel.SetActive(true);
-            noteImage.SetActive(true);
-            openEvent.Invoke();
-            isOpen = true;
+                Time.timeScale = 0f;
+
+                if (noteTextAreaUI != null)
+                {
+                    noteTextAreaUI.text = noteText;
+                }
+
+                notePanel.SetActive(true);
+                noteImage.SetActive(true);
+                openEvent.Invoke();
+                isOpen = true;
+            }
         }
 
         void DisableNote()

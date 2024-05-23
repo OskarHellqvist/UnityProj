@@ -46,7 +46,9 @@ namespace SojaExiles
         // Update is called once per frame
         void Update()
         {
+            // Reference to
             if ( quotes != null && sanity < 40) { quotes.LowSanity(); }
+
             if((flashlight.activeInHierarchy && pMovement.battery > 30) || inSpawnArea)
             {
                 isDraining = false;
@@ -67,7 +69,7 @@ namespace SojaExiles
             
             if (sanity <= 0)
             {
-                StartCoroutine(FadeToBlack());
+                Global.LoadScene_GameOver();
             }
 
             // Limits sanity between 0 - 100
@@ -76,10 +78,6 @@ namespace SojaExiles
             float insTransparency = 1 - sanity / 100;
             insanityImage.color = new Color(insanityImage.color.r, insanityImage.color.g, insanityImage.color.b, insTransparency);
 
-            //if (slider != null)
-            //{
-            //    slider.value = sanity;
-            //}
         }
 
         private void OnTriggerStay(Collider other)
@@ -118,7 +116,7 @@ namespace SojaExiles
                 yield return null; // Yield execution to the next frame.
             }
 
-            Global.LoadSceneGameOver();
+            Global.LoadScene_GameOver();
             Global.UnlockMouse();
         }
 

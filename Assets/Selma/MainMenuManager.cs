@@ -10,24 +10,24 @@ public class MainMenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+    public void StartIntro()
+    {
+        Global.LoadScene_Intro();
+    }
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        Global.LoadScene_Game();
     }
-    public void LoadSceneStartMenu()
+    public void GoToStartMenu()
     {
-        Global.LoadSceneStartMenu();
+        Global.LoadScene_StartMenu();
     }
-    public void LoadSceneIntro()
+    public static void GoToWinScene()
     {
-        Global.LoadSceneIntro();
+        Global.LoadScene_Win();
     }
-    public static void LoadSceneWin()
+    public static void GoToGameOverScene()
     {
-        Global.LoadSceneWin();
-    }
-    public static void LoadSceneGameOver()
-    {
-        Global.LoadSceneGameOver();
+        Global.LoadScene_GameOver();
     }
 }

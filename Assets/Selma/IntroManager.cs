@@ -9,10 +9,14 @@ public class IntroManager : MonoBehaviour
     public GameObject infoText;
 
     bool loadingStarted = false;
+    AsyncOperation asyncOperation;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
+        // Ensure infoText is initially deactivated
+        infoText.SetActive(false);
 
         // Start loading the scene asynchronously when the intro scene starts
         if (!loadingStarted)
@@ -23,29 +27,36 @@ public class IntroManager : MonoBehaviour
 
     void Update()
     {
-        if (!audioSource.isPlaying)
+        // Display infoText when the audio stops playing
+        if (!audioSource.isPlaying && !infoText.activeSelf)
         {
             infoText.SetActive(true);
         }
+
+        //// Check for input to activate the scene if loading is complete
+        //if (asyncOperation != null && asyncOperation.progress >= 0.9f && !audioSource.isPlaying)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.S))
+        //    {
+        //        Global.LoadScene_Game(); // Trigger the Global scene loading function
+        //    }
+        //}
     }
 
     IEnumerator LoadScene()
     {
         loadingStarted = true; // Set loadingStarted to true to prevent multiple loading attempts
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(2);
+        asyncOperation = SceneManager.LoadSceneAsync(2);
         asyncOperation.allowSceneActivation = false;
 
-        while (!asyncOperation.isDone)
+        // Wait until the scene is loaded (90% progress)
+        while (asyncOperation.progress < 0.9f)
         {
-            if (asyncOperation.progress >= 0.9f)
-            {
-                if ((!audioSource.isPlaying && Input.GetKeyDown(KeyCode.E)) || Input.GetKeyDown(KeyCode.S))
-                {
-                    asyncOperation.allowSceneActivation = true;
-                }
-            }
-
             yield return null;
         }
+
+        // The scene has finished loading but is not activated
+        yield return new WaitUntil(() => (!audioSource.isPlaying && Input.GetKeyDown(KeyCode.E)) || Input.GetKeyDown(KeyCode.S));
+        Global.LoadScene_Game();
     }
 }
