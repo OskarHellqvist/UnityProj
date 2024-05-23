@@ -121,8 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Logbook: []
-  notePanel: {fileID: 0}
-  noteImageUI: {fileID: 0}
+  noteType: 2
   noteText: 
   openEvent:
     m_PersistentCalls:

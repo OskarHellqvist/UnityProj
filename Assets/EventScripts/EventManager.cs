@@ -19,18 +19,21 @@ public class EventManager : MonoBehaviour
     public UnityEvent chessCompleteEvent;
     public UnityEvent masterBedroom;
     public UnityEvent winEvent;
+    public UnityEvent lowSanity;
+    public UnityEvent lowBattery;
     public UnityEvent handEvent;
 
+    private bool commonEventOn;
     public List<Event> commonEvents;
 
     private List<Timer> timers = new();
 
-    private float commonEventTimer = 20f;
+    private float commonEventTimer = 120f;
 
     void Awake()
     {
         manager = this;
-        AddTimer(10f, CommonEventTest);
+        commonEventOn = false;
     }
 
     void Update()
@@ -38,11 +41,15 @@ public class EventManager : MonoBehaviour
         foreach (Timer t in timers) { t.Update(Time.deltaTime); }
         timers.RemoveAll(t => t.remove);
 
+        if (!commonEventOn) { return; }
+
         if (commonEventTimer <= 0)
         {
             float sanity = SanityManager.manager.Sanity;
             CommonEvent(sanity);
-            commonEventTimer = sanity / 5;
+            float equation = 3.1f * MathF.Pow(1.03f, 1.23f * sanity) - 3.1f;
+            commonEventTimer = Math.Clamp(equation, 0.5f, float.PositiveInfinity);
+            Debug.Log(commonEventTimer);
         }
         else if (commonEventTimer > 0)
         {
@@ -50,10 +57,13 @@ public class EventManager : MonoBehaviour
         }
     }
 
+    public void CommonEventOn() { commonEventOn = true; }
+
     public void CommonEventTest() { CommonEvent(90f); }
 
     public void CommonEvent(float sanity)
     {
+        //List<Event> events = commonEvents.FindAll(t => t.name == "SoundTest");
         List<Event> events = commonEvents.FindAll(t => t.sanity >= sanity);
 
         if (events.Count <= 0) { return; }
@@ -68,6 +78,8 @@ public class EventManager : MonoBehaviour
 
             e = events[rng.Next(0, events.Count)];
 
+            if (e.gameObject == null) { break; }
+
             if (IsVisible(camera, e.gameObject))
             {
                 events.Remove(e);
@@ -78,6 +90,8 @@ public class EventManager : MonoBehaviour
                 break;
             }
         }
+
+        e.unityEvent.Invoke();
 
         bool IsVisible(Camera c, GameObject target)
         {
@@ -93,8 +107,17 @@ public class EventManager : MonoBehaviour
             }
             return true;
         }
+    }
 
-        e.unityEvent.Invoke();
+    public void PlaySoundFromRandomSide(string soundName)
+    {
+        if (soundName == null) { return; }
+        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+        System.Random rng = new();
+        float temp = rng.Next(0, 2); 
+        if (temp == 0) { temp = -1; }
+        Debug.Log(temp);
+        AudioManager2.instance.Play(soundName, player.TransformPoint(new Vector3(2, 0, 0) * temp));
     }
 
     public void AddTimer(float time, Action callback) { timers.Add(new Timer(time, callback)); }
