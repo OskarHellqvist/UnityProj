@@ -1,6 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class AudioManager2 : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class AudioManager2 : MonoBehaviour
     
     public static AudioManager2 instance;
 
+    private Dictionary<string, float> lastPlayedTimes;
+
     void Awake()
     {
         //Destroy if AudioManager duplicates
@@ -34,9 +37,9 @@ public class AudioManager2 : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        // Do not destroy between scenes
-        DontDestroyOnLoad(gameObject);
+       
+        DontDestroyOnLoad(gameObject); // Do not destroy between scenes
+        lastPlayedTimes = new Dictionary<string, float>();
 
         foreach (Sound s in sounds)
         {
@@ -50,31 +53,30 @@ public class AudioManager2 : MonoBehaviour
             s.source.spatialBlend = s.spatialBlend;
             s.source.minDistance = s.minDistance;
             s.source.maxDistance = s.maxDistance;
+
+            lastPlayedTimes[s.name] = -s.clip.length; // Initialize with negative clip length to allow immediate play
         }
     }
 
     public void Play(string name, Vector3 position)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s != null)
+        if (s == null)
         {
-            GameObject soundObject = new GameObject("Sound_" + name);
-            soundObject.transform.position = position;
-            AudioSource audioSource = soundObject.AddComponent<AudioSource>();
-            audioSource.clip = s.clip;
-            audioSource.volume = s.volume;
-            audioSource.pitch = s.pitch;
-            audioSource.loop = s.loop;
-            audioSource.spatialBlend = s.spatialBlend;
-            audioSource.minDistance = s.minDistance;
-            audioSource.maxDistance = s.maxDistance;
-            audioSource.Play();
-            Destroy(soundObject, s.clip.length);
+            Debug.LogError($"Sound {name} not found!");
+            return;
         }
-        else
+
+        float elapsed = Time.time - lastPlayedTimes[name];
+        if (elapsed < s.clip.length)
         {
-            Debug.LogError("Sound " + name + " not found!");
+            Debug.Log($"Sound {name} is still playing!");
+            return;
         }
+
+        s.source.transform.position = position;
+        s.source.Play();
+        lastPlayedTimes[name] = Time.time;
     }
 
     public void SetVolume(string name, float volume)
