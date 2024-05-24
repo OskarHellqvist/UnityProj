@@ -207,3 +207,12 @@ MonoBehaviour:
     minDistance: 1
     maxDistance: 100
     source: {fileID: 0}
+  - name: DoorKnockShort
+    clip: {fileID: 8300000, guid: 5aa405fc7b088834eb390cedbbe2dfc7, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    minDistance: 1
+    maxDistance: 100
+    source: {fileID: 0}

@@ -6,6 +6,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
+//EventManager written by Vilmer Juvin
+//This script creates and manages all the major and common events
 public class EventManager : MonoBehaviour
 {
     public static EventManager manager;
