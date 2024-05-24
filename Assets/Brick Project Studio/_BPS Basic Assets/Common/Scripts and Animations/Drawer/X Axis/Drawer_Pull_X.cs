@@ -7,29 +7,33 @@ namespace SojaExiles
 
 {
 
-	public class Drawer_Pull_X : MonoBehaviour, Interactable
-	{
+    public class Drawer_Pull_X : MonoBehaviour, Interactable
+    {
 
-		public Animator pull_01;
-		public bool open;
-		public Transform Player;
+        public Animator pull_01;
+        public bool open;
+        public Transform Player;
+        private bool isAnimating;
 
         public bool locked = false;
 
         void Start()
-		{
-			open = false;
-		}
+        {
+            open = false;
+        }
 
         public void Interact()
         {
-            if (open == false && !locked)
+            if (!isAnimating)
             {
-                StartCoroutine(opening());
-            }
-            else if (open == true)
-            {
-                StartCoroutine(closing());
+                if (!open && !locked)
+                {
+                    StartCoroutine(opening());
+                }
+                else if (open)
+                {
+                    StartCoroutine(closing());
+                }
             }
         }
 
@@ -40,22 +44,26 @@ namespace SojaExiles
         public void LockUnlockDoor() { locked = !locked; }
 
         IEnumerator opening()
-		{
-			pull_01.Play("openpull_01");
-			open = true;
+        {
+            isAnimating = true;
+            pull_01.Play("openpull_01");
+            open = true;
             FindObjectOfType<AudioManager2>().Play("OpenDrawer", transform.position);
             Debug.Log("Open");
-            yield return new WaitForSeconds(.5f);
-		}
+            yield return new WaitForSeconds(1.5f);
+            isAnimating = false;
+        }
 
-		IEnumerator closing()
-		{
-			pull_01.Play("closepush_01");
-			open = false;
+        IEnumerator closing()
+        {
+            isAnimating = true;
+            pull_01.Play("closepush_01");
+            open = false;
             FindObjectOfType<AudioManager2>().Play("CloseDrawer", transform.position);
-            yield return new WaitForSeconds(.5f);
-		}
+            yield return new WaitForSeconds(1.5f);
+            isAnimating = false;
+        }
 
 
-	}
+    }
 }

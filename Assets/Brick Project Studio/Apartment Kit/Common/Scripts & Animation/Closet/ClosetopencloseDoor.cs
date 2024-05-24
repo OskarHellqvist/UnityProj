@@ -6,29 +6,33 @@ using UnityEngine;
 namespace SojaExiles
 
 {
-	public class ClosetopencloseDoor : MonoBehaviour, Interactable
-	{
+    public class ClosetopencloseDoor : MonoBehaviour, Interactable
+    {
 
-		public Animator Closetopenandclose;
-		public bool open;
-		public Transform Player;
+        public Animator Closetopenandclose;
+        public bool open;
+        public Transform Player;
 
         public bool locked = false;
+        private bool isAnimating = false;
 
         void Start()
-		{
-			open = false;
-		}
+        {
+            open = false;
+        }
 
         public void Interact()
         {
-            if (open == false && !locked)
+            if (!isAnimating)
             {
-                StartCoroutine(opening());
-            }
-            else if (open == true)
-            {
-                StartCoroutine(closing());
+                if (!open && !locked)
+                {
+                    StartCoroutine(opening());
+                }
+                else if (open)
+                {
+                    StartCoroutine(closing());
+                }
             }
         }
 
@@ -38,21 +42,25 @@ namespace SojaExiles
         public void UnlockDoor() { locked = false; }
         public void LockUnlockDoor() { locked = !locked; }
         IEnumerator opening()
-		{
-			Closetopenandclose.Play("ClosetOpening");
+        {
+            isAnimating = true;
+            Closetopenandclose.Play("ClosetOpening");
             FindObjectOfType<AudioManager2>().Play("ClosetDoor", transform.position);
-            yield return new WaitForSeconds(.5f);
-			open = true;
-		}
+            yield return new WaitForSeconds(1.5f);
+            open = true;
+            isAnimating = false;
+        }
 
-		IEnumerator closing()
-		{
-			Closetopenandclose.Play("ClosetClosing");
+        IEnumerator closing()
+        {
+            isAnimating = true;
+            Closetopenandclose.Play("ClosetClosing");
             FindObjectOfType<AudioManager2>().Play("ClosetDoor", transform.position);
-            yield return new WaitForSeconds(.5f);
-			open = false;
-		}
+            yield return new WaitForSeconds(1.5f);
+            open = false;
+            isAnimating = false;
+        }
 
 
-	}
+    }
 }

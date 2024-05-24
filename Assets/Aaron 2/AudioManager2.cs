@@ -1,7 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
-using UnityEngine.UIElements;
+using System.Collections.Generic;
 
 public class AudioManager2 : MonoBehaviour
 {
@@ -15,14 +15,19 @@ public class AudioManager2 : MonoBehaviour
     //You can choose to loop the sound or not
     //Go into the sript you need for the sound, example: openclosedoors
     //Input the code below where you want the sound to trigger
-    //FindObjectOfType<AudioManager2>().Play("AudioName"); //for playing a sound when something happens
+
+    //FindObjectOfType<AudioManager2>().Play("AudioName", transform.position); //for playing a sound when something happens
 
     //OBS! if you cannot hear anything it is likely that you forgot to put the volume and pitch up 
     //If you still cannot hear anything check the name in your code and scene that the are spelled exactly the same, you should get a nullreference message in the console if the names are different 
 
     public Sound[] sounds;
-    
+    public Sound[] musicTracks;
+
     public static AudioManager2 instance;
+    private AudioSource musicSource; // Dedicated AudioSource for background music
+
+    private Dictionary<string, float> lastPlayedTimes;
 
     void Awake()
     {
@@ -35,8 +40,8 @@ public class AudioManager2 : MonoBehaviour
             return;
         }
 
-        // Do not destroy between scenes
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject); // Do not destroy between scenes
+        lastPlayedTimes = new Dictionary<string, float>();
 
         foreach (Sound s in sounds)
         {
@@ -50,31 +55,34 @@ public class AudioManager2 : MonoBehaviour
             s.source.spatialBlend = s.spatialBlend;
             s.source.minDistance = s.minDistance;
             s.source.maxDistance = s.maxDistance;
+
+            lastPlayedTimes[s.name] = -s.clip.length; // Initialize with negative clip length to allow immediate play
         }
+
+        // Initialize background music AudioSource
+        musicSource = gameObject.AddComponent<AudioSource>();
+        musicSource.loop = true; // Background music should loop by default
     }
 
     public void Play(string name, Vector3 position)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s != null)
+        if (s == null)
         {
-            GameObject soundObject = new GameObject("Sound_" + name);
-            soundObject.transform.position = position;
-            AudioSource audioSource = soundObject.AddComponent<AudioSource>();
-            audioSource.clip = s.clip;
-            audioSource.volume = s.volume;
-            audioSource.pitch = s.pitch;
-            audioSource.loop = s.loop;
-            audioSource.spatialBlend = s.spatialBlend;
-            audioSource.minDistance = s.minDistance;
-            audioSource.maxDistance = s.maxDistance;
-            audioSource.Play();
-            Destroy(soundObject, s.clip.length);
+            Debug.LogError($"Sound {name} not found!");
+            return;
         }
-        else
+
+        float elapsed = Time.time - lastPlayedTimes[name];
+        if (elapsed < s.clip.length)
         {
-            Debug.LogError("Sound " + name + " not found!");
+            //Debug.Log($"Sound {name} is still playing!");
+            return;
         }
+
+        s.source.transform.position = position;
+        s.source.Play();
+        lastPlayedTimes[name] = Time.time;
     }
 
     public void Play(string name, GameObject gameObject)
@@ -82,7 +90,7 @@ public class AudioManager2 : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s != null)
         {
-            
+
             if (gameObject.GetComponent<AudioSource>() == null) { gameObject.AddComponent<AudioSource>(); }
             AudioSource audioSource = gameObject.GetComponent<AudioSource>();
             audioSource.clip = s.clip;
@@ -100,17 +108,47 @@ public class AudioManager2 : MonoBehaviour
         }
     }
 
-    public void SetVolume(string name, float volume)
+    //public void SetVolume(string name, float volume)
+    //{
+    //    Sound s = Array.Find(sounds, sound => sound.name == name);
+    //    if (s != null)
+    //    {
+    //        s.source.volume = volume;
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError("Sound " + name + " not found!");
+    //    }
+    //}
+
+    // Method to play background music
+    public void PlayMusic(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s != null)
+        Sound s = Array.Find(musicTracks, track => track.name == name);
+        if (s == null)
         {
-            s.source.volume = volume;
+            Debug.LogError($"Music track {name} not found!");
+            return;
         }
-        else
-        {
-            Debug.LogError("Sound " + name + " not found!");
-        }
+
+        musicSource.clip = s.clip;
+        musicSource.volume = s.volume;
+        musicSource.pitch = s.pitch;
+        musicSource.spatialBlend = s.spatialBlend;
+        musicSource.minDistance = s.minDistance;
+        musicSource.maxDistance = s.maxDistance;
+        musicSource.Play();
+    }
+
+    // Method to stop background music
+    public void StopMusic()
+    {
+        musicSource.Stop();
+    }
+
+    // Method to set background music volume
+    public void SetMusicVolume(float volume)
+    {
+        musicSource.volume = volume;
     }
 }
-

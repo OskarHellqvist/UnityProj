@@ -6,29 +6,33 @@ using UnityEngine;
 namespace SojaExiles
 
 {
-	public class OvenFlip: MonoBehaviour, Interactable
+    public class OvenFlip : MonoBehaviour, Interactable
     {
 
-		public Animator openandcloseoven;
-		public bool open;
-		public Transform Player;
+        public Animator openandcloseoven;
+        public bool open;
+        public Transform Player;
 
         public bool locked = false;
+        public bool isAnimating;
 
         void Start()
-		{
-			open = false;
-		}
+        {
+            open = false;
+        }
 
         public void Interact()
         {
-            if (open == false && !locked)
+            if (!isAnimating)
             {
-                StartCoroutine(opening());
-            }
-            else if (open == true)
-            {
-                StartCoroutine(closing());
+                if (!open && !locked)
+                {
+                    StartCoroutine(opening());
+                }
+                else if (open)
+                {
+                    StartCoroutine(closing());
+                }
             }
         }
 
@@ -39,19 +43,23 @@ namespace SojaExiles
         public void LockUnlockDoor() { locked = !locked; }
 
         IEnumerator opening()
-		{
-			openandcloseoven.Play("OpenOven");
-			open = true;
-			yield return new WaitForSeconds(.5f);
-		}
+        {
+            isAnimating = true;
+            openandcloseoven.Play("OpenOven");
+            yield return new WaitForSeconds(1.5f);
+            open = true;
+            isAnimating = false;
+        }
 
-		IEnumerator closing()
-		{
-			openandcloseoven.Play("ClosingOven");
-			open = false;
-			yield return new WaitForSeconds(.5f);
-		}
+        IEnumerator closing()
+        {
+            isAnimating = true;
+            openandcloseoven.Play("ClosingOven");
+            open = false;
+            yield return new WaitForSeconds(1.5f);
+            isAnimating = false;
+        }
 
 
-	}
+    }
 }
