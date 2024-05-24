@@ -6,7 +6,7 @@ using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using Random = UnityEngine.Random;
 
-//Chessmanager written by Vilmer Juvin
+//ChessManager written by Vilmer Juvin
 //This script creates and manages the chess puzzle
 public class ChessManager : MonoBehaviour
 {
