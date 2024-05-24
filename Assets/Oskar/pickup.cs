@@ -7,7 +7,8 @@ public class Pickup : MonoBehaviour, Interactable
 {
     public Transform holdPos;  // The position where the object is held when picked up
 
-    private bool isHeld = false; // To track if the object is currently being held
+    private static Pickup currentlyHeldItem = null;  // Static variable to track the currently held item
+    private bool isHeld = false; // To track if this specific object is currently being held
 
     void Update()
     {
@@ -15,12 +16,12 @@ public class Pickup : MonoBehaviour, Interactable
         {
             ItemDrop();
         }
-
     }
 
     public void Interact()
     {
-        if (!isHeld)
+        // Check if nothing is held or if this item is already the one being held
+        if (!isHeld && currentlyHeldItem == null)
         {
             ItemPickup();
         }
@@ -34,6 +35,7 @@ public class Pickup : MonoBehaviour, Interactable
             rb.isKinematic = true;
         }
 
+        currentlyHeldItem = this;  // Set this item as the currently held item
         isHeld = true;
         gameObject.transform.position = holdPos.position;
         gameObject.transform.rotation = holdPos.rotation;
@@ -42,13 +44,17 @@ public class Pickup : MonoBehaviour, Interactable
 
     public void ItemDrop()
     {
-        isHeld = false;
-        gameObject.transform.parent = null;
-
-        Rigidbody rb = gameObject.GetComponent<Rigidbody>();
-        if (rb != null)
+        if (isHeld)
         {
-            rb.isKinematic = false;
+            currentlyHeldItem = null;  // Clear the currently held item
+            isHeld = false;
+            gameObject.transform.parent = null;
+
+            Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.isKinematic = false;
+            }
         }
     }
 
@@ -56,5 +62,4 @@ public class Pickup : MonoBehaviour, Interactable
     {
         return isHeld;
     }
-
 }

@@ -67,7 +67,7 @@ namespace SojaExiles
                 sanity += Time.deltaTime * increaseValue;
             }
             
-            if (sanity <= 0)
+            if (sanity <= 0 && !FadeScript.instance.isFading)
             {
                 Global.LoadScene_GameOver();
             }

@@ -66,9 +66,6 @@ public class FadeScript : MonoBehaviour
 
     private IEnumerator SceneFade(int sceneIndex)
     {
-
-        Debug.Log("Fading?");
-
         isFading = true;
 
         // Start fading out

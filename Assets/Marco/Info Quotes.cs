@@ -34,7 +34,6 @@ namespace SojaExiles
         {
             if (textMeshPro != null)
             {
-                Debug.Log("cumon");
                 textMeshPro.text = newText;
                 StartCoroutine(HideTextAfterDelay(duration));
             }
