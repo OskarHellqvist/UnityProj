@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BathDrain : MonoBehaviour, Interactable
+public class BathDrain : MonoBehaviour
 {
     public float moveAmount = 2f;  // Distance the painting will move
     public float moveDuration = 15f; // Duration of the movement in seconds
 
     [SerializeField] private GameObject Note;
+    [SerializeField] private AudioSource drainAudio;
 
     public bool hasMoved = false;
     public bool isMoving = false;
@@ -18,29 +19,20 @@ public class BathDrain : MonoBehaviour, Interactable
         if (Note.activeSelf && !isMoving)
         {
             Vector3 moveDirection = hasMoved ? Vector3.up * moveAmount : Vector3.down  * moveAmount;
-            StartCoroutine(MovePillowSmoothly(moveDirection, moveDuration));
+            StartCoroutine(DrainAndDissapear(moveDirection, moveDuration));
             hasMoved = !hasMoved; // Toggle state
-            FindObjectOfType<AudioManager2>().Play("WaterDrain", transform.position);
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void Update()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (!Note.activeSelf && hasMoved && !isMoving)
+        if (hasMoved && Time.timeScale != 0 && !drainAudio.isPlaying)
         {
-            StartCoroutine(MovePillowSmoothly(Vector3.down * moveAmount, moveDuration));
-            hasMoved = false;
+            drainAudio.Play();
         }
     }
 
-    private IEnumerator MovePillowSmoothly(Vector3 target, float duration)
+    private IEnumerator DrainAndDissapear(Vector3 target, float duration)
     {
         isMoving = true;
         Vector3 startPosition = transform.position;
@@ -56,7 +48,7 @@ public class BathDrain : MonoBehaviour, Interactable
 
         transform.position = endPosition;
         isMoving = false;
-        
+        Destroy(gameObject);
     }
 
 }

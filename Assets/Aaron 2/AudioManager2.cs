@@ -45,18 +45,25 @@ public class AudioManager2 : MonoBehaviour
 
         foreach (Sound s in sounds)
         {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
+            try // Added by Neo Ferrari (missing clip caused errors)
+            {
+                s.source = gameObject.AddComponent<AudioSource>();
+                s.source.clip = s.clip;
 
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
+                s.source.volume = s.volume;
+                s.source.pitch = s.pitch;
+                s.source.loop = s.loop;
 
-            s.source.spatialBlend = s.spatialBlend;
-            s.source.minDistance = s.minDistance;
-            s.source.maxDistance = s.maxDistance;
+                s.source.spatialBlend = s.spatialBlend;
+                s.source.minDistance = s.minDistance;
+                s.source.maxDistance = s.maxDistance;
 
-            lastPlayedTimes[s.name] = -s.clip.length; // Initialize with negative clip length to allow immediate play
+                lastPlayedTimes[s.name] = -s.clip.length; // Initialize with negative clip length to allow immediate play
+            }
+            catch (Exception e) 
+            { 
+                Debug.LogException(e);
+            }
         }
 
         // Initialize background music AudioSource
@@ -64,6 +71,7 @@ public class AudioManager2 : MonoBehaviour
         musicSource.loop = true; // Background music should loop by default
     }
 
+    // Fixed by Neo Ferrari vvv
     public void Play(string name, Vector3 position)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -73,11 +81,15 @@ public class AudioManager2 : MonoBehaviour
             return;
         }
 
-        float elapsed = Time.time - lastPlayedTimes[name];
-        if (elapsed < s.clip.length)
+        // Check if the sound was played recently //Neo Ferrari
+        if (lastPlayedTimes.TryGetValue(name, out float lastPlayedTime))
         {
-            //Debug.Log($"Sound {name} is still playing!");
-            return;
+            float elapsed = Time.time - lastPlayedTime;
+            if (elapsed < s.clip.length * 0.1f)
+            {
+                // Sound is still playing
+                return;
+            }
         }
 
         s.source.transform.position = position;

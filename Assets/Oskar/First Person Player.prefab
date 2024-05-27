@@ -756,7 +756,6 @@ GameObject:
   - component: {fileID: 5007740206037952784}
   - component: {fileID: 5026357681107909987}
   - component: {fileID: 2104771101710041461}
-  - component: {fileID: 1643642081531122012}
   - component: {fileID: 8628680771197675546}
   m_Layer: 2
   m_Name: First Person Player
@@ -827,18 +826,6 @@ MonoBehaviour:
   flashlight: {fileID: 867202497957104169}
   ambLight: {fileID: 755469040048600059}
   battery: 100
---- !u!114 &1643642081531122012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8132142858788381359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 899a71306a1974c4c887d977bab22ef8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8628680771197675546
 MonoBehaviour:
   m_ObjectHideFlags: 0

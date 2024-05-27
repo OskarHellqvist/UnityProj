@@ -4,30 +4,39 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 namespace SojaExiles
-{
+{ 
+    // Made by Neo Ferrari
     public class KeyScript : MonoBehaviour, Interactable
     {
-        // Start is called before the first frame update
-        [SerializeField] private AudioClip klirrSound;
-        [SerializeField] private AudioSource audioSource;
-        public GameObject homeKey;
+        private GameObject keyObject;
 
         // Temp--------------------------------
         [SerializeField] private GameObject doorToOpen;
         private opencloseDoor doorScript;
         // ------------------------------------
 
+        private InventoryScript inventoryScript;
+
+        // Index of the key image to toggle
+        [SerializeField] private int keyIndex;
+
         void Start()
         {
+            keyObject = GetComponent<GameObject>();
+
             // Temp--------------------------------
             doorScript = doorToOpen.GetComponent<opencloseDoor>();
             // ------------------------------------
+
+            // Find the InventoryScript component
+            inventoryScript = FindObjectOfType<InventoryScript>();
         }
 
         public void Interact()
         {
             StartCoroutine(PlayAudioAndDisable());
         }
+
 
         private IEnumerator PlayAudioAndDisable()
         {
@@ -37,15 +46,15 @@ namespace SojaExiles
 
             FindObjectOfType<AudioManager2>().Play("KeysPickup", transform.position);
 
-            // Temp--------------------------------
-            doorScript.UnlockDoor();
-            // ------------------------------------
+            // Toggle the key image in the inventory UI
+            if (inventoryScript != null)
+            {
+                inventoryScript.PickUpKey(keyIndex, doorScript);
+            }
 
-            // Wait for the duration of the audio clip before disabling the item
-            //yield return new WaitForSeconds(audioSource.clip.length);
+            Destroy(gameObject);
+
             yield return null;
-
-            Destroy(homeKey);
         }
     }
 }

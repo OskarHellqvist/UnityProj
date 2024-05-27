@@ -7,17 +7,20 @@ namespace SojaExiles
 {
 	public class opencloseDoor : MonoBehaviour, Interactable
 	{
-		[SerializeField] private AudioClip doorOpen;
-		[SerializeField] private AudioClip doorClose;
-		[SerializeField] private AudioClip openLockedDoor;
-		[SerializeField] private AudioClip doorUnlock;
-		[SerializeField] private AudioSource DoorAudio;
+		//[SerializeField] private AudioClip doorOpen;
+		//[SerializeField] private AudioClip doorClose;
+		//[SerializeField] private AudioClip openLockedDoor;
+		//[SerializeField] private AudioClip doorUnlock;
+		//[SerializeField] private AudioSource DoorAudio;
 
 		public Animator openandclose;
 		public bool open;
 		public Transform Player;
-
+		
+		public bool isDoor;
 		public bool locked = false;
+
+		private bool isOpening, isClosing;
 
 		void Start()
 		{
@@ -37,35 +40,54 @@ namespace SojaExiles
 
 		public void OpenDoor() 
 		{
-			if (locked)
+            if (InventoryScript.instance.nextDoorToOpen == this)
+            {
+                InventoryScript.instance.ClearDoor();
+                UnlockDoor();
+
+				return;
+            }
+
+            if (locked)
 			{
-				if(openLockedDoor != null)
-				{
-					DoorAudio.clip = openLockedDoor;
-                    FindObjectOfType<AudioManager2>().Play("LockedDoor", transform.position);
-                    //DoorAudio.Play();
-                }
+				//if(openLockedDoor != null)
+				//{
+				//	DoorAudio.clip = openLockedDoor;
+				//                
+				//                //DoorAudio.Play();
+				//}
+				if (isDoor) FindObjectOfType<AudioManager2>().Play("LockedDoor", transform.position);
             }
 			else
 			{
-				if(doorOpen != null)
+				//if(doorOpen != null)
+				//{
+				//	DoorAudio.clip = doorOpen;
+
+				//                //DoorAudio.Play();
+				//            }
+				if (!isOpening)
 				{
-					DoorAudio.clip = doorOpen;
-                    FindObjectOfType<AudioManager2>().Play("OpenDoor", transform.position);
-                    //DoorAudio.Play();
-                }
+					if (isDoor) FindObjectOfType<AudioManager2>().Play("OpenDoor", transform.position);
+					else FindObjectOfType<AudioManager2>().Play("OpenCabinet", transform.position);
+				}
 
                 StartCoroutine(opening());
             }
 		}
 		public void CloseDoor() 
 		{
-			if(doorClose != null)
+			//if(doorClose != null)
+			//{
+			//	DoorAudio.clip = doorClose;
+			//             //DoorAudio.Play();
+			//         }
+
+			if (!isClosing)
 			{
-				DoorAudio.clip = doorClose;
-                //DoorAudio.Play();
-                FindObjectOfType<AudioManager2>().Play("CloseDoor", transform.position);
-            }
+				if (isDoor) FindObjectOfType<AudioManager2>().Play("CloseDoor", transform.position);
+				else FindObjectOfType<AudioManager2>().Play("CloseCabinet", transform.position);
+			}
 
             StartCoroutine(closing()); 
 		}
@@ -80,8 +102,9 @@ namespace SojaExiles
 		}
 		public void UnlockDoor() 
 		{
-            DoorAudio.clip = doorUnlock;
+            //DoorAudio.clip = doorUnlock;
             //DoorAudio.Play();
+            FindObjectOfType<AudioManager2>().Play("DoorUnlock", transform.position);
             locked = false; 
 		}
 		public void LockUnlockDoor() { locked = !locked; }
@@ -89,19 +112,21 @@ namespace SojaExiles
 		IEnumerator opening()
 		{
 			//print("you are opening the door");
+			isOpening = true;
 			openandclose.Play("Opening");
-            FindObjectOfType<AudioManager2>().Play("OpenCabinet", transform.position);
             yield return new WaitForSeconds(.5f);
 			open = true;
+			isOpening = false;
 		}
 
 		IEnumerator closing()
 		{
 			//print("you are closing the door");
+			isClosing = true;
 			openandclose.Play("Closing");
-            FindObjectOfType<AudioManager2>().Play("CloseCabinet", transform.position);
             yield return new WaitForSeconds(.5f);
 			open = false;
+			isClosing = false;
 		}
 
 

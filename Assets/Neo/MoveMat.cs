@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace SojaExiles
 {
+    // Made by Neo Ferrari
     public class MoveMat : MonoBehaviour, Interactable
     {
         [SerializeField]
@@ -14,32 +15,17 @@ namespace SojaExiles
         private float moveSpeed = 2f; // Speed of the movement
 
         private bool m_IsRotatingAndMoving = false; // Tracks if the mat is currently rotating and moving
-        public bool Active = false;
         private bool Done = false;
-
-        [SerializeField] private AudioSource audioSource;
 
         // Update is called once per frame
         public void Interact()
-            {
-                //Set (Active = true) to move mat and show key
-                Active = true;
-            }
-        void Update()
         {
-            
-            // Check for the E key press and ensure the mat is not already rotating and moving
-            if (!Done && Active && !m_IsRotatingAndMoving)
+            if (!Done && !m_IsRotatingAndMoving)
             {
                 StartCoroutine(RotateAndMoveMat(rotationAmount, moveDistance));
                 FindObjectOfType<AudioManager2>().Play("SlidingSound", transform.position);
-                //audioSource.Play();
-                Done = true;
-            }
-
-            if(Done && (Key != null))
-            {
                 Key.active = true;
+                Done = true;
             }
         }
 

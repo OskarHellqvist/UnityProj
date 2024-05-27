@@ -44,14 +44,6 @@ public class FadeScript : MonoBehaviour
 
     }
 
-    public void Update()
-    {
-        if (Input.GetKey(KeyCode.X))
-        {
-            Global.LoadScene_GameOver();
-        }
-    }
-
     public void FadeIntoScene(int sceneIndex)
     {
         if (isFading) 
