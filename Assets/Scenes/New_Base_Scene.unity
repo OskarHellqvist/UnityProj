@@ -59031,6 +59031,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
+      propertyPath: sounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 89159222c3d397242b20addfe2dfdc94, type: 3}
+    - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482536858493402855, guid: ec58226423054f0429fae2cc77774504, type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 0.204
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -59321,6 +59333,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1103272719}
   - {fileID: 3586211317968180782}
+  - {fileID: 1184780884}
   - {fileID: 1969021275}
   - {fileID: 1882189312}
   - {fileID: 2028063701}
@@ -59329,7 +59342,6 @@ SceneRoots:
   - {fileID: 1193731129}
   - {fileID: 1998592582}
   - {fileID: 1446318146}
-  - {fileID: 1184780884}
   - {fileID: 1897129470}
   - {fileID: 1002925174}
   - {fileID: 944071921}
