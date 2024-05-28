@@ -1,3 +1,4 @@
+using SojaExiles;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -254,6 +255,7 @@ public class ChessManager : MonoBehaviour
             letterButtonUnSelect.Invoke();
             numButton = string.Empty;
             letterButton = string.Empty;
+            SanityManager.manager.Sanity -= 20f;
         }
     }
 

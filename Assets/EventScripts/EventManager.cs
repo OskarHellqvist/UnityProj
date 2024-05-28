@@ -32,6 +32,7 @@ public class EventManager : MonoBehaviour
     private List<Timer> timers = new();
 
     private float commonEventTimer = 60f;
+    private float lastSanity;
 
     private GameObject left;
     private GameObject right;
@@ -46,6 +47,8 @@ public class EventManager : MonoBehaviour
 
         left = list.Find(x => x.name == "Left").gameObject;
         right = list.Find(x => x.name == "Right").gameObject;
+
+        lastSanity = SanityManager.manager.Sanity;
     }
 
     void Update()
@@ -55,9 +58,9 @@ public class EventManager : MonoBehaviour
 
         if (!commonEventOn) { return; }
 
+        float sanity = SanityManager.manager.Sanity;
         if (commonEventTimer <= 0)
         {
-            float sanity = SanityManager.manager.Sanity;
             CommonEvent(sanity);
             float equation = 3.1f * MathF.Pow(1.03f, 1.23f * sanity) - 3.1f;
             commonEventTimer = Math.Clamp(equation, 0.5f, float.PositiveInfinity);
@@ -66,6 +69,9 @@ public class EventManager : MonoBehaviour
         else if (commonEventTimer > 0)
         {
             commonEventTimer -= Time.deltaTime;
+            float temp = lastSanity - sanity;
+            if (temp > 0) { commonEventTimer -= temp; }
+            lastSanity = sanity;
         }
     }
 
