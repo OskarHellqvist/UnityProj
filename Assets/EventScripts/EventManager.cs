@@ -48,7 +48,7 @@ public class EventManager : MonoBehaviour
         left = list.Find(x => x.name == "Left").gameObject;
         right = list.Find(x => x.name == "Right").gameObject;
 
-        lastSanity = SanityManager.manager.Sanity;
+        lastSanity = 100f;
     }
 
     void Update()
