@@ -33,9 +33,16 @@ namespace SojaExiles
             }
         }
 
-        [HideInInspector] public bool inSpawnArea;
+        [HideInInspector] private bool inSpawnArea;
         
+        public void SetInSpawnAreaToFalse()
+        {
+            inSpawnArea = false;
+        }
+
         private bool isDraining, isRegaining;
+
+        [SerializeField] private AudioSource heartBeat;
 
         // Start is called before the first frame update
         void Start()
@@ -43,6 +50,8 @@ namespace SojaExiles
             manager = this;
             pMovement = GetComponent<PlayerMovement>();
             quotes = FindObjectOfType<Quotes>();
+
+            heartBeat = GetComponent<AudioSource>();
         }
 
         // Update is called once per frame
@@ -87,6 +96,14 @@ namespace SojaExiles
             float insTransparency = 1 - sanity / 100;
             insanityImage.color = new Color(insanityImage.color.r, insanityImage.color.g, insanityImage.color.b, insTransparency);
 
+            if (Time.timeScale == 0f)
+            {
+                heartBeat.volume = 0;
+            }
+            else
+            {
+                heartBeat.volume = Mathf.Pow((100 - sanity) / 100, 2);
+            }
         }
 
         private void OnTriggerStay(Collider other)

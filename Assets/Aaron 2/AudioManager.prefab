@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4380280c01c3feb42a1d430ec520e93b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterMixerGroup: {fileID: 24300002, guid: 1b5be0885314f75448cf45d0e74447b6, type: 2}
+  mixerGroup: {fileID: 6379693102650994482, guid: 1b5be0885314f75448cf45d0e74447b6, type: 2}
   sounds:
   - name: WrongPassword
     clip: {fileID: 8300000, guid: 8989889d544ebfa4bbea9455318bbb6e, type: 3}

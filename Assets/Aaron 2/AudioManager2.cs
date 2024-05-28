@@ -21,7 +21,7 @@ public class AudioManager2 : MonoBehaviour
     //OBS! if you cannot hear anything it is likely that you forgot to put the volume and pitch up 
     //If you still cannot hear anything check the name in your code and scene that the are spelled exactly the same, you should get a nullreference message in the console if the names are different 
 
-    [SerializeField] private AudioMixerGroup masterMixerGroup;
+    [SerializeField] private AudioMixerGroup mixerGroup;
     public Sound[] sounds;
     public Sound[] musicTracks;
 
@@ -59,8 +59,8 @@ public class AudioManager2 : MonoBehaviour
                 s.source.minDistance = s.minDistance;
                 s.source.maxDistance = s.maxDistance;
 
-                if(masterMixerGroup)
-                    s.source.outputAudioMixerGroup = masterMixerGroup;
+                if(mixerGroup)
+                    s.source.outputAudioMixerGroup = mixerGroup;
 
                 lastPlayedTimes[s.name] = -s.clip.length; // Initialize with negative clip length to allow immediate play
             }

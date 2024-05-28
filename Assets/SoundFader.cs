@@ -64,8 +64,15 @@ namespace SojaExiles
             // Calculate the volume based on the distance
             float volume = Mathf.Lerp(maxVolume, minVolume, distance / maxAudibleDistance);
 
-            // Set the volume of the audio source
-            audioSource.volume = volume;
+            if (Time.timeScale == 0)
+            {
+                audioSource.volume = 0;
+            }
+            else
+            {
+                // Set the volume of the audio source
+                audioSource.volume = volume;
+            }
         }
     }
 }

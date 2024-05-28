@@ -52,9 +52,6 @@ public class ChessManager : MonoBehaviour
     private GameObject whiteKing;
     private GameObject blackKing;
 
-    // Safe space for when chess is active //Neo
-    public GameObject SafeSpace;
-
     void Start()
     {
         DictionaryStuff(); //Setting up the dictionaries
@@ -238,10 +235,6 @@ public class ChessManager : MonoBehaviour
 
         if (cs.startPos == selectedPiece.position && cs.endPos == total)
         {
-            // Turns of the safe space and resets the inSpawnArea bool in Sanitymanager
-            SafeSpace.SetActive(false);
-            SanityManager.manager.inSpawnArea = false;
-
             //Debug.Log("Correct!");
             EventManager.manager.AddTimer(0.7f, InvokeEvent);
             selectedPiece.StartMoveTo(numToPos[total]);
