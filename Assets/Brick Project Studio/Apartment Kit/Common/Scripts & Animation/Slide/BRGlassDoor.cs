@@ -15,6 +15,8 @@ namespace SojaExiles
 
         public bool locked = false;
 
+		private bool isMoving;
+
         void Start()
 		{
 			open = false;
@@ -22,13 +24,16 @@ namespace SojaExiles
 
         public void Interact()
         {
-            if (open == false && !locked)
-            {
-                StartCoroutine(opening());
-            }
-            else if (open == true)
-            {
-                StartCoroutine(closing());
+			if (!isMoving)
+			{
+                if (open == false && !locked)
+                {
+                    StartCoroutine(opening());
+                }
+                else if (open == true)
+                {
+                    StartCoroutine(closing());
+                }
             }
         }
 
@@ -40,17 +45,21 @@ namespace SojaExiles
 
         IEnumerator opening()
 		{
+			isMoving = true;
 			openandclose.Play("BRGlassDoorOpen");
 			open = true;
-			yield return new WaitForSeconds(.5f);
+			yield return new WaitForSeconds(1f);
+			isMoving = false;
 		}
 
 		IEnumerator closing()
 		{
-			openandclose.Play("BRGlassDoorClose");
+            isMoving = true;
+            openandclose.Play("BRGlassDoorClose");
 			open = false;
-			yield return new WaitForSeconds(.5f);
-		}
+			yield return new WaitForSeconds(1f);
+            isMoving = false;
+        }
 
 
 	}

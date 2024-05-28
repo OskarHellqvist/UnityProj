@@ -22,9 +22,6 @@ public class EventManager : MonoBehaviour
     public UnityEvent chessCompleteEvent;
     public UnityEvent masterBedroom;
     public UnityEvent winEvent;
-    public UnityEvent lowSanity;
-    public UnityEvent lowBattery;
-    public UnityEvent handEvent;
 
     private bool commonEventOn;
     public List<Event> commonEvents;

@@ -22,8 +22,8 @@ namespace SojaExiles
         public Image Fader;
 
         [SerializeField] private float sanity = 100;
-        private float decreaseValue = 2;
-        private float increaseValue = 0.5f;
+        private float decreaseValue = 2f;
+        private float increaseValue = 3f;
 
         public float Sanity { 
             get { return sanity; }
@@ -103,6 +103,10 @@ namespace SojaExiles
             else
             {
                 heartBeat.volume = Mathf.Pow((100 - sanity) / 100, 2);
+                if (flashlight.activeSelf)
+                {
+                    heartBeat.volume = Math.Clamp(heartBeat.volume, 0f, 0.2f);
+                }
             }
         }
 
