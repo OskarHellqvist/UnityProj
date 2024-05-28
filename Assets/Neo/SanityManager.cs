@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.UI;
@@ -32,8 +33,9 @@ namespace SojaExiles
             }
         }
 
-        private bool inSpawnArea;
-        private bool isDraining;
+        [HideInInspector] public bool inSpawnArea;
+        
+        private bool isDraining, isRegaining;
 
         // Start is called before the first frame update
         void Start()
@@ -48,21 +50,28 @@ namespace SojaExiles
         {
             // Reference to
             if ( quotes != null && sanity < 40) { quotes.LowSanity(); }
-
-            if((flashlight.activeInHierarchy && pMovement.battery > 30) || inSpawnArea)
+            if (inSpawnArea)
+            {
+                isRegaining = false;
+                isDraining = false;
+            }
+            else if (flashlight.activeInHierarchy && pMovement.battery > 30)
             {
                 isDraining = false;
+                isRegaining = true;
             }
             else
             {
+                isRegaining = false;
                 isDraining = true;
             }
+            
 
             if (isDraining)
             {
                 sanity -= Time.deltaTime * decreaseValue;
             } 
-            else if (sanity < 100)
+            else if (sanity < 100 && isRegaining)
             {
                 sanity += Time.deltaTime * increaseValue;
             }
@@ -88,7 +97,7 @@ namespace SojaExiles
             }
         }
 
-        private void OnTriggerExit(Collider other)
+        public void OnTriggerExit(Collider other)
         {
             if (other.gameObject.tag == "Respawn")
             {

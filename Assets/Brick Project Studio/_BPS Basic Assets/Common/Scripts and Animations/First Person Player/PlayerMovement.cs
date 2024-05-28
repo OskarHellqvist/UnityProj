@@ -15,7 +15,7 @@ namespace SojaExiles
         private float currentCamY; // Track the current camera Y position, considering crouch
 
         public float battery = 100;
-        private float batteryDepletionRate = 0.5f;
+        private float batteryDepletionRate = 1.5f;
         private bool isFlickering = false;
         private float maxIntensity = 1f; // Max intensity of the flashlight
         private float minIntensity = 0.05f; // Min intensity of the flashlight when battery is low

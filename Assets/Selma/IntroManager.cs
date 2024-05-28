@@ -34,13 +34,13 @@ public class IntroManager : MonoBehaviour
         }
 
         //// Check for input to activate the scene if loading is complete
-        //if (asyncOperation != null && asyncOperation.progress >= 0.9f && !audioSource.isPlaying)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.S))
-        //    {
-        //        Global.LoadScene_Game(); // Trigger the Global scene loading function
-        //    }
-        //}
+        if (asyncOperation != null && asyncOperation.progress >= 0.9f && !audioSource.isPlaying)
+        {
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                Global.LoadScene_Game(); // Trigger the Global scene loading function
+            }
+        }
     }
 
     IEnumerator LoadScene()
@@ -56,7 +56,7 @@ public class IntroManager : MonoBehaviour
         }
 
         // The scene has finished loading but is not activated
-        yield return new WaitUntil(() => (!audioSource.isPlaying && Input.GetKeyDown(KeyCode.E)) || Input.GetKeyDown(KeyCode.S));
+        yield return new WaitUntil(() => !audioSource.isPlaying && Input.GetKeyDown(KeyCode.E));
         Global.LoadScene_Game();
     }
 }
