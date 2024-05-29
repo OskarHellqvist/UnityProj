@@ -2,6 +2,7 @@ using SojaExiles;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WinSquare : MonoBehaviour
@@ -42,6 +43,10 @@ public class WinSquare : MonoBehaviour
                 Invoke("DestroyAmulet", 1);
             }
         }
+        else if (other.gameObject == (falseAmulet1 || falseAmulet2))
+        {
+            SanityManager.manager.DamageSanity(25f);
+        }
 
 
     }
@@ -49,6 +54,7 @@ public class WinSquare : MonoBehaviour
     {
         if (amulet != null)
         {
+
             Destroy(amulet);
             EventManager.manager.winEvent.Invoke();
         }

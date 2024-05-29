@@ -60,7 +60,7 @@ public class EventManager : MonoBehaviour
         {
             CommonEvent(sanity);
             float equation = 3.1f * MathF.Pow(1.03f, 1.23f * sanity) - 3.1f;
-            commonEventTimer = Math.Clamp(equation, 0.5f, float.PositiveInfinity);
+            commonEventTimer = Math.Clamp(equation, 3f, float.PositiveInfinity);
             Debug.Log(commonEventTimer);
         }
         else if (commonEventTimer > 0)
@@ -73,6 +73,7 @@ public class EventManager : MonoBehaviour
     }
 
     public void CommonEventOn() { commonEventOn = true; }
+    public void CommonEventOff() { commonEventOn = false; }
 
     public void CommonEventTest() { CommonEvent(90f); }
 

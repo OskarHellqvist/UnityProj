@@ -255,7 +255,7 @@ public class ChessManager : MonoBehaviour
             letterButtonUnSelect.Invoke();
             numButton = string.Empty;
             letterButton = string.Empty;
-            SanityManager.manager.Sanity -= 20f;
+            SanityManager.manager.DamageSanity();
         }
     }
 

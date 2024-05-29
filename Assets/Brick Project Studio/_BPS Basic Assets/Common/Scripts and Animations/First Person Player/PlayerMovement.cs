@@ -222,15 +222,15 @@ namespace SojaExiles
         }
 
 
-        IEnumerator FlickerFlashlight(int duration)
+        public IEnumerator FlickerFlashlight(int duration)
         {
             if (isFlickering) yield break;
             isFlickering = true;
 
-            Light flashlightLight = flashlight.GetComponent<Light>();
-            Light ambientLight = ambLight.GetComponent<Light>();
+            //Light flashlightLight = flashlight.GetComponent<Light>();
+            //Light ambientLight = ambLight.GetComponent<Light>();
 
-            if (flashlightLight == null)
+            if (flashlight == null)
             {
                 isFlickering = false;
                 yield break; // Exit if no Light component found
@@ -241,19 +241,19 @@ namespace SojaExiles
             while (Time.time - startTime < duration)
             {
                 // Turn the flashlight off for a brief moment
-                flashlightLight.enabled = false;
-                ambientLight.enabled = false;
+                flashlight.SetActive(false);
+                ambLight.SetActive(false);
                 yield return new WaitForSeconds(Random.Range(0.05f, 0.5f)); // Off duration
 
                 // Turn the flashlight back on
-                flashlightLight.enabled = true;
-                ambientLight.enabled = true;
+                flashlight.SetActive(true);
+                ambLight.SetActive(true);
                 yield return new WaitForSeconds(Random.Range(0.05f, 0.15f)); // On duration
             }
 
             // Ensure the flashlight is on after flickering
-            flashlightLight.enabled = true;
-            ambientLight.enabled = true;
+            flashlight.SetActive(true);
+            ambLight.SetActive(true);
             isFlickering = false;
         }
 

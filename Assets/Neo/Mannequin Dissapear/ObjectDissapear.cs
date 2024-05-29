@@ -6,7 +6,7 @@ namespace SojaExiles
     public class ObjectDissapear : MonoBehaviour
     {
         public GameObject target;
-        public Camera playerCamera;
+        private Camera playerCamera;
 
         // If the object is ready to dissapear
         [SerializeField] bool ReadyToPoof;
@@ -16,7 +16,8 @@ namespace SojaExiles
         // Start is called before the first frame update
         void Start()
         {
-            visibilityCheck = new VisibilityCheck(target, playerCamera);
+            visibilityCheck = new VisibilityCheck(target);
+            playerCamera = Camera.main;
         }
 
         // Update is called once per frame

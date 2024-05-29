@@ -25,12 +25,10 @@ namespace SojaExiles
         private float decreaseValue = 2f;
         private float increaseValue = 3f;
 
+        private float damage = 10f;
+
         public float Sanity { 
             get { return sanity; }
-            set 
-            { 
-                sanity = Mathf.Clamp(value, 0, 100);
-            }
         }
 
         [HideInInspector] private bool inSpawnArea;
@@ -57,24 +55,24 @@ namespace SojaExiles
         // Update is called once per frame
         void Update()
         {
-            // Reference to
-            if ( quotes != null && sanity < 40) { quotes.LowSanity(); }
-            if (inSpawnArea)
-            {
-                isRegaining = false;
-                isDraining = false;
-            }
-            else if (flashlight.activeInHierarchy && pMovement.battery > 30)
+            // Reference to infoText
+            if ( quotes != null && sanity < 65) { quotes.LowSanity(); }
+
+            if (flashlight.activeInHierarchy && pMovement.battery > 30)
             {
                 isDraining = false;
                 isRegaining = true;
             }
             else
             {
-                isRegaining = false;
                 isDraining = true;
+                isRegaining = false;
             }
             
+            if (inSpawnArea)
+            {
+                isDraining = false;
+            }
 
             if (isDraining)
             {
@@ -110,6 +108,9 @@ namespace SojaExiles
             }
         }
 
+        public void DamageSanity() { sanity -= damage; }
+        public void DamageSanity(float damage) { sanity -= damage; }
+
         private void OnTriggerStay(Collider other)
         {
             if (other.gameObject.tag == "Respawn")
@@ -126,29 +127,6 @@ namespace SojaExiles
             }
         }
 
-        IEnumerator FadeToBlack()
-        {
-            float fadeSpeed = 0.005f;  // Speed of the fade
-            while (Fader.color.a < 1.0f)
-            {
-                Color color = Fader.color;
-                color.a += fadeSpeed * Time.deltaTime;
-                Fader.color = color;
-
-                // Ensure it doesn't exceed 1
-                if (Fader.color.a >= 1.0f)  
-                {
-                    color.a = 1.0f;
-                    Fader.color = color;
-                    break;
-                }
-
-                yield return null; // Yield execution to the next frame.
-            }
-
-            Global.LoadScene_GameOver();
-            Global.UnlockMouse();
-        }
 
     }
 }

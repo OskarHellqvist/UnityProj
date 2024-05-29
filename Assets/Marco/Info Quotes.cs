@@ -13,6 +13,10 @@ namespace SojaExiles
         public Camera mainCamera;
         private int textCounterSanity = 0;
         private int textCounterBattery = 0;
+        private int textCounterInventory = 0;
+
+        private int delayInSec = 5;
+
         void Start()
         {
             mainCamera = Camera.main; // Get the main camera
@@ -30,6 +34,7 @@ namespace SojaExiles
             //    textMeshPro.transform.rotation = mainCamera.transform.rotation;
             //}
         }
+
         public void UpdateText(string newText, float duration)
         {
             if (textMeshPro != null)
@@ -52,7 +57,7 @@ namespace SojaExiles
         {
             if(textCounterSanity < 1)
             {
-                UpdateText("Detective Moore's sanity level will go down from darkness. Make sure to use your Flashlight [F] to keep his sanity at a healthy level!", 5);
+                UpdateText("Your sanity will go down from darkness. \nMake sure to use your Flashlight [F]!", delayInSec);
                 textCounterSanity++;
             }
         }
@@ -61,9 +66,19 @@ namespace SojaExiles
         {
             if (textCounterBattery < 1)
             {
-                UpdateText("Flashlights battery is soon depleted! Remember to use it resourcefully", 5);
+                UpdateText("Flashlights battery is soon depleted! Remember to use it resourcefully", delayInSec);
                 textCounterBattery++;
             }
         }
+
+        public void InventoryPickUp()
+        {
+            if (textCounterInventory < 1)
+            {
+                UpdateText("Hold [Tab] for Inventory", delayInSec);
+                textCounterInventory++;
+            }
+        }
+        
     }
 }

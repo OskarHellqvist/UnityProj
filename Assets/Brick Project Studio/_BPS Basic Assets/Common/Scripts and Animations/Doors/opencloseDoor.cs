@@ -40,7 +40,7 @@ namespace SojaExiles
 
 		public void OpenDoor() 
 		{
-            if (InventoryScript.instance.nextDoorToOpen == this)
+            if (InventoryScript.instance && InventoryScript.instance.nextDoorToOpen == this)
             {
                 InventoryScript.instance.ClearDoor();
                 UnlockDoor();

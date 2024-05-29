@@ -9,10 +9,18 @@ public class Pickup : MonoBehaviour, Interactable
 
     private static Pickup currentlyHeldItem = null;  // Static variable to track the currently held item
     private bool isHeld = false; // To track if this specific object is currently being held
+    private Vector3 originalScale;
+
+    private KeyCode dropKey = KeyCode.Q;
+
+    void Start()
+    {
+        originalScale = transform.localScale; // original scale of the object
+    }
 
     void Update()
     {
-        if (isHeld && Input.GetKeyDown(KeyCode.Q))
+        if (isHeld && Input.GetKeyDown(dropKey))
         {
             ItemDrop();
         }
@@ -37,9 +45,10 @@ public class Pickup : MonoBehaviour, Interactable
 
         currentlyHeldItem = this;  // Set this item as the currently held item
         isHeld = true;
-        gameObject.transform.position = holdPos.position;
-        gameObject.transform.rotation = holdPos.rotation;
-        gameObject.transform.parent = holdPos;
+        transform.parent = holdPos;
+        transform.position = holdPos.position;
+        transform.rotation = holdPos.rotation;
+        transform.localScale = originalScale;
     }
 
     public void ItemDrop()
@@ -48,7 +57,8 @@ public class Pickup : MonoBehaviour, Interactable
         {
             currentlyHeldItem = null;  // Clear the currently held item
             isHeld = false;
-            gameObject.transform.parent = null;
+            transform.parent = null;
+            transform.localScale = originalScale;
 
             Rigidbody rb = gameObject.GetComponent<Rigidbody>();
             if (rb != null)

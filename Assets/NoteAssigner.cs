@@ -20,8 +20,11 @@ public class NoteAssigner : MonoBehaviour
         UtilityBillImage = notePanel?.transform.Find("UtilityBillImage")?.gameObject;
         SpectralConverganceImage = notePanel?.transform.Find("SpectralConverganceImage")?.gameObject;
 
-        if (notePanel == null || noteImage == null || PaperImage == null ||
-            PostITImage == null || UtilityBillImage == null || SpectralConverganceImage == null)
+        if (notePanel == null) Debug.LogError("Notepanel not found");
+        if (UtilityBillImage == null) Debug.LogError("UtilityBillImage not found");
+
+        if (noteImage == null || PaperImage == null ||
+            PostITImage == null || SpectralConverganceImage == null)
         {
             Debug.LogError("One or more note objects could not be found. Please check the hierarchy.");
         }

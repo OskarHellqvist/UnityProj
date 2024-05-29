@@ -14,6 +14,8 @@ public class KeypadLock : MonoBehaviour
     public string correctCode = "5555", inputCode = "";
     private bool unlocked;
 
+    private int damageOnWrong = 10; // Sanity (0 - 100)
+
     private Color initialColor;        
 
     void Start()
@@ -73,6 +75,8 @@ public class KeypadLock : MonoBehaviour
                 screen.color = Color.red;
                 screen.SetText("Incorrect");
                 FindObjectOfType<AudioManager2>().Play("WrongPassword", transform.position);
+
+                SanityManager.manager.DamageSanity();
             }
         }
     }

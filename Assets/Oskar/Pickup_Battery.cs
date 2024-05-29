@@ -8,6 +8,8 @@ namespace SojaExiles
         private PlayerMovement pMovement; // Assign this in the Inspector or find it on the player GameObject
         private InventoryScript inventoryScript;
 
+        public Quotes quotes;
+
         public void Interact()
         {
             BatteryPickup();
@@ -16,6 +18,8 @@ namespace SojaExiles
 
         private void Start()
         {
+            quotes = FindObjectOfType<Quotes>();
+
             // Ensure that PlayerMovement is assigned correctly
             if (player == null)
             {
@@ -43,7 +47,7 @@ namespace SojaExiles
                 inventoryScript.IncrementBatteryCount();
             }
 
-
+            if (quotes) quotes.InventoryPickUp();
         }
     }
 }

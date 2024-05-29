@@ -1,3 +1,4 @@
+using SojaExiles;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,10 +17,17 @@ public class handScript : MonoBehaviour
     private bool shouldMove = false;
     public AudioSource girlLaugh;
 
+    private VisibilityCheck visibilityCheck;
+
+    [SerializeField] private PlayerMovement pMoveScript;
+
     private void Start()
     {
         originalPosition = hand.transform.position; 
         targetPosition = originalPosition; 
+
+        visibilityCheck = doll.AddComponent<VisibilityCheck>();
+        visibilityCheck = new VisibilityCheck(doll);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,10 +54,36 @@ public class handScript : MonoBehaviour
             if (hand.transform.position == targetPosition)
             {
                 shouldMove = false; // Optionally, set it to move back to the original position or perform other actions
-                Invoke("RemoveDoll", 4);
+
+                StartCoroutine(DollEvent());
+                
                 hand.SetActive(false);
             }
         }       
+    }
+
+    private IEnumerator DollEvent()
+    {
+        while (!visibilityCheck.IsTargetObjectVisible())
+        {
+            yield return null;
+        }
+        
+        Vector3 startPos = doll.transform.position;
+
+        yield return new WaitForSeconds(0.2f);
+
+        StartCoroutine(pMoveScript.FlickerFlashlight(3));
+
+        yield return new WaitForSeconds(0.5f);
+
+        while (Vector3.Distance(doll.transform.position, startPos) < 10)
+        {
+            doll.transform.position -= new Vector3(0,Time.deltaTime*20,0);
+            yield return null;
+        }
+
+        Invoke("RemoveDoll", 2);
     }
 
     private void RemoveDoll()

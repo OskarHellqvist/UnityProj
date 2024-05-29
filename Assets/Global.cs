@@ -19,16 +19,21 @@ public static class Global
         LockMouse();
         FadeScript.instance.FadeIntoScene(2);
     }
-    public static void LoadScene_Win()
-    {
-        UnlockMouse();
-        FadeScript.instance.FadeIntoScene(3);
-    }
     public static void LoadScene_GameOver()
     {
         UnlockMouse();
         FadeScript.instance.FadeIntoScene(3);
     }
+    public static void LoadScene_WinArea()
+    {
+        UnlockMouse();
+        FadeScript.instance.FadeIntoSceneWakeUp(4);
+    }
+    //public static void LoadScene_Win()
+    //{
+    //    UnlockMouse();
+    //    FadeScript.instance.FadeIntoScene(5);
+    //}
 
 
     public static void UnlockMouse()

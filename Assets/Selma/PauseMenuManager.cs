@@ -9,10 +9,12 @@ public class PauseMenuManager : MonoBehaviour
     public GameObject backgroundPanel;
     public GameObject notePanel;
 
+    [SerializeField] private KeyCode pauseKey = KeyCode.Escape;
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) //TODO: pause camera movement
+        if (Input.GetKeyDown(pauseKey))
         {
             if (isPaused)
             {
@@ -37,7 +39,7 @@ public class PauseMenuManager : MonoBehaviour
         backgroundPanel.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        Global.LockMouse();
     }
 
     void Pause()
@@ -46,7 +48,7 @@ public class PauseMenuManager : MonoBehaviour
         backgroundPanel.SetActive(false);
         Time.timeScale = 0f;
         isPaused = true;
-        Cursor.lockState = CursorLockMode.None;
+        Global.UnlockMouse();
     }
 
     public void Exit()

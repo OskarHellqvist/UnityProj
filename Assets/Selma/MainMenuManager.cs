@@ -21,12 +21,4 @@ public class MainMenuManager : MonoBehaviour
     {
         Global.LoadScene_StartMenu();
     }
-    public static void GoToWinScene()
-    {
-        Global.LoadScene_Win();
-    }
-    public static void GoToGameOverScene()
-    {
-        Global.LoadScene_GameOver();
-    }
 }

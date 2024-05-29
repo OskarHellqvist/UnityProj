@@ -19,7 +19,7 @@ namespace SojaExiles
         void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
-            mouseXSensitivity = sensSlider.value;
+            if (sensSlider) mouseXSensitivity = sensSlider.value;
         }
 
         // Update is called once per frame

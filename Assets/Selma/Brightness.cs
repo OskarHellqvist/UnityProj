@@ -15,8 +15,11 @@ public class Brightness : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        brightness.TryGetSettings(out exposure);
-        AdjustBrightness(brightnessSlider.value);
+        if (brightness && brightnessSlider)
+        {
+            brightness.TryGetSettings(out exposure);
+            AdjustBrightness(brightnessSlider.value);
+        }
     }
 
     public void AdjustBrightness(float value)

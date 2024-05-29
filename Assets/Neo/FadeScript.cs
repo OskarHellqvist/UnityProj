@@ -56,6 +56,18 @@ public class FadeScript : MonoBehaviour
         }
     }
 
+    public void FadeIntoSceneWakeUp(int sceneIndex)
+    {
+        if (isFading)
+        {
+            Debug.LogError("Trying to fade while fading!");
+        }
+        else
+        {
+            StartCoroutine(SceneFadeWakeUp(sceneIndex));
+        }
+    }
+
     private IEnumerator SceneFade(int sceneIndex)
     {
         isFading = true;
@@ -68,6 +80,22 @@ public class FadeScript : MonoBehaviour
 
         // Start fading in
         yield return StartCoroutine(FadeInCoroutine());
+
+        isFading = false;
+    }
+
+    private IEnumerator SceneFadeWakeUp(int sceneIndex)
+    {
+        isFading = true;
+
+        // Start fading out
+        yield return StartCoroutine(FadeOutCoroutine());
+
+        // Load the specified scene
+        SceneManager.LoadScene(sceneIndex);
+
+        // Start fading in
+        yield return StartCoroutine(FadeInCoroutine(0.15f));
 
         isFading = false;
     }
@@ -108,6 +136,35 @@ public class FadeScript : MonoBehaviour
                 color.a = 0f;
                 FaderImage.color = color;
                 break;
+            }
+
+            yield return null; // Yield execution to the next frame.
+        }
+    }
+
+    public IEnumerator FadeInCoroutine(float fadeSpeed)
+    {
+        bool hasYawned = false;
+
+        // Fade from black
+        while (FaderImage.color.a > 0f)
+        {
+            Color color = FaderImage.color;
+            color.a -= fadeSpeed * Time.deltaTime;
+            FaderImage.color = color;
+
+            // Ensure it doesn't go below 0
+            if (FaderImage.color.a <= 0f)
+            {
+                color.a = 0f;
+                FaderImage.color = color;
+                break;
+            }
+
+            if(!hasYawned && color.a < 0.8)
+            {
+                FindFirstObjectByType<AudioManager2>().Play("YawnSound", Camera.main.transform.position);
+                hasYawned = true;
             }
 
             yield return null; // Yield execution to the next frame.

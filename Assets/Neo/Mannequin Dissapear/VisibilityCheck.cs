@@ -7,10 +7,16 @@ namespace SojaExiles
         public GameObject target; // The target object we want to check visibility for
         public Camera playerCamera; // The camera used by the player
 
-        public VisibilityCheck(GameObject target, Camera playerCamera)
+        public VisibilityCheck(GameObject target)
         {
             this.target = target;
-            this.playerCamera = playerCamera;
+            this.playerCamera = Camera.main;
+        }
+
+        public VisibilityCheck()
+        {
+            this.target = gameObject;
+            this.playerCamera = Camera.main;
         }
 
         public bool IsTargetObjectVisible()
