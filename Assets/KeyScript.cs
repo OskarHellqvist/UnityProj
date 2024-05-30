@@ -10,10 +10,8 @@ namespace SojaExiles
     {
         private GameObject keyObject;
 
-        // Temp--------------------------------
         [SerializeField] private GameObject doorToOpen;
         private opencloseDoor doorScript;
-        // ------------------------------------
 
         private InventoryScript inventoryScript;
 
@@ -24,9 +22,7 @@ namespace SojaExiles
         {
             keyObject = GetComponent<GameObject>();
 
-            // Temp--------------------------------
             doorScript = doorToOpen.GetComponent<opencloseDoor>();
-            // ------------------------------------
 
             // Find the InventoryScript component
             inventoryScript = FindObjectOfType<InventoryScript>();
