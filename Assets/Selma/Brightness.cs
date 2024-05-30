@@ -24,6 +24,11 @@ public class Brightness : MonoBehaviour
 
     public void AdjustBrightness(float value)
     {
+        if (!exposure) {
+            Debug.LogError("Exposure could not be found");
+            return; 
+        }
+
         if(value != 0)
         {
             exposure.keyValue.value = value;
